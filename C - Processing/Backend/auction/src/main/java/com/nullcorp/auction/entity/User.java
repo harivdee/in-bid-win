@@ -2,7 +2,6 @@ package com.nullcorp.auction.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,17 +11,16 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-
 
 @Entity
 @Table(name = "user")
 @NamedQueries({
     @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
     @NamedQuery(name = "User.findByUserid", query = "SELECT u FROM User u WHERE u.userid = :userid"),
-    @NamedQuery(name = "User.findByFname", query = "SELECT u FROM User u WHERE u.fname = :fname"),
-    @NamedQuery(name = "User.findByLname", query = "SELECT u FROM User u WHERE u.lname = :lname")})
+    @NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username LIKE :username"),
+    @NamedQuery(name = "User.deleteById", query = "DELETE FROM User u WHERE u.userid = :id"),})
 public class User implements Serializable {
 
     @Id
@@ -30,20 +28,21 @@ public class User implements Serializable {
     @Column(name = "userid")
     private Integer userid;
     @NotEmpty
-    @Size(min = 1, max = 100)
+    @Size(min = 4, message = "Minimum 4 characters")
+    @Column(name = "username")
+    private String username;
+    @NotEmpty
     @Column(name = "fname")
     private String fname;
     @NotEmpty
-    @Size(min = 1, max = 100)
     @Column(name = "lname")
     private String lname;
     @NotEmpty
-    @Size(min = 1, max = 100)
+    @Size(min = 8, message = "Minimum 8 characters")
     @Column(name = "password")
     private String password;
-    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
+    @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @NotEmpty
-    @Size(min = 1, max = 100)
     @Column(name = "email")
     private String email;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -57,8 +56,9 @@ public class User implements Serializable {
         this.userid = userid;
     }
 
-    public User(Integer userid, String fname, String lname, String password, String email) {
+    public User(Integer userid, String username, String fname, String lname, String password, String email) {
         this.userid = userid;
+        this.username = username;
         this.fname = fname;
         this.lname = lname;
         this.password = password;
@@ -71,6 +71,14 @@ public class User implements Serializable {
 
     public void setUserid(Integer userid) {
         this.userid = userid;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getFname() {
@@ -137,5 +145,5 @@ public class User implements Serializable {
     public String toString() {
         return "com.nullcorp.auction.entity.User[ userid=" + userid + " ]";
     }
-    
+
 }

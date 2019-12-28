@@ -31,4 +31,29 @@ public class UserDaoImpl implements UserDao {
         return list;
     }
 
+    @Override
+    public void createOrUpdate(User u) {
+        getSession().saveOrUpdate(u);
+    }
+
+    @Override
+    public User findById(Integer id) {
+        return (User) getSession().get(User.class, id);
+        
+    }
+
+    @Override
+    public void delete(Integer id) {
+        Query q = getSession().createNamedQuery("User.deleteById");
+        q.setParameter("id", id);
+        int result = q.executeUpdate();
+    }
+
+    @Override
+    public List<User> findByUsername(String searchName) {
+        Query q = getSession().createNamedQuery("User.findByUsername");
+        q.setParameter("username", searchName+"%");
+        return q.getResultList();
+    }
+
 }
