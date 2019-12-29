@@ -21,38 +21,45 @@
             Search Name: <input type="text" name="searchName" size="10">
             <input type="submit" value="Search">
         </f:form>
-    <table border="1" >
-        <tr>
-            <td><strong>Name</strong></td>
-            <td><strong>Surname</strong></td>
-            <td><strong>Username</strong></td>
-            <td><strong>Email</strong></td>
-            <td><strong>Credit</strong></td>
 
-        </tr>
-        <c:forEach items="${listOfUsers}" var="u">
-            <c:url value="/user/delete" var="deleteLink" >
-                <c:param name="userId" value="${u.userid}" />
-            </c:url>
-            <c:url var="updateLink" value="/user/update">
-                <c:param name="userId" value="${u.userid}" />
-            </c:url>
+        <table border="1" >
             <tr>
-                <td>${u.fname}</td>
-                <td>${u.lname}</td>
-                <td>${u.username}</td>
-                <td>${u.email}</td>
-                <td>${u.credit}</td>
-                <td colspan="2">
-                    <a href="${updateLink}">Update</a>
-                    <a href="${deleteLink}"
-                       onclick="if (!(confirm('Are you sure you want to delete user with username: ${u.username}?')))
-                                   return false"
-                       >Delete</a>
-                </td>
-            </tr>
-        </c:forEach>
+                <td><strong>Name</strong></td>
+                <td><strong>Surname</strong></td>
+                <td><strong>Username</strong></td>
+                <td><strong>Email</strong></td>
+                <td><strong>Credit</strong></td>
 
-    </table>
-</body>
+            </tr>
+            <c:forEach items="${listOfUsers}" var="u">
+                <c:url value="/user/delete" var="deleteLink" >
+                    <c:param name="userId" value="${u.userid}" />
+                </c:url>
+                <c:url var="updateLink" value="/user/update">
+                    <c:param name="userId" value="${u.userid}" />
+                </c:url>
+                <c:url var="listItemsLink" value="/item/list">
+                    <c:param name="userId" value="${u.userid}" />
+                </c:url>
+                <tr>
+                    <td>${u.fname}</td>
+                    <td>${u.lname}</td>
+                    <td>${u.username}</td>
+                    <td>${u.email}</td>
+                    <td>${u.credit}</td>
+                    <td colspan="2">
+                        <a href="${updateLink}">Update</a>
+                        <a href="${deleteLink}"
+                           onclick="if (!(confirm('Are you sure you want to delete user with username: ${u.username}?')))
+                                       return false"
+                           >Delete</a>
+                    </td>
+                    <td>
+                        <a href="${listItemsLink}">Items</a>
+                    </td>
+                </tr>
+            </c:forEach>
+
+        </table>
+    </body>
 </html>
