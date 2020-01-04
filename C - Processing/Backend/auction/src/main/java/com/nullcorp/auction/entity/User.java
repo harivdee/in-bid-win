@@ -2,6 +2,10 @@ package com.nullcorp.auction.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,10 +13,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlTransient;
+
 
 @Entity
 @Table(name = "user")
@@ -27,27 +35,31 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "userid")
     private Integer userid;
+    @Basic(optional = false)
     @NotEmpty
-    @Size(min = 4, message = "Minimum 4 characters")
     @Column(name = "username")
     private String username;
+    @Basic(optional = false)
     @NotEmpty
     @Column(name = "fname")
     private String fname;
     @NotEmpty
     @Column(name = "lname")
     private String lname;
-    @NotEmpty
-    @Size(min = 8, message = "Minimum 8 characters")
+    @Size(min = 8, max = 100, message = "Minimum 8 characters")
     @Column(name = "password")
     private String password;
-    @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Invalid email")//if the field contains email address consider using this annotation to enforce field validation
-    @NotEmpty
+    @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
+    @NotNull
     @Column(name = "email")
     private String email;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "credit")
     private BigDecimal credit;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Item> itemList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Bid> bidList;
 
     public User() {
     }
@@ -121,6 +133,24 @@ public class User implements Serializable {
         this.credit = credit;
     }
 
+    @XmlTransient
+    public List<Item> getItemList() {
+        return itemList;
+    }
+
+    public void setItemList(List<Item> itemList) {
+        this.itemList = itemList;
+    }
+
+    @XmlTransient
+    public List<Bid> getBidList() {
+        return bidList;
+    }
+
+    public void setBidList(List<Bid> bidList) {
+        this.bidList = bidList;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -145,5 +175,5 @@ public class User implements Serializable {
     public String toString() {
         return "com.nullcorp.auction.entity.User[ userid=" + userid + " ]";
     }
-
+    
 }
