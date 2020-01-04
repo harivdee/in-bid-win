@@ -15,9 +15,27 @@ credit decimal(14,3) unsigned default 0
 );
 -- DROP TABLE user;
 
+create table role(
+roleid int UNSIGNED PRIMARY KEY auto_increment,
+rolename varchar(30) UNIQUE
+);
+-- DROP TABLE role;
+
+create table user_role(
+userid int UNSIGNED NOT NULL,
+roleid int UNSIGNED NOT NULL,
+PRIMARY KEY(userid, roleid),
+CONSTRAINT userrolefk1 FOREIGN KEY (userid) 
+REFERENCES user(userid),
+CONSTRAINT userrolefk2 FOREIGN KEY (roleid) 
+REFERENCES role(roleid)
+);
+-- DROP TABLE user_role;
+
 CREATE TABLE house(
 hid int unsigned PRIMARY KEY auto_increment,
 hlocation varchar(100) NOT NULL,
+hfloor int unsigned default 0,
 hsize int unsigned default 0,
 hroom int unsigned default 0,
 hbathroom int unsigned default 0,
@@ -87,15 +105,24 @@ REFERENCES auction(auctionid)
 
 
 
--- ********* SYNTHETIC DATA *************
+-- ********* SYNTHETIC DATA ************* --
 
 INSERT INTO user (fname, lname, username, password, email, credit)
 VALUES ('George', 'Pasparakis', 'georgepasp', '1234', 'gpasparakis@gmail.com', 652),
 ('Tasos', 'Lelakis', 'emergon', '1234', 'tlelakis@gmail.com', 1245.35);
 
-INSERT INTO house (hlocation, hsize, hroom, hbathroom, hheating, hphoto, hfurnished, hdescr)
-VALUES ('Navarinou 8', 70, 2, 1, 'fusiko aerio', 'c\:images\house.png', 'No', 'Newly renovated, very cosy'),
-('Kifisias 65', 50, 1, 2, 'Central with oil', 'c\:images\house2.png', 'Yes', 'Old apartment, very close to transportation');
+INSERT INTO role(rolename) 
+VALUES ('ROLE_ADMIN'),
+('ROLE_USER'),
+('ROLE_GUEST');
+
+INSERT INTO user_role(userid, roleid)
+VALUES (1,1),
+(2,2);
+
+INSERT INTO house (hlocation, hfloor, hsize, hroom, hbathroom, hheating, hphoto, hfurnished, hdescr)
+VALUES ('Navarinou 8', 1, 70, 2, 1, 'fusiko aerio', 'c\:images\house.png', 'No', 'Newly renovated, very cosy'),
+('Kifisias 65',  2, 50, 1, 2, 'Central with oil', 'c\:images\house2.png', 'Yes', 'Old apartment, very close to transportation');
 
 INSERT INTO item (ititle, iprice, istatus, house , user)
 VALUES ('Renovated home', 500, 'OPEN', 1, 2),
