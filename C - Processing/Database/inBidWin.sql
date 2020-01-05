@@ -122,7 +122,7 @@ VALUES (1,1),
 
 INSERT INTO house (hlocation, hfloor, hsize, hroom, hbathroom, hheating, hphoto, hfurnished, hdescr)
 VALUES ('Navarinou 8', 1, 70, 2, 1, 'fusiko aerio', 'c\:images\house.png', 'No', 'Newly renovated, very cosy'),
-('Kifisias 65',  2, 50, 1, 2, 'Central with oil', 'c\:images\house2.png', 'Yes', 'Old apartment, very close to transportation');
+('Kifisias 65',  2, 50, 1, 2, 'Central with oil', 'c\:images\house.png', 'Yes', 'Old apartment, very close to transportation');
 
 INSERT INTO item (ititle, iprice, istatus, house , user)
 VALUES ('Renovated home', 500, 'OPEN', 1, 2),
