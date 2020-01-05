@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "House.findAll", query = "SELECT h FROM House h"),
     @NamedQuery(name = "House.findByHid", query = "SELECT h FROM House h WHERE h.hid = :hid"),
     @NamedQuery(name = "House.findByHlocation", query = "SELECT h FROM House h WHERE h.hlocation = :hlocation"),
+    @NamedQuery(name = "House.findByHfloor", query = "SELECT h FROM House h WHERE h.hfloor = :hfloor"),
     @NamedQuery(name = "House.findByHsize", query = "SELECT h FROM House h WHERE h.hsize = :hsize"),
     @NamedQuery(name = "House.findByHroom", query = "SELECT h FROM House h WHERE h.hroom = :hroom"),
     @NamedQuery(name = "House.findByHbathroom", query = "SELECT h FROM House h WHERE h.hbathroom = :hbathroom"),
@@ -54,6 +55,8 @@ public class House implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "hlocation")
     private String hlocation;
+    @Column(name = "hfloor")
+    private Integer hfloor;
     @Column(name = "hsize")
     private Integer hsize;
     @Column(name = "hroom")
@@ -106,6 +109,14 @@ public class House implements Serializable {
 
     public void setHlocation(String hlocation) {
         this.hlocation = hlocation;
+    }
+
+    public Integer getHfloor() {
+        return hfloor;
+    }
+
+    public void setHfloor(Integer hfloor) {
+        this.hfloor = hfloor;
     }
 
     public Integer getHsize() {
