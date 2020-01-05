@@ -19,6 +19,7 @@
                 <td><strong>Price</strong></td>
                 <td><strong>Status</strong></td>
                 <td><strong>Adress</strong></td>
+                <td><strong>Floor</strong></td>
                 <td><strong>Size in m<sup>2</sup></strong></td>
                 <td><strong>Rooms</strong></td>
                 <td><strong>Bathrooms</strong></td>
@@ -35,6 +36,7 @@
                     <td>${i.iprice}</td>
                     <td>${i.istatus}</td>
                     <td>${i.house.hlocation}</td>
+                    <td>${i.house.hfloor}</td>
                     <td>${i.house.hsize}</td>
                     <td>${i.house.hroom}</td>
                     <td>${i.house.hbathroom}</td>
