@@ -8,9 +8,13 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -60,6 +64,11 @@ public class User implements Serializable {
     private List<Item> itemList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Bid> bidList;
+//    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+//    @JoinTable(name = "user_role",
+//            joinColumns = @JoinColumn(name = "userid"),
+//            inverseJoinColumns = @JoinColumn(name = "roleid"))
+//    private List<Role> roles;
 
     public User() {
     }
@@ -151,6 +160,14 @@ public class User implements Serializable {
         this.bidList = bidList;
     }
 
+//    public List<Role> getRoles() {
+//        return roles;
+//    }
+//
+//    public void setRoles(List<Role> roles) {
+//        this.roles = roles;
+//    }
+//    
     @Override
     public int hashCode() {
         int hash = 0;

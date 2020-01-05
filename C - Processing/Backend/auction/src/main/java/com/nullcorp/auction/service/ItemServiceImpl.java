@@ -1,4 +1,3 @@
-
 package com.nullcorp.auction.service;
 
 import com.nullcorp.auction.dao.ItemDao;
@@ -10,13 +9,24 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Transactional
-public class ItemServiceImpl implements ItemService{
+public class ItemServiceImpl implements ItemService {
+
     @Autowired
     ItemDao idao;
-    
+
     @Override
     public List<Item> getAllItems(Integer id) {
         return idao.findAll(id);
     }
-    
+
+    @Override
+    public Item getItemById(Integer id) {
+        return idao.findByid(id);
+    }
+
+    @Override
+    public void createOrUpdateItem(Item i) {
+        idao.createOrUpdate(i);
+    }
+
 }
