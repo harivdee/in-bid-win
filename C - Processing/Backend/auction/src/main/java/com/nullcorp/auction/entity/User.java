@@ -2,7 +2,6 @@ package com.nullcorp.auction.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -64,19 +63,13 @@ public class User implements Serializable {
     private List<Item> itemList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Bid> bidList;
-<<<<<<< HEAD
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "userid"),
             inverseJoinColumns = @JoinColumn(name = "roleid"))
     private List<Role> roles;
-=======
-    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinTable(name = "user_role",
-            joinColumns = @JoinColumn(name = "userid"),
-            inverseJoinColumns = @JoinColumn(name = "roleid"))
-    private List<Role> roles;
->>>>>>> kostas
+
+    
 
     public User() {
     }
@@ -168,7 +161,6 @@ public class User implements Serializable {
         this.bidList = bidList;
     }
 
-<<<<<<< HEAD
     public List<Role> getRoles() {
         return roles;
     }
@@ -177,16 +169,9 @@ public class User implements Serializable {
         this.roles = roles;
     }
     
-=======
-    public List<Role> getRoles() {
-        return roles;
-    }
 
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
     
->>>>>>> kostas
+    
     @Override
     public int hashCode() {
         int hash = 0;
