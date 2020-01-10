@@ -19,7 +19,7 @@ public class ItemDaoImpl implements ItemDao {
     }
 
     @Override
-    public List<Item> findAll(Integer id) {
+    public List<Item> findAllByUser(Integer id) {
         Query q = getSession().createQuery("SELECT i FROM Item i WHERE i.user.id = :userid");
 //        Query q = getSession().createQuery("SELECT i, h.hid FROM Item i JOIN i.house h WHERE i.user.id = :userid" );
         q.setParameter("userid", id);

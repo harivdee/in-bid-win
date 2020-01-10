@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.nullcorp.auction.entity;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,15 +13,14 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-/**
- *
- * @author datura
- */
+
 @Entity
 @Table(name = "house")
 @XmlRootElement
@@ -44,43 +37,50 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "House.findByHdescr", query = "SELECT h FROM House h WHERE h.hdescr = :hdescr")})
 public class House implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "hid")
     private Integer hid;
-    @Basic(optional = false)
-    @NotNull
+    @NotEmpty
     @Size(min = 1, max = 100)
     @Column(name = "hlocation")
     private String hlocation;
+    @NotNull
+    @Min(value = -1, message = "The value must be minimun -1")
     @Column(name = "hfloor")
     private Integer hfloor;
+    @NotNull
+    @Min(value = 5, message = "The value must be positive")
     @Column(name = "hsize")
     private Integer hsize;
+    @NotNull
+    @Min(value = 1, message = "The value must be positive")
     @Column(name = "hroom")
     private Integer hroom;
+    @NotNull
+    @Min(value = 1, message = "The value must be positive")
     @Column(name = "hbathroom")
     private Integer hbathroom;
+    @NotEmpty
     @Size(max = 100)
     @Column(name = "hheating")
     private String hheating;
-    @Basic(optional = false)
-    @NotNull
+    @NotEmpty
     @Lob
     @Column(name = "hphoto")
     private byte[] hphoto;
+    @NotEmpty
     @Size(max = 3)
     @Column(name = "hfurnished")
     private String hfurnished;
+    @NotEmpty
     @Size(max = 200)
     @Column(name = "hdescr")
     private String hdescr;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "house")
     private List<Image> imageList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "house")
-    private List<Item> itemList;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "house")
+//    private List<Item> itemList;
 
     public House() {
     }
@@ -184,14 +184,14 @@ public class House implements Serializable {
         this.imageList = imageList;
     }
 
-    @XmlTransient
-    public List<Item> getItemList() {
-        return itemList;
-    }
-
-    public void setItemList(List<Item> itemList) {
-        this.itemList = itemList;
-    }
+//    @XmlTransient
+//    public List<Item> getItemList() {
+//        return itemList;
+//    }
+//
+//    public void setItemList(List<Item> itemList) {
+//        this.itemList = itemList;
+//    }
 
     @Override
     public int hashCode() {

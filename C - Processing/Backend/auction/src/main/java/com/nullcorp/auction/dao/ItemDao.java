@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ItemDao {
 
-    public List<Item> findAll(Integer id);
+    public List<Item> findAllByUser(Integer id);
 
     public Item findByid(Integer id);
 

@@ -15,18 +15,19 @@ public class ItemServiceImpl implements ItemService {
     ItemDao idao;
 
     @Override
-    public List<Item> getAllItems(Integer id) {
-        return idao.findAll(id);
+    public List<Item> getAllItemsByUser(Integer id) {
+        return idao.findAllByUser(id);
     }
 
     @Override
     public Item getItemById(Integer id) {
         return idao.findByid(id);
     }
-
+    
     @Override
     public void createOrUpdateItem(Item i) {
+        i.setIstatus("FRESH");
         idao.createOrUpdate(i);
     }
 
-}
+};

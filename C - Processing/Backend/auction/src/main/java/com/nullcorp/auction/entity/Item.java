@@ -4,7 +4,6 @@ package com.nullcorp.auction.entity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
-import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,6 +18,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlTransient;
@@ -39,15 +40,15 @@ public class Item implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "itemid")
     private Integer itemid;
-    @NotNull
+    @NotEmpty
     @Size(min = 1, max = 100)
     @Column(name = "ititle")
     private String ititle;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "iprice")
-    private BigDecimal iprice;
-    @Basic(optional = false)
+    @Min(value=1)
     @NotNull
+    @Column(name = "iprice")
+    private Integer iprice;
     @Size(min = 1, max = 10)
     @Column(name = "istatus")
     private String istatus;
@@ -89,11 +90,11 @@ public class Item implements Serializable {
         this.ititle = ititle;
     }
 
-    public BigDecimal getIprice() {
+    public Integer getIprice() {
         return iprice;
     }
 
-    public void setIprice(BigDecimal iprice) {
+    public void setIprice(Integer iprice) {
         this.iprice = iprice;
     }
 

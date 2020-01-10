@@ -9,30 +9,45 @@
         <title>Item Form</title>
     </head>
     <body>
-        <h1>This is create Item Form!</h1>
+        <h1>This is create Item Form for ${user.username}</h1>
+        <c:url value="/item/create" var="createLink" >
+            <c:param name="userId" value="${user.userid}" />
+        </c:url>
         <f:form id="formItem"
-                action="${pageContext.request.contextPath}/item/create"
+                action="${createLink}"
                 method="POST"
-                modelAttribute="item">
-            <f:hidden path="itemid"/>
-            Title: <f:input path="ititle"/>
-            <f:errors path="ititle"/><br/>
-            Price: <f:input path="iprice"/>
-            <f:errors path="iprice"/><br/>
+                modelAttribute="itemForm">
+
+
+
+            <f:hidden path="item.itemid"/>
+            Title: <f:input path="item.ititle"/>
+            <f:errors path="item.ititle"/><br/>
+            Price: <f:input type="number" path="item.iprice"/>
+            <f:errors path="item.iprice"/><br/>
+
+            <f:hidden path="house.hid"/>
             Address <f:input path="house.hlocation"/>
             <f:errors path="house.hlocation"/><br/>
-            Size: <f:input path="house.hsize"/>
+            Floor: <f:input type="number" path="house.hfloor"/>
+            <f:errors path="house.hfloor"/><br/>
+            Size: <f:input type="number" path="house.hsize"/>
             <f:errors path="house.hsize"/><br/>
-            Rooms <f:input path="house.hroom"/>
+            Rooms <f:input type="number" path="house.hroom"/>
             <f:errors path="house.hroom"/><br/>
-            Bathrooms <f:input path="house.hbathroom"/>
-            <f:errors path="house.hbathroom"/><br/>
+            Bathrooms <f:input type="number" path="house.hbathroom"/>
+            <f:errors type="number" path="house.hbathroom"/><br/>
             Heating <f:input path="house.hheating"/>
             <f:errors path="house.hheating"/><br/>
             Furnished <f:input path="house.hfurnished"/>
             <f:errors path="house.hfurnished"/><br/>
             Description <f:textarea path="house.hdescr"/>
             <f:errors path="house.hdescr"/><br/>
+            Photos:<f:input type="file" path="house.hphoto" accept="image/gif, image/jpeg, image/png"/>
+            <f:errors path="house.hphoto"/><br/>
+
+            <!--            <input type="hidden" name="MAX_FILE_SIZE" value="4194304" />
+                         <input  type="file" />-->
 
             <input type="submit" value="Submit">
         </f:form>

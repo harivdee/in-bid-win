@@ -19,7 +19,7 @@ public class ImageController {
     ItemService iService;
     
     @GetMapping("/thumbnail")
-    public void displayThumbnail(@RequestParam("id") Integer id,
+    public void displayThumbnail(@RequestParam("itemId") Integer id,
             HttpServletResponse response, HttpServletRequest request) throws IOException {
         Item item = iService.getItemById(id);
         response.setContentType("image/jpeg, image/jpg, image/png, image/gif");

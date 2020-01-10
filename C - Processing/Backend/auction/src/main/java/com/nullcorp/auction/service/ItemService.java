@@ -5,7 +5,7 @@ import java.util.List;
 
 
 public interface ItemService {
-    List<Item> getAllItems(Integer id);
+    List<Item> getAllItemsByUser(Integer id);
 
     public Item getItemById(Integer id);
 
