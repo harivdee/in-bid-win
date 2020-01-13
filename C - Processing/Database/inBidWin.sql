@@ -119,17 +119,17 @@ INSERT INTO user_role(userid, roleid)
 VALUES (1,1),
 (2,2);
 
-INSERT INTO house (hlocation, hfloor, hsize, hroom, hbathroom, hheating, hphoto, hfurnished, hdescr)
-VALUES ('Navarinou 8', 1, 70, 2, 1, 'fusiko aerio', 'c\:images\house.png', 'No', 'Newly renovated, very cosy'),
-('Kifisias 65',  2, 50, 1, 2, 'Central with oil', 'c\:images\house.png', 'Yes', 'Old apartment, very close to transportation');
+INSERT INTO house (hlocation, hfloor, hsize, hroom, hbathroom, hheating,  hfurnished, hdescr)
+VALUES ('Navarinou 8', 1, 70, 2, 1, 'fusiko aerio',  'No', 'Newly renovated, very cosy'),
+('Kifisias 65',  2, 50, 1, 2, 'Central with oil',  'Yes', 'Old apartment, very close to transportation');
 
 INSERT INTO item (ititle, iprice, istatus, house , user)
 VALUES ('Renovated home', 500, 'OPEN', 1, 2),
 ('Central Athens', 300, 'CLOSED', 2 , 1);
 
 INSERT INTO image (iphoto, house)
-VALUES ('c\:images\house.png', 1),
-('c\:images\house2.png',2);
+VALUES ('https://i.postimg.cc/RV82vCKw/cgji0ufwnk941.jpg', 1),
+('https://i.postimg.cc/RV82vCKw/cgji0ufwnk941.jpg',2);
 
 INSERT INTO auction (aincrement, areserve, stime, etime, item)
 VALUES (10, 120, '2019-12-14 12:30:15','2020-01-14 12:30:15', 1),

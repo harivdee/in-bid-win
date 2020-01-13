@@ -56,8 +56,8 @@ public class Item implements Serializable {
     @JoinColumn(name = "user", referencedColumnName = "userid")
     @ManyToOne(optional = false)
     private User user;
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "item")
-//    private List<Auction> auctionList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "item")
+    private List<Auction> auctionList;
 
     public Item() {
     }
@@ -120,14 +120,14 @@ public class Item implements Serializable {
         this.user = user;
     }
 
-//    @XmlTransient
-//    public List<Auction> getAuctionList() {
-//        return auctionList;
-//    }
-//
-//    public void setAuctionList(List<Auction> auctionList) {
-//        this.auctionList = auctionList;
-//    }
+    @XmlTransient
+    public List<Auction> getAuctionList() {
+        return auctionList;
+    }
+
+    public void setAuctionList(List<Auction> auctionList) {
+        this.auctionList = auctionList;
+    }
 
     @Override
     public int hashCode() {
