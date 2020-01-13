@@ -65,7 +65,6 @@ public class House implements Serializable {
     @Size(max = 100)
     @Column(name = "hheating")
     private String hheating;
-    @NotEmpty
     @Lob
     @Column(name = "hphoto")
     private byte[] hphoto;

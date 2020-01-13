@@ -11,7 +11,7 @@
     <body>
         <h1>This is create Item Form for ${user.username}</h1>
         <c:url value="/item/create" var="createLink" >
-            <c:param name="userId" value="${user.userid}" />
+            <c:param name="userId" value="${user.userid}"/>
         </c:url>
         <f:form id="formItem"
                 action="${createLink}"
@@ -43,11 +43,6 @@
             <f:errors path="house.hfurnished"/><br/>
             Description <f:textarea path="house.hdescr"/>
             <f:errors path="house.hdescr"/><br/>
-            Photos:<f:input type="file" path="house.hphoto" accept="image/gif, image/jpeg, image/png"/>
-            <f:errors path="house.hphoto"/><br/>
-
-            <!--            <input type="hidden" name="MAX_FILE_SIZE" value="4194304" />
-                         <input  type="file" />-->
 
             <input type="submit" value="Submit">
         </f:form>

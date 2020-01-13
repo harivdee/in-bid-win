@@ -16,7 +16,5 @@
         <hr/>
         <a href="${pageContext.request.contextPath}/user/list">users</a>
         <br/>
-        <a href="${pageContext.request.contextPath}/item/list">items</a>
-        <br/>
     </body>
 </html>

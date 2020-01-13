@@ -19,6 +19,7 @@ public class HouseDaoImpl implements HouseDao{
     @Override
     public void createOrUpdate(House h) {
         getSession().saveOrUpdate(h);
+        
     }
     
 }

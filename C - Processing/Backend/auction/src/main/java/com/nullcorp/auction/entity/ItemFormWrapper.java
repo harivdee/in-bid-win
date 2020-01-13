@@ -17,10 +17,9 @@ public class ItemFormWrapper implements Serializable{
     public ItemFormWrapper() {
     }
 
-    public ItemFormWrapper(Item item, House house, List<Image> images) {
+    public ItemFormWrapper(Item item, House house) {
         this.item = item;
         this.house = house;
-//        this.images = images;
     }
 
     public Item getItem() {
