@@ -12,5 +12,9 @@ public interface ItemDao {
     public Item findByid(Integer id);
 
     public void createOrUpdate(Item i);
+
+    public void delete(Integer id);
+
+    public void del(Item i);
     
 }

@@ -10,4 +10,8 @@ public interface ItemService {
     public Item getItemById(Integer id);
 
     public void createOrUpdateItem(Item i);
+
+    public void deleteItem(Integer id);
+
+    public void delete(Item i);
 }

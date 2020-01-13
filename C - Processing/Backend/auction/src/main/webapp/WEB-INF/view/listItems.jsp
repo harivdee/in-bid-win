@@ -29,11 +29,21 @@
                 <td><strong>Heating</strong></td>
                 <td><strong>Furnished</strong></td>
                 <td><strong>Description</strong></td>
-                <td><strong>Thumbnail</strong></td>
+                <td><strong>Images</strong></td>
 
 
             </tr>
             <c:forEach items="${listOfItems}" var="i">
+                <c:url var="updateLink" value="/item/update">
+                    <c:param name="itemId" value="${i.itemid}" />
+                </c:url>
+                <c:url var="deleteLink" value="/item/delete">
+                    <c:param name="itemId" value="${i.itemid}" />
+                    <c:param name="userId" value="${user.userid}" />
+                </c:url>
+                <c:url var="listImagesLink" value="/image/list">
+                    <c:param name="houseId" value="${i.house.hid}" />
+                </c:url>
                 <tr>
                     <td>${i.ititle}</td>
                     <td>${i.iprice}</td>
@@ -46,10 +56,17 @@
                     <td>${i.house.hheating}</td>
                     <td>${i.house.hfurnished}</td>
                     <td>${i.house.hdescr}</td>
-                    <c:url value="/image/thumbnail" var="fetchThumbnail" >
-                        <c:param name="itemId" value="${i.itemid}" />
-                    </c:url>
-                    <td><img width="100" height="100" src="${fetchThumbnail}"></td>
+                    <td><a href="${listImagesLink}">Images</a></td>
+                    <td colspan="2">
+                        <a href="${updateLink}">Update</a>
+                        <a href="${deleteLink}"
+                           onclick="if (!(confirm('Are you sure you want to delete item with title ${i.ititle}?')))
+                                       return false"
+                           >Delete</a>
+                    </td>
+
+
+
                 </tr>
             </c:forEach>
 

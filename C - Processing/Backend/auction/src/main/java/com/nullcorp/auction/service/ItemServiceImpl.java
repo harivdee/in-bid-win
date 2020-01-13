@@ -30,4 +30,14 @@ public class ItemServiceImpl implements ItemService {
         idao.createOrUpdate(i);
     }
 
+    @Override
+    public void deleteItem(Integer id) {
+        idao.delete(id);
+    }
+
+    @Override
+    public void delete(Item i) {
+        idao.del(i);
+    }
+
 };

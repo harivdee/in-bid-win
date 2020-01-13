@@ -18,5 +18,17 @@ public class HouseServiceImpl implements HouseService{
     public void createOrUpdateHouse(House h) {
         hdao.createOrUpdate(h);
     }
+
+    @Override
+    public House getHouseById(Integer id) {
+        return hdao.findById(id);
+         
+    }
+
+    @Override
+    public void deleteHouseByItemId(Integer id) {
+        hdao.delete(id);
+    }
+    
     
 }

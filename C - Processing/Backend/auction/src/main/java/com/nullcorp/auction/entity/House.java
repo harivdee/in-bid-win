@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,14 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "House.findAll", query = "SELECT h FROM House h"),
     @NamedQuery(name = "House.findByHid", query = "SELECT h FROM House h WHERE h.hid = :hid"),
-    @NamedQuery(name = "House.findByHlocation", query = "SELECT h FROM House h WHERE h.hlocation = :hlocation"),
-    @NamedQuery(name = "House.findByHfloor", query = "SELECT h FROM House h WHERE h.hfloor = :hfloor"),
-    @NamedQuery(name = "House.findByHsize", query = "SELECT h FROM House h WHERE h.hsize = :hsize"),
-    @NamedQuery(name = "House.findByHroom", query = "SELECT h FROM House h WHERE h.hroom = :hroom"),
-    @NamedQuery(name = "House.findByHbathroom", query = "SELECT h FROM House h WHERE h.hbathroom = :hbathroom"),
-    @NamedQuery(name = "House.findByHheating", query = "SELECT h FROM House h WHERE h.hheating = :hheating"),
-    @NamedQuery(name = "House.findByHfurnished", query = "SELECT h FROM House h WHERE h.hfurnished = :hfurnished"),
-    @NamedQuery(name = "House.findByHdescr", query = "SELECT h FROM House h WHERE h.hdescr = :hdescr")})
+    @NamedQuery(name = "House.deleteById", query = "DELETE FROM House h WHERE h.hid = :id")})
 public class House implements Serializable {
 
     @Id
@@ -65,9 +59,9 @@ public class House implements Serializable {
     @Size(max = 100)
     @Column(name = "hheating")
     private String hheating;
-    @Lob
-    @Column(name = "hphoto")
-    private byte[] hphoto;
+//    @Lob
+//    @Column(name = "hphoto")
+//    private byte[] hphoto;
     @NotEmpty
     @Size(max = 3)
     @Column(name = "hfurnished")
@@ -76,7 +70,7 @@ public class House implements Serializable {
     @Size(max = 200)
     @Column(name = "hdescr")
     private String hdescr;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "house")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "house",fetch = FetchType.EAGER)
     private List<Image> imageList;
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "house")
 //    private List<Item> itemList;
@@ -88,10 +82,9 @@ public class House implements Serializable {
         this.hid = hid;
     }
 
-    public House(Integer hid, String hlocation, byte[] hphoto) {
+    public House(Integer hid, String hlocation) {
         this.hid = hid;
         this.hlocation = hlocation;
-        this.hphoto = hphoto;
     }
 
     public Integer getHid() {
@@ -150,13 +143,13 @@ public class House implements Serializable {
         this.hheating = hheating;
     }
 
-    public byte[] getHphoto() {
-        return hphoto;
-    }
-
-    public void setHphoto(byte[] hphoto) {
-        this.hphoto = hphoto;
-    }
+//    public byte[] getHphoto() {
+//        return hphoto;
+//    }
+//
+//    public void setHphoto(byte[] hphoto) {
+//        this.hphoto = hphoto;
+//    }
 
     public String getHfurnished() {
         return hfurnished;

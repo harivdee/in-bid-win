@@ -1,6 +1,7 @@
 package com.nullcorp.auction.controller;
 
 import com.nullcorp.auction.entity.House;
+import com.nullcorp.auction.entity.Image;
 import com.nullcorp.auction.entity.Item;
 import com.nullcorp.auction.entity.ItemFormWrapper;
 import com.nullcorp.auction.entity.User;
@@ -8,7 +9,6 @@ import com.nullcorp.auction.service.HouseService;
 import com.nullcorp.auction.service.ImageService;
 import com.nullcorp.auction.service.ItemService;
 import com.nullcorp.auction.service.UserService;
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import javax.validation.Valid;
@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/item")
@@ -54,10 +53,11 @@ public class ItemController {
     }
 
     @PostMapping("/create")
-    public String createOrUpdateUser(@Valid @ModelAttribute("itemForm") ItemFormWrapper i,
+    public String createOrUpdateItem(@Valid @ModelAttribute("itemForm") ItemFormWrapper i,
             @RequestParam("userId") Integer id,
             BindingResult result,
-            Model m) throws IOException {
+            Model m,
+            @ModelAttribute("image") Image image) throws IOException {
         if (result.hasErrors()) {
             return "formItem";
         }
@@ -69,10 +69,33 @@ public class ItemController {
         item.setUser(u);
 
         itService.createOrUpdateItem(item);
-//        List<Image> images = i.getImages();
         m.addAttribute("house", house);
-//        return "redirect:/item/list?userId="+id;
-        return "formImage";
+        return "redirect:/image/upload?hid="+house.getHid();
+    }
+    
+    @GetMapping("/update")
+    public String showUpdateItemForm(@ModelAttribute("itemForm") ItemFormWrapper i,
+            @RequestParam("itemId") Integer id, Model m){
+        Item it = itService.getItemById(id);
+        House h = hService.getHouseById(it.getItemid());
+        i.setItem(it);
+        i.setHouse(h);
+        m.addAttribute("user", it.getUser());
+        m.addAttribute("item", i);
+        
+        return "formItem";
+    }
+    
+    @GetMapping("/delete")
+    public String deleteItem(@RequestParam("userId") Integer uid,
+            @RequestParam("itemId") Integer iid){
+//        itService.deleteItem(iid);
+//        hService.deleteHouseByItemId(iid);
+        Item i = itService.getItemById(iid);
+        itService.delete(i);
+//        imService.deleteImagesByHouseId()
+        User u = uService.getUserById(uid);
+        return "redirect:/item/list?userId="+u.getUserid();
     }
 
 }

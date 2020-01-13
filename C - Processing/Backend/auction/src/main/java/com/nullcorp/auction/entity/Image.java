@@ -32,15 +32,15 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Image.findByIid", query = "SELECT i FROM Image i WHERE i.iid = :iid")})
 public class Image implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "iid")
     private Integer iid;
-    @Lob
     @Column(name = "iphoto")
-    private byte[] iphoto;
+    private String iphoto;
+//    @Lob
+//    @Column(name = "iphoto")
+//    private byte[] iphoto;
     @JoinColumn(name = "house", referencedColumnName = "hid")
     @ManyToOne(optional = false)
     private House house;
@@ -60,11 +60,11 @@ public class Image implements Serializable {
         this.iid = iid;
     }
 
-    public byte[] getIphoto() {
+    public String getIphoto() {
         return iphoto;
     }
 
-    public void setIphoto(byte[] iphoto) {
+    public void setIphoto(String iphoto) {
         this.iphoto = iphoto;
     }
 

@@ -30,9 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Item.findAll", query = "SELECT i FROM Item i"),
     @NamedQuery(name = "Item.findByItemid", query = "SELECT i FROM Item i WHERE i.itemid = :itemid"),
-    @NamedQuery(name = "Item.findByItitle", query = "SELECT i FROM Item i WHERE i.ititle = :ititle"),
-    @NamedQuery(name = "Item.findByIprice", query = "SELECT i FROM Item i WHERE i.iprice = :iprice"),
-    @NamedQuery(name = "Item.findByIstatus", query = "SELECT i FROM Item i WHERE i.istatus = :istatus")})
+    @NamedQuery(name = "Item.deleteById", query = "DELETE FROM Item i WHERE i.itemid = :id")})
 public class Item implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -53,13 +51,13 @@ public class Item implements Serializable {
     @Column(name = "istatus")
     private String istatus;
     @JoinColumn(name = "house", referencedColumnName = "hid")
-    @OneToOne(optional = false, fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER)
     private House house;
     @JoinColumn(name = "user", referencedColumnName = "userid")
     @ManyToOne(optional = false)
     private User user;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "item")
-    private List<Auction> auctionList;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "item")
+//    private List<Auction> auctionList;
 
     public Item() {
     }
@@ -122,14 +120,14 @@ public class Item implements Serializable {
         this.user = user;
     }
 
-    @XmlTransient
-    public List<Auction> getAuctionList() {
-        return auctionList;
-    }
-
-    public void setAuctionList(List<Auction> auctionList) {
-        this.auctionList = auctionList;
-    }
+//    @XmlTransient
+//    public List<Auction> getAuctionList() {
+//        return auctionList;
+//    }
+//
+//    public void setAuctionList(List<Auction> auctionList) {
+//        this.auctionList = auctionList;
+//    }
 
     @Override
     public int hashCode() {

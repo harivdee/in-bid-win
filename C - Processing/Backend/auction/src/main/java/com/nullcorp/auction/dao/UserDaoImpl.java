@@ -46,7 +46,7 @@ public class UserDaoImpl implements UserDao {
     public void delete(Integer id) {
         Query q = getSession().createNamedQuery("User.deleteById");
         q.setParameter("id", id);
-        int result = q.executeUpdate();
+        q.executeUpdate();
     }
 
     @Override

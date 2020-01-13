@@ -39,4 +39,16 @@ public class ItemDaoImpl implements ItemDao {
         getSession().saveOrUpdate(i);
     }
 
+    @Override
+    public void delete(Integer id) {
+        Query q = getSession().createNamedQuery("Item.deleteById");
+        q.setParameter("id", id);
+        q.executeUpdate();
+    }
+
+    @Override
+    public void del(Item i) {
+        getSession().delete(i);
+    }
+
 }
