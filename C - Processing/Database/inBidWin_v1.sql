@@ -40,6 +40,7 @@ hsize int unsigned default 0,
 hroom int unsigned default 0,
 hbathroom int unsigned default 0,
 hheating varchar(100),
+hphoto LONGBLOB NOT NULL,
 hfurnished varchar(3),
 hdescr varchar(200)
 );
@@ -61,7 +62,7 @@ REFERENCES user(userid)
 
 CREATE TABLE image(
 iid int unsigned PRIMARY KEY auto_increment,
-iphoto VARCHAR(100),
+iphoto LONGBLOB,
 house int unsigned NOT NULL,
 CONSTRAINT fk_house2 FOREIGN KEY (house)
 REFERENCES house(hid)
