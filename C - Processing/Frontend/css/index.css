@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+*{
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.imgFilter {
+    filter: brightness(0.75);
+    object-fit: cover;
+}
+
+.fa {
+    margin-right: 0.75rem;
+}
+
+.jumbotron {
+    margin-bottom: 0px;
+    background: url('https://i.ibb.co/ss8Qgzk/japan-2014616-1920.jpg') center center no-repeat;
+    background-size: cover;
+    color: white;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+    display:flex;
+    float: none;
+    align-items:center;
+}
+
+#footer-main>.container {
+        background: #222;
+        color: white;
+        font-size: 0.8rem;
+        padding: 1rem;
+}

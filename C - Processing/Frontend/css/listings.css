@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.jumbotron {
+    margin-bottom: 0px;
+    background: url('https://i.ibb.co/ss8Qgzk/japan-2014616-1920.jpg') center center no-repeat;
+    background-size: cover;
+    color: white;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+    display:flex;
+    float: none;
+    align-items:center;
+}
+
+.navbar-collapse.collapse.in {
+    display: inline-block;
+  }
+
+.img-fluid {
+    width: 40px;
+}
+
+#nav-main {
+    padding: 1px;
+}
+
+#collapse_target {
+    display: flex;
+    margin-left: auto;
+}
+
+#footer-main {
+    background: #222;
+    color: white;
+    font-size: 0.8rem;
+    padding: 2.5rem;
+  }
+
+  .card-deck {
+    margin: 0 -15px;
+    justify-content: space-between;
+    padding-top: 20px;
+  }
+  
+  .card-deck .card {
+    margin: 0 0 1rem;
+  }
+  
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    .card-deck .card {
+      -ms-flex: 0 0 48.7%;
+      flex: 0 0 48.7%;
+    }
+  }
+  
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    .card-deck .card {
+      -ms-flex: 0 0 32%;
+      flex: 0 0 32%;
+    }
+
+    #collapse_target {
+        display: block;
+        margin-left: 0px;
+    }
+  }
+  
+  @media (min-width: 992px)
+  {
+    .card-deck .card {
+      -ms-flex: 0 0 24%;
+      flex: 0 0 24%;
+    }
+  }
