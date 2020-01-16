@@ -15,7 +15,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto menu">
                 <li class="navbar-item active">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#dropdown_target"
@@ -38,12 +38,12 @@
                 </a>
                 <c:choose>
                     <c:when test = "${username != 'admin'}">
-                        <a class="nav-link disabled text-muted" href="#">
+                        <a class="nav-link text-muted" href="/user/list">
                             <i class="fa fa-user-secret"></i>Administrator
                         </a>
                     </c:when>
                     <c:otherwise>
-                        <a class="nav-link disabled text-white" href="${pageContext.request.contextPath}/user/list">
+                        <a class="nav-link text-white" href="${pageContext.request.contextPath}/user/list">
                             <i class="fa fa-user-secret"></i>Administrator
                         </a>
                     </c:otherwise>

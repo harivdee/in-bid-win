@@ -12,7 +12,7 @@
             </div>
             <div class="col-sm-3">
                 <ul class="list-unstyled">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="/">Home</a></li>
                     <li><a href="#">What to do</a></li>
                     <li><a href="#">About</a></li>
                 </ul>
