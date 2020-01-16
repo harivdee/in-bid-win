@@ -11,7 +11,8 @@ public interface ItemService {
 
     public void createOrUpdateItem(Item i);
 
-    public void deleteItem(Integer id);
 
     public void delete(Item i);
+
+    public void toggleStatus(Item i);
 }

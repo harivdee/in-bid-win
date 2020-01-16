@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Auction.findAll", query = "SELECT a FROM Auction a"),
     @NamedQuery(name = "Auction.findByAuctionid", query = "SELECT a FROM Auction a WHERE a.auctionid = :auctionid"),
+    @NamedQuery(name = "Auction.deleteByAuctionid", query = "DELETE FROM Auction a WHERE a.auctionid = :auctionid"),
     @NamedQuery(name = "Auction.findByAincrement", query = "SELECT a FROM Auction a WHERE a.aincrement = :aincrement"),
     @NamedQuery(name = "Auction.findByAreserve", query = "SELECT a FROM Auction a WHERE a.areserve = :areserve"),
     @NamedQuery(name = "Auction.findByStime", query = "SELECT a FROM Auction a WHERE a.stime = :stime"),

@@ -26,18 +26,19 @@ public class ItemServiceImpl implements ItemService {
     
     @Override
     public void createOrUpdateItem(Item i) {
-        i.setIstatus("FRESH");
+        i.setIstatus("DISABLED");
         idao.createOrUpdate(i);
     }
 
-    @Override
-    public void deleteItem(Integer id) {
-        idao.delete(id);
-    }
 
     @Override
     public void delete(Item i) {
         idao.del(i);
+    }
+
+    @Override
+    public void toggleStatus(Item i) {
+        idao.toggleStatus(i);
     }
 
 };

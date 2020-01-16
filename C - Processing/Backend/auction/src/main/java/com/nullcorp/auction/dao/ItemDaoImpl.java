@@ -31,7 +31,7 @@ public class ItemDaoImpl implements ItemDao {
     public Item findByid(Integer id) {
         Query q = getSession().createQuery("SELECT i FROM Item i WHERE i.itemid = :itemId");
         q.setParameter("itemId", id);
-        return (Item)q.getSingleResult();
+        return (Item) q.getSingleResult();
     }
 
     @Override
@@ -39,16 +39,22 @@ public class ItemDaoImpl implements ItemDao {
         getSession().saveOrUpdate(i);
     }
 
-    @Override
-    public void delete(Integer id) {
-        Query q = getSession().createNamedQuery("Item.deleteById");
-        q.setParameter("id", id);
-        q.executeUpdate();
-    }
 
     @Override
     public void del(Item i) {
         getSession().delete(i);
+    }
+
+    @Override
+    public void toggleStatus(Item i) {
+        Query q = getSession().createQuery("UPDATE Item i SET i.istatus = :status WHERE i.itemid= :itemId");
+        if (i.getIstatus().equalsIgnoreCase("DISABLED")) {
+            q.setParameter("status", "ENABLED");
+        } else {
+            q.setParameter("status", "DISABLED");
+        }
+        q.setParameter("itemId", i.getItemid());
+        q.executeUpdate();
     }
 
 }
