@@ -22,53 +22,85 @@
 
     </head>
     <body>
-        <header>
-        <div class="jumbotron">
-            <form class="form-inline pull-xs-right my-0 ml-auto">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-success my-0 " type="submit">Search</button>
-            </form>
-        </div>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-            <a class="text-white navbar-brand" href="#"><i class="fa fa-building-o"></i>in bid win</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mr-auto menu">
-                    <li class="navbar-item active">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#dropdown_target"
-                            href="#listings">Listings</a><span class="caret"></span>
-                        <div class="dropdown-menu" aria-labelledby="dropdown_target">
-                            <a class="dropdown-item" href="#">Add Listing</a>
-                            <a class="dropdown-item" href="#">Search Listings</a>
+        <jsp:include page="header.jsp" />
+        <main role="main">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li style="z-index:102;" data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li style="z-index:102;" data-target="#myCarousel" data-slide-to="1"></li>
+                <li style="z-index:102;" data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="imgFilter first-slide" src="https://i.ibb.co/fX2zFrP/stairs-1229149-1920.jpg"
+                        alt="first slide">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>In</h1>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi esse odit nemo ex
+                                nulla adipisci quia, nobis fuga similique perspiciatis iste sunt placeat consequuntur
+                                quisquam incidunt nihil? Suscipit, eaque harum?
+                            </p>
+                            <p><a role="button" class="btn btn-lg btn-info" href="#">Register</a></p>
                         </div>
-                    </li>
-                    <li class="navbar-item">
-                        <a class="nav-link" href="#account">Account</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                </ul>
-                <form class="form-inline mt-2 mt-md-0">
-                    <a class="text-white nav-link" href="cart.html">
-                        <i class="text-warning fa fa-opencart"></i>Bids <i style="color:yellow;" id="cart_n"></i>
-                    </a>
-                    <a class="nav-link disabled text-white" href="admin/login.html">
-                        <i class="fa fa-user-secret"></i>Administrator
-                    </a>
-                </form>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="imgFilter second-slide" src="https://i.ibb.co/MfMgfmW/norway-4420668-1920.jpg"
+                        alt="second slide">
+                    <div class="container">
+                        <div class="carousel-caption text-left">
+                            <h1>Bid</h1>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi esse odit nemo ex
+                                nulla adipisci quia, nobis fuga similique perspiciatis iste sunt placeat consequuntur
+                                quisquam incidunt nihil? Suscipit, eaque harum?
+                            </p>
+                            <p><a role="button" class="btn btn-lg btn-info" href="#">Place a Bid</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="imgFilter third-slide" src="https://i.ibb.co/bQ8bLLs/new-york-918682-1920.jpg"
+                        alt="third slide">
+                    <div class="container">
+                        <div class="carousel-caption text-right">
+                            <h1>Win</h1>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi esse odit nemo ex
+                                nulla adipisci quia, nobis fuga similique perspiciatis iste sunt placeat consequuntur
+                                quisquam incidunt nihil? Suscipit, eaque harum?
+                            </p>
+                            <p><a role="button" class="btn btn-lg btn-info" href="#">Create an Auction</a></p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </nav>
-    </header>
-        <h1>Auction Service home!</h1>
-        <hr/>
-        <a href="${pageContext.request.contextPath}/user/list">users</a>
-        <br/>
+
+            <a style="z-index:101;" class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a style="z-index:101;" class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <div class="container marketing">
+            <br>
+            <h2 id="listings">Listings</h2>
+            <hr>
+            <div class="row" id="listingDiv"></div>
+            <h2 id="account">Account</h2>
+            <hr>
+            <div class="row" id="accountDiv"></div>
+            <h2 id="about">About</h2>
+            <hr>
+            <div class="row" id="aboutDiv"></div>
+            <hr class="featurette-divider">
+        </div>
+    </main>
+        <jsp:include page="footer.jsp" />
     </body>
 </html>
