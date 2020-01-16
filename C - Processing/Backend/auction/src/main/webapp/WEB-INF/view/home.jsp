@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+<<<<<<< HEAD
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -20,6 +21,10 @@
         <link rel="icon" type="image/png" sizes="16x16" href="https://i.ibb.co/kXB6NYF/favicon.png">
         <title>in bid win</title>
 
+=======
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Home</title>
+>>>>>>> security-test
     </head>
     <body>
         <header>
@@ -68,6 +73,8 @@
     </header>
         <h1>Auction Service home!</h1>
         <hr/>
+        <a href="${pageContext.request.contextPath}/item/list}">items</a>
+        <br/>
         <a href="${pageContext.request.contextPath}/user/list">users</a>
         <br/>
     </body>

@@ -3,6 +3,7 @@ package com.nullcorp.auction.dao;
 import com.nullcorp.auction.entity.User;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +11,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserDaoImpl implements UserDao {
-
-//    @Autowired
-//    private SessionFactory sessionFactory;
-//    
-//    private Session getSession(){
-//        return sessionFactory.getCurrentSession();
-//    }
+  
     @Autowired
     private EntityManager entityManager;
 
@@ -54,6 +49,25 @@ public class UserDaoImpl implements UserDao {
         Query q = getSession().createNamedQuery("User.findByUsername");
         q.setParameter("username", searchName+"%");
         return q.getResultList();
+    }
+
+    @Override
+    public User findUserByUsername(String username) {
+        Query q = getSession().createQuery("SELECT u FROM User u WHERE u.username=:name");
+        q.setParameter("name", username);
+        User user = null;
+        try{
+            user = (User)q.getSingleResult();
+        }catch(NoResultException e){
+            System.out.println("There is no result");
+            user = null;
+        }
+        return user;
+    }
+
+    @Override
+    public void save(User user) {
+        getSession().save(user);
     }
 
 }
