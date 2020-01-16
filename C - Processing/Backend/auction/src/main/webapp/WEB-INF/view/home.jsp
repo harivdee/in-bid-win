@@ -9,11 +9,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Home</title>
     </head>
     <body>
         <h1>Auction Service home!</h1>
         <hr/>
+        <a href="${pageContext.request.contextPath}/item/list}">items</a>
+        <br/>
         <a href="${pageContext.request.contextPath}/user/list">users</a>
         <br/>
     </body>
