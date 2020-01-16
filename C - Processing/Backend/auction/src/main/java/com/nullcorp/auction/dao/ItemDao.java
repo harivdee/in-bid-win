@@ -13,8 +13,9 @@ public interface ItemDao {
 
     public void createOrUpdate(Item i);
 
-    public void delete(Integer id);
 
     public void del(Item i);
+
+    public void toggleStatus(Item i);
     
 }

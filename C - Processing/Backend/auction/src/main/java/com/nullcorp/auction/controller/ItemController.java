@@ -89,11 +89,9 @@ public class ItemController {
     @GetMapping("/delete")
     public String deleteItem(@RequestParam("userId") Integer uid,
             @RequestParam("itemId") Integer iid){
-//        itService.deleteItem(iid);
-//        hService.deleteHouseByItemId(iid);
+
         Item i = itService.getItemById(iid);
         itService.delete(i);
-//        imService.deleteImagesByHouseId()
         User u = uService.getUserById(uid);
         return "redirect:/item/list?userId="+u.getUserid();
     }

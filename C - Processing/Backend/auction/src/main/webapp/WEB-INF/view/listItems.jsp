@@ -44,6 +44,9 @@
                 <c:url var="listImagesLink" value="/image/list">
                     <c:param name="houseId" value="${i.house.hid}" />
                 </c:url>
+                <c:url var="createAuction" value="/auction/create">
+                    <c:param name="itemId" value="${i.itemid}" />
+                </c:url>
                 <tr>
                     <td>${i.ititle}</td>
                     <td>${i.iprice}</td>
@@ -64,6 +67,7 @@
                                        return false"
                            >Delete</a>
                     </td>
+                    <td><a href="${createAuction}">Auctionize</a></td>
 
 
 
