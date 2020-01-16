@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-<<<<<<< HEAD
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link rel="stylesheet" href="/static/css/home.css"/>
@@ -21,7 +21,7 @@
         <br/>
         <a href="${pageContext.request.contextPath}/auction/list">auctions</a>
         <br/>
-=======
+
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -116,6 +116,6 @@
         </div>
     </main>
         <jsp:include page="footer.jsp" />
->>>>>>> 2ff95f99244b3fda9f67fc4363b91c1a45e51ed2
+
     </body>
 </html>
