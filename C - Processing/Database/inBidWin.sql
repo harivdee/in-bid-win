@@ -107,8 +107,8 @@ REFERENCES auction(auctionid)
 -- ********* SYNTHETIC DATA ************* --
 
 INSERT INTO user (fname, lname, username, password, email, credit)
-VALUES ('George', 'Pasparakis', 'georgepasp', '1234', 'gpasparakis@gmail.com', 652),
-('Tasos', 'Lelakis', 'emergon', '1234', 'tlelakis@gmail.com', 1245.35);
+VALUES ('George', 'Pasparakis', 'georgepasp', '$2y$10$XoGU8jxStGcKaIM4/DZLuujuxIx8ECfhxlDfzNKSx6Le7GXRM1H/G', 'gpasparakis@gmail.com', 652),
+('Tasos', 'Lelakis', 'emergon', '$2y$10$XoGU8jxStGcKaIM4/DZLuujuxIx8ECfhxlDfzNKSx6Le7GXRM1H/G', 'tlelakis@gmail.com', 1245.35);
 
 INSERT INTO role(rolename) 
 VALUES ('ROLE_ADMIN'),
@@ -142,5 +142,3 @@ VALUES (140, '2019-12-14 14:30:15', 1, 2),
 INSERT INTO transaction(tprice, auction)
 VALUES (600, 1),
 (400, 2);
-
-
