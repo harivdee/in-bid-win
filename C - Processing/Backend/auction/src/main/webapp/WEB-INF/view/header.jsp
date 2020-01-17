@@ -30,7 +30,7 @@
                         </div>
                     </li>
                     <li class="navbar-item">
-                        <a class="nav-link" href="#account">Account</a>
+                        <a class="nav-link" href="/item/list">Account</a>
                     </li>
                     <li class="navbar-item">
                         <a class="nav-link" href="#about">About</a>
