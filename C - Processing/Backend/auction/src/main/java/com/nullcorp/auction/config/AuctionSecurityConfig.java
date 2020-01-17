@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
  *
@@ -38,7 +39,9 @@ public class AuctionSecurityConfig extends WebSecurityConfigurerAdapter{
             .formLogin()//We are customizing the form login process
             .loginPage("/loginPage")//Show my form at the request mapping
             .loginProcessingUrl("/authenticate")//Login form will POST data to this URL for processing username and password
-            .permitAll();//Allow everyone to see Login page. Don't have to be logged in.
+            .permitAll()//Allow everyone to see Login page. Don't have to be logged in.
+            .and()
+            .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login");
     }
     
     @Bean
