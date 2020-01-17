@@ -1,5 +1,6 @@
 package com.nullcorp.auction.service;
 
+import com.nullcorp.auction.ItemStatus;
 import com.nullcorp.auction.dao.ItemDao;
 import com.nullcorp.auction.entity.Item;
 import java.util.List;
@@ -26,7 +27,7 @@ public class ItemServiceImpl implements ItemService {
     
     @Override
     public void createOrUpdateItem(Item i) {
-        i.setIstatus("DISABLED");
+        i.setIstatus(ItemStatus.DISABLED.toString());
         idao.createOrUpdate(i);
     }
 

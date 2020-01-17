@@ -1,5 +1,6 @@
 package com.nullcorp.auction.dao;
 
+import com.nullcorp.auction.ItemStatus;
 import com.nullcorp.auction.entity.Item;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -48,10 +49,10 @@ public class ItemDaoImpl implements ItemDao {
     @Override
     public void toggleStatus(Item i) {
         Query q = getSession().createQuery("UPDATE Item i SET i.istatus = :status WHERE i.itemid= :itemId");
-        if (i.getIstatus().equalsIgnoreCase("DISABLED")) {
-            q.setParameter("status", "ENABLED");
+        if (i.getIstatus().equalsIgnoreCase(ItemStatus.DISABLED.toString())) {
+            q.setParameter("status", ItemStatus.ENABLED.toString());
         } else {
-            q.setParameter("status", "DISABLED");
+            q.setParameter("status", ItemStatus.DISABLED.toString());
         }
         q.setParameter("itemId", i.getItemid());
         q.executeUpdate();
