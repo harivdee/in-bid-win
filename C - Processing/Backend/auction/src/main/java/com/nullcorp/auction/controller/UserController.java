@@ -20,6 +20,12 @@ public class UserController {
     
     @Autowired
     UserService service;
+    @GetMapping("/dashboard")
+    public String showUserDashboard(@ModelAttribute("user") User u,
+            @RequestParam("username") String username){
+        User user = service.findByUsername(username);
+        return null;
+    }
     
     @GetMapping("/list")
     public String getAllUsers(Model m){

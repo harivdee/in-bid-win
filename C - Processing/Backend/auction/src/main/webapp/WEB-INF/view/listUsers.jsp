@@ -53,7 +53,9 @@
                     </td>
                 </tr>
             </c:forEach>
+                
 
         </table>
+            <a href="${pageContext.request.contextPath}/">to Home</a>
     </body>
 </html>
