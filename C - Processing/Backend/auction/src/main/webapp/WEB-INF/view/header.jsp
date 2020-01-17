@@ -22,7 +22,7 @@
                        href="#listings">Listings</a><span class="caret"></span>
                     <div class="dropdown-menu" aria-labelledby="dropdown_target">
                         <a class="dropdown-item" href="#">Add Listing</a>
-                        <a class="dropdown-item" href="#">Search Listings</a>
+                        <a class="dropdown-item" href="${pageContext.request.contextPath}/auction/list">Search Listings</a>
                     </div>
                 </li>
                 <li class="navbar-item">
