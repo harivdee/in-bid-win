@@ -19,7 +19,7 @@
     </head>
     <body>
         <jsp:include page="header.jsp" />
-        <h1 class="mt-2 ml-1">Create User</h1>
+        <h1 class="mt-2 ml-1">Please enter the following info</h1>
 
         <f:form cssClass="form-group ml-5 mt-5" id="formUser" 
                 action="${pageContext.request.contextPath}/user/create"
