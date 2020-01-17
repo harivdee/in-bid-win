@@ -32,6 +32,7 @@ public class AuctionSecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()//Restrict access based on HttServletRequest
+            .antMatchers("/").permitAll()
             .anyRequest().authenticated()//Any request to the app must be authenticated(logged in)
             .and()
             .formLogin()//We are customizing the form login process
