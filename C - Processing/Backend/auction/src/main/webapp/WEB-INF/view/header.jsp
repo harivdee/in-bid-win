@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+
 <header>
     <div class="jumbotron">
         <form class="form-inline pull-xs-right my-0 ml-auto">
