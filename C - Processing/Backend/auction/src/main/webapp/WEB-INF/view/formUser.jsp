@@ -45,8 +45,11 @@
                 </div>
             </div>
             <div class="form-group col-md-4 mb-3">
-                <div class="form-group">
                     <label for="inputEmail">Email</label>
+                    <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupPrepend3">@</span>
+                    </div>
                     <f:input cssClass="form-control" id="inputEmail" path="email"/>
                     <f:errors cssClass="invalid-feedback" path="email"/><br/>
                     <div class="valid-feedback">Good! Your email address looks valid.</div>
@@ -55,9 +58,6 @@
             <div class="form-group col-md-4 mb-3">
                 <label for="validationServerUsername">Username</label>
                 <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroupPrepend3">@</span>
-                    </div>
                     <f:input cssClass="form-control" id="validationServerUsername" path="username"/>
                     <f:errors cssClass="invalid-feedback" path="username"/>
                     <div class="invalid-feedback">
