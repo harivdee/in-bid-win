@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <head>
+    <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -20,31 +20,37 @@
     </head>
     <body>
         <jsp:include page="header.jsp"/>
-        <h1>This is an auction form for item ${itemId}</h1>
+        <h1>This is an auction form for item ${title}</h1>
         <c:url value="/auction/create" var="createAuction" >
             <c:param name="itemId" value="${itemId}"/>
         </c:url>
-        <f:form id="formAuction"
+        <f:form cssClass="form-group ml-5 mt-5 mb-3" id="formAuction"
                 action="${createAuction}"
                 method="POST"
                 modelAttribute="auction">
             <f:hidden path="auctionid"/>
-            Increment: <f:input type="number" path="aincrement"/>
-            <f:errors path="aincrement"/><br/>
-            Reserve <f:input type="number" path="areserve"/>
-            <f:errors path="areserve"/><br/>
-            <input type="submit" value="Submit">
-
+            <div class="form-group col-md-4 mb-3">
+                <label for="validationServer01">Increment:</label>
+                <f:input type="number" path="aincrement"/>
+                <f:errors path="aincrement"/><br/>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label for="validationServer01">Reserve:</label>
+                <f:input type="number" path="areserve"/>
+                <f:errors path="areserve"/><br/>
+            </div>
+            <button class="btn btn-primary ml-3" type="submit">Submit form</button>
         </f:form>
-            <jsp:include page="footer.jsp"/>
-            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-    crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-    crossorigin="anonymous"></script>
+            
+        <jsp:include page="footer.jsp"/>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+                integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+                integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+                integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
     </body>
 </html>

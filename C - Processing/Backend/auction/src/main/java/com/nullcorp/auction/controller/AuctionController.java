@@ -49,6 +49,8 @@ public class AuctionController {
             BindingResult result,
             Model m) {
         Item i = iService.getItemById(id);
+        String title = i.getItitle();
+        m.addAttribute("title",title);
         if (!i.getIstatus().equals("ENABLED")) {
             Timestamp timestamp = new Timestamp(new Date().getTime());
             Calendar cal = Calendar.getInstance();

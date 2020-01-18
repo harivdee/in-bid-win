@@ -17,9 +17,9 @@
         <link rel="icon" type="image/png" sizes="16x16" href="https://i.ibb.co/kXB6NYF/favicon.png">
         <title>Item List</title>
     </head>
-    <body p-5>
+    <body>
         <jsp:include page="header.jsp" />
-        <h1>This is ${user.username} item list!</h1>
+        <h1 class='ml-3'>This is ${user.username} item list!</h1>
         <c:url value="/item/create" var="createLink" >
             <c:param name="userId" value="${user.userid}" />
         </c:url>
@@ -40,7 +40,7 @@
             <c:url var="createAuction" value="/auction/create">
                 <c:param name="itemId" value="${i.itemid}" />
             </c:url>
-            <div class="card bg-light mb-3" style="max-width: 36rem; font-size: 14px;">
+            <div class="card bg-light mb-3 ml-3" style="max-width: 36rem; font-size: 14px;">
                 <img src="${imgurl}"
                      class="card-img-top" width="36rem" height="auto" alt="image of an apartment">
                 <div class="card-body">
