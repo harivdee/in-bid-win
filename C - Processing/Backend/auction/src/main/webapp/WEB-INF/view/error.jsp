@@ -14,6 +14,8 @@
         <title>IT go home</title>
     </head>
     <body>
+                <h3 style="color:red">${message}</h3>
+
         <jsp:include page="header.jsp" />
         <div class="d-flex justify-content-center flex-column align-items-center my-5">
             <h1 class="text-danger text-center">Something went wrong! </h1>

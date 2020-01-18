@@ -10,7 +10,7 @@
     </head>
     <body>
         <h1>This is an auction list</h1>
-
+        <h3 style="color:red">${message}</h3>
         <table border="1" >
             <tr>
                 <td><strong>Title</strong></td>
@@ -26,6 +26,10 @@
                 <c:url var="deleteLink" value="/auction/delete">
                     <c:param name="auctionId" value="${a.auctionid}" />
                 </c:url>
+                <c:url var="itemLink" value="/item/showDetails">
+                    <c:param name="auctionId" value="${a.auctionid}" />
+                    <c:param name="itemId" value="${a.item.itemid}" />
+                </c:url>
                 <tr>
                     <td>${a.item.ititle}</td>
                     <td>${a.item.house.hlocation}</td>
@@ -36,6 +40,9 @@
                            onclick="if (!(confirm('Are you sure you want to delete auction for item ${a.item.ititle}?')))
                                        return false"
                            >Delete</a>  
+                    </td>
+                    <td>
+                        <a href="${itemLink}">Show Details</a>
                     </td>
                 </tr>
             </c:forEach>
