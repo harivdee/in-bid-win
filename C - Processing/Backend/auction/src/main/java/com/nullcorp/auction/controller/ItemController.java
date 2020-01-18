@@ -54,10 +54,12 @@ public class ItemController {
             @RequestParam("auctionId") Integer aid, Model m){
         Item item = itService.getItemById(iid);
         Auction auction = aService.getAuctionById(aid);
+        List<Image> imgList = item.getHouse().getImageList();
         m.addAttribute("item", item);
         m.addAttribute("auction", auction);
         m.addAttribute("bid", new Bid());
         m.addAttribute("houseId", item.getHouse().getHid());
+        m.addAttribute("imageList", imgList);
         return "itemDetails";
     }
 
