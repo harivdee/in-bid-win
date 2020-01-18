@@ -1,10 +1,13 @@
 package com.nullcorp.auction.controller;
 
+import com.nullcorp.auction.entity.Auction;
+import com.nullcorp.auction.entity.Bid;
 import com.nullcorp.auction.entity.House;
 import com.nullcorp.auction.entity.Image;
 import com.nullcorp.auction.entity.Item;
 import com.nullcorp.auction.entity.ItemFormWrapper;
 import com.nullcorp.auction.entity.User;
+import com.nullcorp.auction.service.AuctionService;
 import com.nullcorp.auction.service.HouseService;
 import com.nullcorp.auction.service.ImageService;
 import com.nullcorp.auction.service.ItemService;
@@ -34,6 +37,8 @@ public class ItemController {
     HouseService hService;
     @Autowired
     ImageService imService;
+    @Autowired 
+    AuctionService aService;
 
     @GetMapping("/list")
     public String getAllItemsByUser(@RequestParam("userId") Integer id, Model m) {
@@ -42,6 +47,18 @@ public class ItemController {
         m.addAttribute("listOfItems", list);
         m.addAttribute("user", u);
         return "listItems";
+    }
+    
+    @GetMapping("/showDetails")
+    public String showItemDetails(@RequestParam("itemId") Integer iid,
+            @RequestParam("auctionId") Integer aid, Model m){
+        Item item = itService.getItemById(iid);
+        Auction auction = aService.getAuctionById(aid);
+        m.addAttribute("item", item);
+        m.addAttribute("auction", auction);
+        m.addAttribute("bid", new Bid());
+        m.addAttribute("houseId", item.getHouse().getHid());
+        return "itemDetails";
     }
 
     @GetMapping("/create")

@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.nullcorp.auction.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,29 +16,23 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.validation.constraints.NotNull;
 
-/**
- *
- * @author datura
- */
+
 @Entity
 @Table(name = "bid")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Bid.findAll", query = "SELECT b FROM Bid b"),
     @NamedQuery(name = "Bid.findByBidid", query = "SELECT b FROM Bid b WHERE b.bidid = :bidid"),
-    @NamedQuery(name = "Bid.findByBprice", query = "SELECT b FROM Bid b WHERE b.bprice = :bprice"),
     @NamedQuery(name = "Bid.findByBtime", query = "SELECT b FROM Bid b WHERE b.btime = :btime")})
 public class Bid implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "bidid")
     private Integer bidid;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @NotNull
     @Column(name = "bprice")
     private BigDecimal bprice;
     @Column(name = "btime")

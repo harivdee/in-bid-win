@@ -16,6 +16,8 @@
         <title>IT go home</title>
     </head>
     <body>
+                <h3 style="color:red">${message}</h3>
+
         <jsp:include page="header.jsp" />
         <div class="d-flex justify-content-center flex-column align-items-center my-5">
             <img src="https://i.ibb.co/3C3YDPV/it-go-home.png" alt="it-go-home" border="0">

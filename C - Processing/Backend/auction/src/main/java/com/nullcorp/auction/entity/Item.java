@@ -54,7 +54,7 @@ public class Item implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER)
     private House house;
     @JoinColumn(name = "user", referencedColumnName = "userid")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private User user;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "item")
     private List<Auction> auctionList;
