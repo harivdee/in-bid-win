@@ -23,7 +23,7 @@
         <c:url value="/item/create" var="createLink" >
             <c:param name="userId" value="${user.userid}" />
         </c:url>
-        <button class="btn btn-warning m-5"><a class="text-white" href="${createLink}/item/create">Add Item</a>
+        <button class="btn btn-warning m-5"><a class="text-white" href="${createLink}">Add Item</a>
         </button>
 
         <c:forEach items="${listOfItems}" var="i">
