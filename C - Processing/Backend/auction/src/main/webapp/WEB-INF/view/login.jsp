@@ -1,5 +1,6 @@
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -34,7 +35,7 @@
                 </c:if>
                 <div class="tab-content">
                     <div class="tab-pane active" id="login">
-                        <form:form cssClass="form-horizontal login-form" action="${pageContext.request.contextPath}/authenticate" method="POST">
+                        <f:form cssClass="form-horizontal login-form" action="${pageContext.request.contextPath}/authenticate" method="POST">
                             <div class="form-group relative">
                                 <input name="username" type="text" class="form-control input-lg" placeholder="Username" required="required">
                                 <i class="fa fa-user"></i>
@@ -54,7 +55,7 @@
                             <div class="text-center">
                                 <label><a href="#">Forgot your password?</a></label>
                             </div>
-                        </form:form>
+                        </f:form>
                     </div>
                     <div class="tab-pane" id="sign_up">
                         <form class="form-horizontal login-form" action="${pageContext.request.contextPath}/user/create">
