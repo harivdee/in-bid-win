@@ -22,14 +22,14 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#dropdown_target"
-                           href="#listings">Listings</a><span class="caret"></span>
+                           href="#">Listings</a><span class="caret"></span>
                         <div class="dropdown-menu" aria-labelledby="dropdown_target">
                             <a class="dropdown-item" href="${pageContext.request.contextPath}/auction/create">Add Listing</a>
                             <a class="dropdown-item" href="${pageContext.request.contextPath}/auction/list">Search Listings</a>
                         </div>
                     </li>
                     <li class="navbar-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#accountdrop_t" href="${pageContext.request.contextPath}/item/list">Account</a><span class="caret"></span>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#accountdrop_t" href="#">Account</a><span class="caret"></span>
                         <div class="dropdown-menu" aria-labelledby="accountdrop_t">
                             <a class="dropdown-item" href="${pageContext.request.contextPath}/user/userDashboard">View Account</a>
                             <a class="dropdown-item" href="${pageContext.request.contextPath}/item/list">View Items</a>
