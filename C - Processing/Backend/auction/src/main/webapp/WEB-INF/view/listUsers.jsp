@@ -105,6 +105,7 @@
                             </ul>
                         </div>
                         <div class="card-footer bg-transparent border-info d-flex justify-content-around">
+                            <button class="btn btn-success"><a class="text-white"href="${listItemsLink}">Items</a></button>
                             <button class="btn btn-warning"><a class="text-white"href="${updateLink}">Update</a></button>
                             <button class="btn btn-danger text-white"><a class="text-white" href="${deleteLink}" onclick="if (!(confirm('Are you sure you want to delete user with username: ${u.username}?')))
                                         return false">Delete</a></button>

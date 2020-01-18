@@ -41,7 +41,7 @@
                 <c:param name="itemId" value="${i.itemid}" />
             </c:url>
             <div class="card bg-light mb-3" style="max-width: 36rem; font-size: 14px;">
-                <img src="http://st2.depositphotos.com/1007373/5523/i/950/depositphotos_55232293-stock-photo-apartment-interior.jpg"
+                <img src="${imgurl}"
                      class="card-img-top" width="36rem" height="auto" alt="image of an apartment">
                 <div class="card-body">
                     <h5 class="card-title">${i.ititle}</h5>

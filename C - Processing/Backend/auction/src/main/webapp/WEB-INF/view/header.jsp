@@ -2,6 +2,7 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html>
+    
     <header>
         <div class="jumbotron">
             <form class="form-inline pull-xs-right my-0 ml-auto">

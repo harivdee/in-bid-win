@@ -20,53 +20,40 @@
     </head>
     <body>
         <jsp:include page="header.jsp" />
-        <h1>This is an auction list</h1>
-        <h3 style="color:red">${message}</h3>
-        <table border="1" >
-            <tr>
-                <td><strong>Title</strong></td>
-                <td><strong>Address</strong></td>
-                <td><strong>End Time</strong></td>
+        <h1 class="text-left ml-5">Active listings</h1>
+        <h3 class="text-center text-danger">${message}</h3>
 
-
-            </tr>
-            <c:forEach items="${listOfAuctions}" var="a">
-                <c:url var="updateLink" value="/auction/update">
-                    <c:param name="auctionId" value="${a.auctionid}" />
-                </c:url>
-                <c:url var="deleteLink" value="/auction/delete">
-                    <c:param name="auctionId" value="${a.auctionid}" />
-                </c:url>
-                <c:url var="itemLink" value="/item/showDetails">
-                    <c:param name="auctionId" value="${a.auctionid}" />
-                    <c:param name="itemId" value="${a.item.itemid}" />
-                </c:url>
-                <tr>
-                    <td>${a.item.ititle}</td>
-                    <td>${a.item.house.hlocation}</td>
-                    <td>${a.etime}</td>
-                    <td colspan="2">
-                        <a href="${updateLink}">Update</a>
-                        <a href="${deleteLink}"
-                           onclick="if (!(confirm('Are you sure you want to delete auction for item ${a.item.ititle}?')))
-                                       return false"
-                           >Delete</a>  
-                    </td>
-                    <td>
-                        <a href="${itemLink}">Show Details</a>
-                    </td>
-                </tr>
-            </c:forEach>
-        </table>
-        <jsp:include page="footer.jsp" />
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-    crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-    crossorigin="anonymous"></script>
-    </body>
+        <c:forEach items="${listOfAuctions}" var="a">
+            <c:url var="updateLink" value="/auction/update">
+                <c:param name="auctionId" value="${a.auctionid}" />
+            </c:url>
+            <c:url var="deleteLink" value="/auction/delete">
+                <c:param name="auctionId" value="${a.auctionid}" />
+            </c:url>
+            <c:url var="itemLink" value="/item/showDetails">
+                <c:param name="auctionId" value="${a.auctionid}" />
+                <c:param name="itemId" value="${a.item.itemid}" />
+            </c:url>
+            <div class="card-body border border-dark ml-5 mb-3" style="max-width:28rem;">
+                <h5 class="card-title">${a.item.ititle}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Address</h6>
+                <p class="card-text">${a.item.house.hlocation}</p>
+                <a href="${updateLink}" class="card-link">Update</a>
+                <a href="${deleteLink}" class="card-link"  onclick="if (!(confirm('Are you sure you want to delete auction for item ${a.item.ititle}?')))
+                return false" >Delete</a>
+            </div>
+        </div>
+    </c:forEach>
+</table>
+<jsp:include page="footer.jsp" />
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+crossorigin="anonymous"></script>
+</body>
 </html>
