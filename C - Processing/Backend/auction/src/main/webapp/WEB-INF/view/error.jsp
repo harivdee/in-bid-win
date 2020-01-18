@@ -1,4 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,6 +18,7 @@
     <body>
         <jsp:include page="header.jsp" />
         <div class="d-flex justify-content-center flex-column align-items-center my-5">
+            <img src="https://i.ibb.co/3C3YDPV/it-go-home.png" alt="it-go-home" border="0">
             <h1 class="text-danger text-center">Something went wrong! </h1>
             <h2 class="text-center">Our Engineers are on it</h2>
             <button class="btn btn-warning"><a class="text-decoration-none text-dark" href="/">Go Home</a></button>

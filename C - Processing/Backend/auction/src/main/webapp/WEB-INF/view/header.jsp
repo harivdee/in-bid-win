@@ -1,5 +1,4 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html>
@@ -25,12 +24,16 @@
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#dropdown_target"
                            href="#listings">Listings</a><span class="caret"></span>
                         <div class="dropdown-menu" aria-labelledby="dropdown_target">
-                            <a class="dropdown-item" href="#">Add Listing</a>
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/auction/create">Add Listing</a>
                             <a class="dropdown-item" href="${pageContext.request.contextPath}/auction/list">Search Listings</a>
                         </div>
                     </li>
-                    <li class="navbar-item">
-                        <a class="nav-link" href="/item/list">Account</a>
+                    <li class="navbar-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#accountdrop_t" href="${pageContext.request.contextPath}/item/list">Account</a><span class="caret"></span>
+                        <div class="dropdown-menu" aria-labelledby="accountdrop_t">
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/user/userDashboard">View Account</a>
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/item/list">View Items</a>
+                        </div>
                     </li>
                     <li class="navbar-item">
                         <a class="nav-link" href="#about">About</a>
@@ -38,7 +41,7 @@
                 </ul>
                 <form class="form-inline mt-2 mt-md-0">
                     <sec:authorize access="isAuthenticated()">
-                        <small class="text-muted"> Logged in as <sec:authentication property="principal.username" /> </small>
+                        <small class="text-muted"> Logged in as <sec:authentication property="principal.username"/> </small>
                     </sec:authorize>
                     <sec:authorize access="hasRole('ADMIN')">
                         <a class="nav-link text-white" href="${pageContext.request.contextPath}/user/list">
