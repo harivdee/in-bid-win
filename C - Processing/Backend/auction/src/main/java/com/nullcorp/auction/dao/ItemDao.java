@@ -17,5 +17,7 @@ public interface ItemDao {
     public void del(Item i);
 
     public void toggleStatus(Item i);
+
+    public void terminateStatus(Item i);
     
 }

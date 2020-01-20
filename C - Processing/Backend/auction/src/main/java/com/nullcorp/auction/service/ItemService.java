@@ -15,4 +15,6 @@ public interface ItemService {
     public void delete(Item i);
 
     public void toggleStatus(Item i);
+
+    public void terminateStatus(Item i);
 }

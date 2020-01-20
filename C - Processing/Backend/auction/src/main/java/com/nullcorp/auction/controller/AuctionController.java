@@ -51,7 +51,7 @@ public class AuctionController {
         Item i = iService.getItemById(id);
         String title = i.getItitle();
         m.addAttribute("title",title);
-        if (!i.getIstatus().equals("ENABLED")) {
+        if (i.getIstatus().equals("DISABLED")) {
             Timestamp timestamp = new Timestamp(new Date().getTime());
             Calendar cal = Calendar.getInstance();
             a.setStime(timestamp);
@@ -64,8 +64,8 @@ public class AuctionController {
             return "redirect:/item/list?userId=" + i.getUser().getUserid();
 
         } else {
-
-            return "home";
+            m.addAttribute("message", "Item is already"+i.getIstatus());
+            return "error";
         }
 
     }

@@ -14,4 +14,5 @@ public interface AuctionDao {
 
     public void delete(Integer id);
     
+    
 }
