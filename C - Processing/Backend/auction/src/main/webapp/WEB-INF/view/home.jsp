@@ -44,7 +44,7 @@
                                 nulla adipisci quia, nobis fuga similique perspiciatis iste sunt placeat consequuntur
                                 quisquam incidunt nihil? Suscipit, eaque harum?
                             </p>
-                            <p><a role="button" class="btn btn-lg btn-info" href="${pageContext.request.contextPath}/formUser">Register</a></p>
+                            <p><a role="button" class="btn btn-lg btn-info" href="${pageContext.request.contextPath}/user/create">Register</a></p>
                         </div>
                     </div>
                 </div>

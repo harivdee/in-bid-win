@@ -5,7 +5,6 @@ import com.nullcorp.auction.entity.Item;
 import com.nullcorp.auction.service.AuctionService;
 import com.nullcorp.auction.service.ItemService;
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;

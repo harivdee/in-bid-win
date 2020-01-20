@@ -27,6 +27,14 @@ public class ItemDaoImpl implements ItemDao {
         List<Item> list = q.getResultList();
         return list;
     }
+    
+    @Override
+    public List<Item> findAllByUsername(String username) {
+        Query q = getSession().createQuery("SELECT i FROM Item i WHERE i.user.username = :username");
+        q.setParameter("username", username);
+        List<Item> list = q.getResultList();
+        return list;
+    }
 
     @Override
     public Item findByid(Integer id) {
@@ -64,5 +72,5 @@ public class ItemDaoImpl implements ItemDao {
         q.setParameter("itemId", i.getItemid());
 
     }
-
+    
 }

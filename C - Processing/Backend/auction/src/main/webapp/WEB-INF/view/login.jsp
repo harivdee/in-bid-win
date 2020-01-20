@@ -59,7 +59,7 @@
                     </div>
                     <div class="tab-pane" id="sign_up">
                         <form class="form-horizontal login-form" action="${pageContext.request.contextPath}/user/create">
-                            <div class="form-group relative">
+<!--                            <div class="form-group relative">
                                 <input class="form-control input-lg" id="login_username" placeholder="E-mail Address"
                                        required="" type="email"> <i class="fa fa-user"></i>
                             </div>
@@ -70,7 +70,7 @@
                             <div class="form-group relative">
                                 <input class="form-control input-lg" id="lo_password" placeholder="Repeat Password"
                                        required="" type="password"> <i class="fa fa-lock"></i>
-                            </div>
+                            </div>-->
                             <div class="form-group">
                                 <button class="btn btn-success btn-lg btn-block" type="submit">Sign Up</button>
                             </div>

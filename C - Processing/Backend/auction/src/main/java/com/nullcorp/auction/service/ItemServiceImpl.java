@@ -19,6 +19,11 @@ public class ItemServiceImpl implements ItemService {
     public List<Item> getAllItemsByUser(Integer id) {
         return idao.findAllByUser(id);
     }
+    
+    @Override
+    public List<Item> getAllItemsByUsername(String username) {
+        return idao.findAllByUsername(username);
+    }
 
     @Override
     public Item getItemById(Integer id) {
@@ -45,6 +50,6 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public void terminateStatus(Item i) {
         idao.terminateStatus(i);
-    }
+    }   
 
-};
+}
