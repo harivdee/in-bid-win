@@ -14,11 +14,6 @@ public class AuthenticateController {
         return "login";
     }
     
-    @PostMapping("/loginPage")
-    public String takeMeHome(){
-        return "/";
-    }
-    
     @GetMapping("/access-denied")
     public String showAccessDeniedPage(){
         return "access-denied";

@@ -25,10 +25,10 @@
         </c:url>
         <c:url var="bidLink" value="/bid/place">
             <c:param name="auctionId" value="${auction.auctionid}" />
-            <c:param name="userId" value="${item.user.userid}" /> <!--  enter id from session here (current bidded is emergon-->
+            <c:param name="userId" value="${loggedInUser.username}" /> 
         </c:url>
-
-
+    
+        <h1>${loggedInUser.username}</h1>
         <div class="card bg-light m-5" style="max-width: 36rem; font-size: 14px;">
              <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">

@@ -16,6 +16,8 @@ import java.io.IOException;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -57,6 +59,7 @@ public class ItemController {
     public String showItemDetails(@RequestParam("itemId") Integer iid,
             @RequestParam("auctionId") Integer aid, Model m){
         Item item = itService.getItemById(iid);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Auction auction = aService.getAuctionById(aid);
         List<Image> imgList = item.getHouse().getImageList();
         m.addAttribute("item", item);
@@ -64,7 +67,7 @@ public class ItemController {
         m.addAttribute("bid", new Bid());
         m.addAttribute("houseId", item.getHouse().getHid());
         m.addAttribute("imageList", imgList);
-        m.addAttribute("userid",item.getUser().getUserid());
+        m.addAttribute("loggedInUser", auth.getPrincipal());
         return "itemDetails";
     }
 
