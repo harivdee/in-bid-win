@@ -2,8 +2,10 @@ jQuery(init);
 function init($) {
 
     $('#formItem').submit(function (e) {
-        e.preventDefault();
-        validation();
+        let result = validation();
+        if (result == false) {
+            e.preventDefault();
+        }
     });
     
 }
