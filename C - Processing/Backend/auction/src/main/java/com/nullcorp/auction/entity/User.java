@@ -34,28 +34,40 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "User.deleteById", query = "DELETE FROM User u WHERE u.userid = :id"),})
 public class User implements Serializable {
 
+    @Basic(optional = false)
+    @NotNull()
+    @Size(min = 1, max = 100)
+    @Column(name = "username")
+    private String username;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 100)
+    @Column(name = "fname")
+    private String fname;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 100)
+    @Column(name = "lname")
+    private String lname;
+    @Basic(optional = false)
+    @NotNull()
+    @Size(min = 1, max = 100)
+    @Column(name = "password")
+    private String password;
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
+    @Basic(optional = false)
+    @NotNull()
+    @Size(min = 1, max = 100)
+    @Column(name = "email")
+    private String email;
+    @OneToMany(cascade=CascadeType.ALL, mappedBy="owner")//if the field contains email address consider using this annotation to enforce field validation
+    private List<Transaction> transactionList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "winner")
+    private List<Transaction> transactionList1;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "userid")
     private Integer userid;
-    @Basic(optional = false)
-    @NotEmpty
-    @Column(name = "username")
-    private String username;
-    @Basic(optional = false)
-    @NotEmpty
-    @Column(name = "fname")
-    private String fname;
-    @NotEmpty
-    @Column(name = "lname")
-    private String lname;
-    @Size(min = 8, max = 100, message = "Minimum 8 characters")
-    @Column(name = "password")
-    private String password;
-    @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
-    @NotNull
-    @Column(name = "email")
-    private String email;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "credit")
     private BigDecimal credit;
@@ -95,45 +107,6 @@ public class User implements Serializable {
         this.userid = userid;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getFname() {
-        return fname;
-    }
-
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
-
-    public String getLname() {
-        return lname;
-    }
-
-    public void setLname(String lname) {
-        this.lname = lname;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public BigDecimal getCredit() {
         return credit;
@@ -195,6 +168,64 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "com.nullcorp.auction.entity.User[ userid=" + userid + " ]";
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getFname() {
+        return fname;
+    }
+
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    public String getLname() {
+        return lname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @XmlTransient
+    public List<Transaction> getTransactionList() {
+        return transactionList;
+    }
+
+    public void setTransactionList(List<Transaction> transactionList) {
+        this.transactionList = transactionList;
+    }
+
+    @XmlTransient
+    public List<Transaction> getTransactionList1() {
+        return transactionList1;
+    }
+
+    public void setTransactionList1(List<Transaction> transactionList1) {
+        this.transactionList1 = transactionList1;
     }
     
 }

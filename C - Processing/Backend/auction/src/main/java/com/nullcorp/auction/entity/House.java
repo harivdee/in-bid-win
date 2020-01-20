@@ -2,6 +2,7 @@ package com.nullcorp.auction.entity;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,45 +32,37 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "House.deleteById", query = "DELETE FROM House h WHERE h.hid = :id")})
 public class House implements Serializable {
 
+    @Basic(optional = false)
+    @NotNull()
+    @Size(min = 1, max = 100)
+    @Column(name = "hlocation")
+    private String hlocation;
+    @Column(name = "hfloor")
+    private Integer hfloor;
+    @Column(name = "hsize")
+    private Integer hsize;
+    @Column(name = "hroom")
+    private Integer hroom;
+    @Column(name = "hbathroom")
+    private Integer hbathroom;
+    @Size(max = 100)
+    @Column(name = "hheating")
+    private String hheating;
+    @Size(max = 3)
+    @Column(name = "hfurnished")
+    private String hfurnished;
+//    @Lob
+//    @Column(name = "hphoto")
+//    private byte[] hphoto;
+    @Size(max = 200)
+    @Column(name = "hdescr")
+    private String hdescr;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "house")
+    private List<Item> itemList;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "hid")
     private Integer hid;
-    @NotEmpty
-    @Size(min = 1, max = 100)
-    @Column(name = "hlocation")
-    private String hlocation;
-    @NotNull
-    @Min(value = -1, message = "The value must be minimun -1")
-    @Column(name = "hfloor")
-    private Integer hfloor;
-    @NotNull
-    @Min(value = 5, message = "The value must be positive")
-    @Column(name = "hsize")
-    private Integer hsize;
-    @NotNull
-    @Min(value = 1, message = "The value must be positive")
-    @Column(name = "hroom")
-    private Integer hroom;
-    @NotNull
-    @Min(value = 1, message = "The value must be positive")
-    @Column(name = "hbathroom")
-    private Integer hbathroom;
-    @NotEmpty
-    @Size(max = 100)
-    @Column(name = "hheating")
-    private String hheating;
-//    @Lob
-//    @Column(name = "hphoto")
-//    private byte[] hphoto;
-    @NotEmpty
-    @Size(max = 3)
-    @Column(name = "hfurnished")
-    private String hfurnished;
-    @NotEmpty
-    @Size(max = 200)
-    @Column(name = "hdescr")
-    private String hdescr;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "house",fetch = FetchType.EAGER)
     private List<Image> imageList;
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "house")
@@ -93,6 +86,35 @@ public class House implements Serializable {
 
     public void setHid(Integer hid) {
         this.hid = hid;
+    }
+    @XmlTransient
+    public List<Image> getImageList() {
+        return imageList;
+    }
+    public void setImageList(List<Image> imageList) {
+        this.imageList = imageList;
+    }
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (hid != null ? hid.hashCode() : 0);
+        return hash;
+    }
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof House)) {
+            return false;
+        }
+        House other = (House) object;
+        if ((this.hid == null && other.hid != null) || (this.hid != null && !this.hid.equals(other.hid))) {
+            return false;
+        }
+        return true;
+    }
+    @Override
+    public String toString() {
+        return "com.nullcorp.auction.entity.House[ hid=" + hid + " ]";
     }
 
     public String getHlocation() {
@@ -123,6 +145,14 @@ public class House implements Serializable {
         return hroom;
     }
 
+//    public byte[] getHphoto() {
+//        return hphoto;
+//    }
+//
+//    public void setHphoto(byte[] hphoto) {
+//        this.hphoto = hphoto;
+//    }
+
     public void setHroom(Integer hroom) {
         this.hroom = hroom;
     }
@@ -143,17 +173,18 @@ public class House implements Serializable {
         this.hheating = hheating;
     }
 
-//    public byte[] getHphoto() {
-//        return hphoto;
-//    }
-//
-//    public void setHphoto(byte[] hphoto) {
-//        this.hphoto = hphoto;
-//    }
-
     public String getHfurnished() {
         return hfurnished;
     }
+
+//    @XmlTransient
+//    public List<Item> getItemList() {
+//        return itemList;
+//    }
+//
+//    public void setItemList(List<Item> itemList) {
+//        this.itemList = itemList;
+//    }
 
     public void setHfurnished(String hfurnished) {
         this.hfurnished = hfurnished;
@@ -168,46 +199,12 @@ public class House implements Serializable {
     }
 
     @XmlTransient
-    public List<Image> getImageList() {
-        return imageList;
+    public List<Item> getItemList() {
+        return itemList;
     }
 
-    public void setImageList(List<Image> imageList) {
-        this.imageList = imageList;
-    }
-
-//    @XmlTransient
-//    public List<Item> getItemList() {
-//        return itemList;
-//    }
-//
-//    public void setItemList(List<Item> itemList) {
-//        this.itemList = itemList;
-//    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (hid != null ? hid.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof House)) {
-            return false;
-        }
-        House other = (House) object;
-        if ((this.hid == null && other.hid != null) || (this.hid != null && !this.hid.equals(other.hid))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.nullcorp.auction.entity.House[ hid=" + hid + " ]";
+    public void setItemList(List<Item> itemList) {
+        this.itemList = itemList;
     }
     
 }

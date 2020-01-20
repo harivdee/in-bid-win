@@ -45,6 +45,12 @@ public class Transaction implements Serializable {
     @JoinColumn(name = "auction", referencedColumnName = "auctionid")
     @ManyToOne(optional = false)
     private Auction auction;
+    @JoinColumn(name = "owner", referencedColumnName = "userid")
+    @ManyToOne(optional = false)
+    private User owner;
+    @JoinColumn(name = "winner", referencedColumnName = "userid")
+    @ManyToOne(optional = false)
+    private User winner;
 
     public Transaction() {
     }
@@ -75,6 +81,22 @@ public class Transaction implements Serializable {
 
     public void setAuction(Auction auction) {
         this.auction = auction;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public User getWinner() {
+        return winner;
+    }
+
+    public void setWinner(User winner) {
+        this.winner = winner;
     }
 
     @Override

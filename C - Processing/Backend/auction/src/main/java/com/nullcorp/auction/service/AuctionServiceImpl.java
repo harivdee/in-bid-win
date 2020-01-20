@@ -46,7 +46,7 @@ public class AuctionServiceImpl implements AuctionService {
 //            Change item status to SOLD
             itService.terminateStatus(getAuctionById(auctionId).getItem());
 //            Generate Transaction  TODO
-
+//            tService.generateTransaction();
 //            Delete Auction and it's bids 
             deleteAuction(auctionId);
 

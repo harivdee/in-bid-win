@@ -11,10 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class BidServiceImpl implements BidService{
+public class BidServiceImpl implements BidService {
+
     @Autowired
     BidDao bdao;
-    
+
     @Override
     public List<Bid> getAllBids(Integer id) {
         return bdao.findAllByAuction(id);
@@ -34,14 +35,16 @@ public class BidServiceImpl implements BidService{
     public Bid getBidById(Integer id) {
         return bdao.findById(id);
     }
-    
+
     @Override
-    public BigDecimal getMaxBid(Integer id){
+    public BigDecimal getMaxBid(Integer id) {
         List<Bid> list = getAllBids(id);
-        list.sort(Comparator.comparing(Bid::getBprice)); // sort list descending
-        BigDecimal maxBid = list.get(list.size()-1).getBprice();
-        return maxBid;
+        if (list.size() > 0) {
+            list.sort(Comparator.comparing(Bid::getBprice)); // sort list descending
+            BigDecimal maxBid = list.get(list.size() - 1).getBprice();
+            return maxBid;
+        }
+        return BigDecimal.ZERO;
     }
-    
-    
+
 }
