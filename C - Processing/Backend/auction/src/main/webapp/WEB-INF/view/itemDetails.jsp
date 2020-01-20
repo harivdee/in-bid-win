@@ -28,27 +28,26 @@
             <c:param name="userId" value="2" /> <!--  enter id from session here (current bidded is emergon-->
         </c:url>
 
-        <div class="card bg-light mb-3" style="max-width: 36rem; font-size: 14px;">
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    <c:forEach items="${imgList}" var="src">
-                        <div class="carousel-item">
-                            <img src="${src.iphoto}"  width="36rem" height="auto" class="card-img-top d-block " alt="apartment img">
-                        </div>
-                    </c:forEach>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
+           
 
-            <img src="${i.iphoto}"
-                 class="card-img-top" width="36rem" height="auto" alt="image of an apartment">
+        <div class="card bg-light m-5" style="max-width: 36rem; font-size: 14px;">
+             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <c:forEach items="${imageList}" var="img">
+                    <div class="carousel-item d-block w-100">
+                        <img src="${img.iphoto}"  width="36rem" height="auto" class="card-img-top img-fluid" alt="apartment img">
+                    </div>
+                </c:forEach>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
             <div class="card-body">
                 <h5 class="card-title">${item.ititle}</h5>
                 <ul class="list-group list-group-flush d-flex flex-row flex-wrap justify-content-around">
@@ -88,11 +87,20 @@
                         modelAttribute="bid" >
                     <f:input type="number" path="bprice"/> 
                     <f:errors path="bprice"/>
-                    <input type="submit" value="Place Bid">
+                    <button class="btn btn-success" type="submit" value="Place Bid">Place Bid</button>
                 </f:form>
-                <button class="btn btn-success" type="submit" value="Place Bid"></button>
             </div>
         </div>
+        <jsp:include page="footer.jsp" />
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+                integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+                integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+                integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
     </body>
 
 </html>
