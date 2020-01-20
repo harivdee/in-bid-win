@@ -33,3 +33,13 @@
         font-size: 0.8rem;
         padding: 1rem;
 }
+
+.img-fluid {
+    max-width: 100%;
+    height:auto;
+}
+
+.card-img-top.img-fluid {
+    object-fit: cover;
+    height: 30rem;
+}

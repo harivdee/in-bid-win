@@ -44,7 +44,7 @@
             
             <div class="card bg-light mb-3 ml-3" style="max-width: 36rem; font-size: 14px;">
                 <img src="${i.house.imageList[0].iphoto}"
-                     class="card-img-top" width="36rem" height="auto" alt="image of an apartment">
+                     class="card-img-top img-fluid"  alt="image of an apartment">
                 <div class="card-body">
                     <h5 class="card-title">${i.ititle}</h5>
                     <ul class="list-group list-group-flush d-flex flex-row flex-wrap justify-content-around">

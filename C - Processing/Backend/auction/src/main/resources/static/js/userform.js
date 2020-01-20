@@ -2,10 +2,16 @@ jQuery(init);
 function init($) {
 
     $('#formUser').submit(function (e) {
-        e.preventDefault();
-        emailCheck();
-        validation();
-    })
+//        e.preventDefault();
+        let result1 = emailCheck();
+        let result2 = validation();
+        if(result1 == false) {
+            e.preventDefault();
+        }
+        if (result2 == false) {
+            e.preventDefault();
+        }
+    });
     
 }
 
