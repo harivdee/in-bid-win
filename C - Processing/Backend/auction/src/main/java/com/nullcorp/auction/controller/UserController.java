@@ -41,9 +41,9 @@ public class UserController {
     
     @PostMapping("/create")
     public String createOrUpdateUser(@Valid User u, BindingResult result){
-        if (result.hasErrors()){
-            return "formUser";
-        }
+//        if (result.hasErrors()){
+//            return "formUser";
+//        }
         service.createOrUpdateUser(u);
         return "redirect:/user/list";
     }
