@@ -40,10 +40,12 @@ public class UserController {
     }
     
     @PostMapping("/create")
-    public String createOrUpdateUser(@Valid User u, BindingResult result){
-//        if (result.hasErrors()){
-//            return "formUser";
-//        }
+    public String createOrUpdateUser(@Valid  User u, BindingResult result, Model m){
+        System.out.println(u);
+       if (result.hasErrors()){
+           m.addAttribute("message");
+           return "formUser";
+       }
         service.createOrUpdateUser(u);
         return "redirect:/user/list";
     }
