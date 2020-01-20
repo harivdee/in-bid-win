@@ -1,6 +1,6 @@
 package com.nullcorp.auction.dao;
 
-import com.nullcorp.auction.ItemStatus;
+import com.nullcorp.auction.ItemStatusEnum;
 import com.nullcorp.auction.entity.Item;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -40,7 +40,6 @@ public class ItemDaoImpl implements ItemDao {
         getSession().saveOrUpdate(i);
     }
 
-
     @Override
     public void del(Item i) {
         getSession().delete(i);
@@ -49,13 +48,21 @@ public class ItemDaoImpl implements ItemDao {
     @Override
     public void toggleStatus(Item i) {
         Query q = getSession().createQuery("UPDATE Item i SET i.istatus = :status WHERE i.itemid= :itemId");
-        if (i.getIstatus().equalsIgnoreCase(ItemStatus.DISABLED.toString())) {
-            q.setParameter("status", ItemStatus.ENABLED.toString());
+        if (i.getIstatus().equalsIgnoreCase(ItemStatusEnum.DISABLED.toString())) {
+            q.setParameter("status", ItemStatusEnum.ENABLED.toString());
         } else {
-            q.setParameter("status", ItemStatus.DISABLED.toString());
+            q.setParameter("status", ItemStatusEnum.DISABLED.toString());
         }
         q.setParameter("itemId", i.getItemid());
         q.executeUpdate();
+    }
+
+    @Override
+    public void terminateStatus(Item i) {
+        Query q = getSession().createQuery("UPDATE Item i SET i.istatus = :status WHERE i.itemid= :itemId");
+        q.setParameter("status", ItemStatusEnum.SOLD.toString());
+        q.setParameter("itemId", i.getItemid());
+
     }
 
 }

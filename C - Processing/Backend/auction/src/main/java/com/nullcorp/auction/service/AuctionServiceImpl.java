@@ -9,11 +9,17 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class AuctionServiceImpl implements AuctionService{
-    
+public class AuctionServiceImpl implements AuctionService {
+
     @Autowired
     AuctionDao adao;
-    
+
+    @Autowired
+    TransactionService tService;
+
+    @Autowired
+    ItemService itService;
+
     @Override
     public void createOrUpdateAuction(Auction a) {
         adao.createOrUpdateAuction(a);
@@ -34,4 +40,17 @@ public class AuctionServiceImpl implements AuctionService{
         adao.delete(id);
     }
     
+    @Override
+    public void terminateExpiredAuctions(List<Integer> expiredAuctions) {
+        for (Integer auctionId : expiredAuctions) {
+//            Change item status to SOLD
+            itService.terminateStatus(getAuctionById(auctionId).getItem());
+//            Generate Transaction  TODO
+
+//            Delete Auction and it's bids 
+            deleteAuction(auctionId);
+
+        }
+    }
+
 }

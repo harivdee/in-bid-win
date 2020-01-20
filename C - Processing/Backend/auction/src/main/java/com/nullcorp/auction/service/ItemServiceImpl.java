@@ -1,6 +1,6 @@
 package com.nullcorp.auction.service;
 
-import com.nullcorp.auction.ItemStatus;
+import com.nullcorp.auction.ItemStatusEnum;
 import com.nullcorp.auction.dao.ItemDao;
 import com.nullcorp.auction.entity.Item;
 import java.util.List;
@@ -27,7 +27,7 @@ public class ItemServiceImpl implements ItemService {
     
     @Override
     public void createOrUpdateItem(Item i) {
-        i.setIstatus(ItemStatus.DISABLED.toString());
+        i.setIstatus(ItemStatusEnum.DISABLED.toString());
         idao.createOrUpdate(i);
     }
 
@@ -40,6 +40,11 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public void toggleStatus(Item i) {
         idao.toggleStatus(i);
+    }
+
+    @Override
+    public void terminateStatus(Item i) {
+        idao.terminateStatus(i);
     }
 
 };

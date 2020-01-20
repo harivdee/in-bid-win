@@ -11,9 +11,14 @@ public class HomeController {
     
     @GetMapping("/")
     public String home(){
-//        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        m.addAttribute("user",user);
+
         return "home";
+    }
+    
+    @GetMapping("/spiti")
+    public String spiti(){
+
+        return "activeAuctions";
     }
     
    

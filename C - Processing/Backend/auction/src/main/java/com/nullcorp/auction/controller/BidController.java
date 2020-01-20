@@ -59,9 +59,10 @@ public class BidController {
             m.addAttribute("message", "You can't bid on your own auction");
             return "error";
         }
-        List<Bid> list = bService.getAllBids(aid);
-        list.sort(Comparator.comparing(Bid::getBprice)); // sort list descending
-        BigDecimal maxBid = list.get(list.size()-1).getBprice();
+//        List<Bid> list = bService.getAllBids(aid);
+//        list.sort(Comparator.comparing(Bid::getBprice)); // sort list descending
+//        BigDecimal maxBid = list.get(list.size()-1).getBprice();
+        BigDecimal maxBid = bService.getMaxBid(aid);
         if (maxBid.compareTo(b.getBprice()) >= 0) {
              m.addAttribute("message", "Bid not accepted. You need to bid higher");
             return "error";
