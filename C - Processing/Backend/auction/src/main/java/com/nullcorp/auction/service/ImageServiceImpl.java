@@ -2,6 +2,7 @@ package com.nullcorp.auction.service;
 
 import com.nullcorp.auction.dao.ImageDao;
 import com.nullcorp.auction.entity.Image;
+import com.nullcorp.auction.entity.Item;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -17,14 +18,7 @@ public class ImageServiceImpl implements ImageService{
     @Autowired
     ImageDao idao;
     
-    @Override
-    public void saveThumbnail(MultipartFile file) {
-        try {
-            file.getBytes();
-        } catch (IOException ex) {
-            Logger.getLogger(ImageServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+   
 
     @Override
     public void createOrUpdateImage(Image i) {
@@ -35,5 +29,9 @@ public class ImageServiceImpl implements ImageService{
     public List<Image> getAllImagesByHouse(Integer id) {
         return idao.getAllImagesByHouse(id);
     }
+
+    
+
+  
     
 }
