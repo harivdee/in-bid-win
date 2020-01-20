@@ -2,7 +2,7 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html>
-    
+
     <header>
         <div class="jumbotron">
             <form class="form-inline pull-xs-right my-0 ml-auto">
@@ -47,6 +47,9 @@
                     <sec:authorize access="hasRole('ADMIN')">
                         <a class="nav-link text-white" href="${pageContext.request.contextPath}/user/list">
                             <i class="fa fa-user-secret"></i>Administrator
+                        </a>
+                        <a class="nav-link text-white" href="${pageContext.request.contextPath}/logout">
+                            <i class="fa fa-user-times"></i>Logout
                         </a>
                     </sec:authorize>
                     <sec:authorize access="hasRole('USER')">

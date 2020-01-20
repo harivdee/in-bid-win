@@ -16,12 +16,12 @@
         <title>IT go home</title>
     </head>
     <body>
-                <h3 style="color:red">${message}</h3>
-
+                
         <jsp:include page="header.jsp" />
         <div class="d-flex justify-content-center flex-column align-items-center my-5">
             <img src="https://i.ibb.co/3C3YDPV/it-go-home.png" alt="it-go-home" border="0">
             <h1 class="text-danger text-center">Something went wrong! </h1>
+            <h3 class="text-dange text-center">${message}</h3>
             <h2 class="text-center">Our Engineers are on it</h2>
             <button class="btn btn-warning"><a class="text-decoration-none text-dark" href="/">Go Home</a></button>
         </div>
