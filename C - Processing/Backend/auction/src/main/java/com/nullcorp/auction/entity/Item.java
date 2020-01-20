@@ -39,14 +39,16 @@ public class Item implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "ititle")
     private String ititle;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "iprice")
-    private BigDecimal iprice;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
     @Column(name = "istatus")
     private String istatus;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "item")
+    private List<Transaction> transactionList;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "iprice")
+    private BigDecimal iprice;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -134,13 +136,6 @@ public class Item implements Serializable {
         return "com.nullcorp.auction.entity.Item[ itemid=" + itemid + " ]";
     }
 
-    public String getItitle() {
-        return ititle;
-    }
-
-    public void setItitle(String ititle) {
-        this.ititle = ititle;
-    }
 
     public BigDecimal getIprice() {
         return iprice;
@@ -150,12 +145,29 @@ public class Item implements Serializable {
         this.iprice = iprice;
     }
 
+    public String getItitle() {
+        return ititle;
+    }
+
+    public void setItitle(String ititle) {
+        this.ititle = ititle;
+    }
+
     public String getIstatus() {
         return istatus;
     }
 
     public void setIstatus(String istatus) {
         this.istatus = istatus;
+    }
+
+    @XmlTransient
+    public List<Transaction> getTransactionList() {
+        return transactionList;
+    }
+
+    public void setTransactionList(List<Transaction> transactionList) {
+        this.transactionList = transactionList;
     }
     
 }

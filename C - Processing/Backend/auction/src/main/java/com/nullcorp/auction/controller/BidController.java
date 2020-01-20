@@ -63,7 +63,7 @@ public class BidController {
 //        list.sort(Comparator.comparing(Bid::getBprice)); // sort list descending
 //        BigDecimal maxBid = list.get(list.size()-1).getBprice();
         BigDecimal maxBid = bService.getMaxBid(aid);
-        if (maxBid.compareTo(b.getBprice()) >= 0) {
+        if (maxBid.compareTo(b.getBprice()) >= 0 || BigDecimal.valueOf(auction.getAreserve()).compareTo(b.getBprice()) >= 0 ) {
              m.addAttribute("message", "Bid not accepted. You need to bid higher");
             return "error";
         }

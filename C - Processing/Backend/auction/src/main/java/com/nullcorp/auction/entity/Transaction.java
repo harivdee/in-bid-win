@@ -26,25 +26,22 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "transaction")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Transaction.findAll", query = "SELECT t FROM Transaction t"),
     @NamedQuery(name = "Transaction.findByTid", query = "SELECT t FROM Transaction t WHERE t.tid = :tid"),
     @NamedQuery(name = "Transaction.findByTprice", query = "SELECT t FROM Transaction t WHERE t.tprice = :tprice")})
 public class Transaction implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "tid")
     private Integer tid;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "tprice")
     private BigDecimal tprice;
-    @JoinColumn(name = "auction", referencedColumnName = "auctionid")
+    @JoinColumn(name = "item", referencedColumnName = "itemid")
     @ManyToOne(optional = false)
-    private Auction auction;
+    private Item item;
     @JoinColumn(name = "owner", referencedColumnName = "userid")
     @ManyToOne(optional = false)
     private User owner;
@@ -75,12 +72,12 @@ public class Transaction implements Serializable {
         this.tprice = tprice;
     }
 
-    public Auction getAuction() {
-        return auction;
+    public Item getItem() {
+        return item;
     }
 
-    public void setAuction(Auction auction) {
-        this.auction = auction;
+    public void setItem(Item item) {
+        this.item = item;
     }
 
     public User getOwner() {

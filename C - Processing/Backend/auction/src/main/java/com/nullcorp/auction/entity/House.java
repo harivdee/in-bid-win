@@ -37,6 +37,15 @@ public class House implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "hlocation")
     private String hlocation;
+    @Size(max = 100)
+    @Column(name = "hheating")
+    private String hheating;
+    @Size(max = 3)
+    @Column(name = "hfurnished")
+    private String hfurnished;
+    @Size(max = 200)
+    @Column(name = "hdescr")
+    private String hdescr;
     @Column(name = "hfloor")
     private Integer hfloor;
     @Column(name = "hsize")
@@ -45,18 +54,6 @@ public class House implements Serializable {
     private Integer hroom;
     @Column(name = "hbathroom")
     private Integer hbathroom;
-    @Size(max = 100)
-    @Column(name = "hheating")
-    private String hheating;
-    @Size(max = 3)
-    @Column(name = "hfurnished")
-    private String hfurnished;
-//    @Lob
-//    @Column(name = "hphoto")
-//    private byte[] hphoto;
-    @Size(max = 200)
-    @Column(name = "hdescr")
-    private String hdescr;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "house")
     private List<Item> itemList;
     @Id
@@ -117,13 +114,6 @@ public class House implements Serializable {
         return "com.nullcorp.auction.entity.House[ hid=" + hid + " ]";
     }
 
-    public String getHlocation() {
-        return hlocation;
-    }
-
-    public void setHlocation(String hlocation) {
-        this.hlocation = hlocation;
-    }
 
     public Integer getHfloor() {
         return hfloor;
@@ -165,6 +155,24 @@ public class House implements Serializable {
         this.hbathroom = hbathroom;
     }
 
+
+    @XmlTransient
+    public List<Item> getItemList() {
+        return itemList;
+    }
+
+    public void setItemList(List<Item> itemList) {
+        this.itemList = itemList;
+    }
+
+    public String getHlocation() {
+        return hlocation;
+    }
+
+    public void setHlocation(String hlocation) {
+        this.hlocation = hlocation;
+    }
+
     public String getHheating() {
         return hheating;
     }
@@ -177,15 +185,6 @@ public class House implements Serializable {
         return hfurnished;
     }
 
-//    @XmlTransient
-//    public List<Item> getItemList() {
-//        return itemList;
-//    }
-//
-//    public void setItemList(List<Item> itemList) {
-//        this.itemList = itemList;
-//    }
-
     public void setHfurnished(String hfurnished) {
         this.hfurnished = hfurnished;
     }
@@ -196,15 +195,6 @@ public class House implements Serializable {
 
     public void setHdescr(String hdescr) {
         this.hdescr = hdescr;
-    }
-
-    @XmlTransient
-    public List<Item> getItemList() {
-        return itemList;
-    }
-
-    public void setItemList(List<Item> itemList) {
-        this.itemList = itemList;
     }
     
 }

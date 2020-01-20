@@ -96,15 +96,15 @@ REFERENCES user(userid)
 CREATE TABLE transaction(
 tid int unsigned PRIMARY KEY auto_increment,
 tprice decimal(14,3) unsigned default 0,
-auction int unsigned NOT NULL,
+item int unsigned NOT NULL,
 owner int unsigned NOT NULL,
 winner int unsigned NOT NULL,
 CONSTRAINT fk_owner FOREIGN KEY (owner)
 REFERENCES user(userid),
 CONSTRAINT fk_winner FOREIGN KEY (winner)
 REFERENCES user(userid),
-CONSTRAINT fk_auction2 FOREIGN KEY (auction)
-REFERENCES auction(auctionid)
+CONSTRAINT fk_item3 FOREIGN KEY (item)
+REFERENCES item(itemid)
 );
 -- DROP TABLE transaction;
 

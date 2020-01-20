@@ -61,8 +61,8 @@ public class Auction implements Serializable {
     private Date etime;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "auction")
     private List<Bid> bidList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "auction")
-    private List<Transaction> transactionList;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "auction")
+//    private List<Transaction> transactionList;
     @JoinColumn(name = "item", referencedColumnName = "itemid")
     @ManyToOne(optional = false)
     private Item item;
@@ -123,14 +123,14 @@ public class Auction implements Serializable {
         this.bidList = bidList;
     }
 
-    @XmlTransient
-    public List<Transaction> getTransactionList() {
-        return transactionList;
-    }
-
-    public void setTransactionList(List<Transaction> transactionList) {
-        this.transactionList = transactionList;
-    }
+//    @XmlTransient
+//    public List<Transaction> getTransactionList() {
+//        return transactionList;
+//    }
+//
+//    public void setTransactionList(List<Transaction> transactionList) {
+//        this.transactionList = transactionList;
+//    }
 
     public Item getItem() {
         return item;

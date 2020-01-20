@@ -55,6 +55,7 @@ public class User implements Serializable {
     @Column(name = "password")
     private String password;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Basic(optional = false)
     @NotNull()
     @Size(min = 1, max = 100)
@@ -170,6 +171,25 @@ public class User implements Serializable {
         return "com.nullcorp.auction.entity.User[ userid=" + userid + " ]";
     }
 
+
+    @XmlTransient
+    public List<Transaction> getTransactionList() {
+        return transactionList;
+    }
+
+    public void setTransactionList(List<Transaction> transactionList) {
+        this.transactionList = transactionList;
+    }
+
+    @XmlTransient
+    public List<Transaction> getTransactionList1() {
+        return transactionList1;
+    }
+
+    public void setTransactionList1(List<Transaction> transactionList1) {
+        this.transactionList1 = transactionList1;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -208,24 +228,6 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    @XmlTransient
-    public List<Transaction> getTransactionList() {
-        return transactionList;
-    }
-
-    public void setTransactionList(List<Transaction> transactionList) {
-        this.transactionList = transactionList;
-    }
-
-    @XmlTransient
-    public List<Transaction> getTransactionList1() {
-        return transactionList1;
-    }
-
-    public void setTransactionList1(List<Transaction> transactionList1) {
-        this.transactionList1 = transactionList1;
     }
     
 }
