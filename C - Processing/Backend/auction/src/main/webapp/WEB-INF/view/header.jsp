@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 
@@ -25,8 +26,12 @@
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#dropdown_target"
                            href="#">Listings</a><span class="caret"></span>
                         <div class="dropdown-menu" aria-labelledby="dropdown_target">
-                            <a class="dropdown-item" href="${pageContext.request.contextPath}/auction/create">Add Listing</a>
-                            <a class="dropdown-item" href="${pageContext.request.contextPath}/auction/list">Search Listings</a>
+                            <c:url value="/item/listByUsername" var="createLink" >
+                                <c:param name="username" value="${user.username}"/>
+                            </c:url>
+                            <a class="dropdown-item" href="${createLink}">My items</a>
+                            
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/auction/list">Search Auction</a>
                         </div>
                     </li>
                     <li class="navbar-item dropdown">

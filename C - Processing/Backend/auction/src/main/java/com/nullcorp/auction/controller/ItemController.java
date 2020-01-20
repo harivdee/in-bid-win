@@ -55,6 +55,15 @@ public class ItemController {
         return "listItems";
     }
     
+    @GetMapping("/listByUsername")
+    public String getAllItemsByUsername(@RequestParam("username") String username, Model m){
+        List<Item> list = itService.getAllItemsByUsername(username);
+        User u = uService.findByUsername(username);
+        m.addAttribute("listOfItems", list);
+        m.addAttribute("user", u);
+        return "listItems";
+    }
+    
     @GetMapping("/showDetails")
     public String showItemDetails(@RequestParam("itemId") Integer iid,
             @RequestParam("auctionId") Integer aid, Model m){

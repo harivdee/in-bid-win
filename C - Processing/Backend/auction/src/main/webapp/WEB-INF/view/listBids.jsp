@@ -12,7 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>List Bids</title>
     </head>
     <body>
         <h1>This is the bid list for auction with id = ${auctionId} </h1>
