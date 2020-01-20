@@ -64,6 +64,7 @@ public class ItemController {
         m.addAttribute("bid", new Bid());
         m.addAttribute("houseId", item.getHouse().getHid());
         m.addAttribute("imageList", imgList);
+        m.addAttribute("userid",item.getUser().getUserid());
         return "itemDetails";
     }
 

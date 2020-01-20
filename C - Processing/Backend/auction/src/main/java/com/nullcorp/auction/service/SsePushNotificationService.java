@@ -74,8 +74,20 @@ public class SsePushNotificationService {
                 JsonObject eachdata = Json.createObjectBuilder().add("auction", Json.createObjectBuilder()
                         .add("id", auction.getAuctionid())
                         .add("title", auction.getItem().getItitle())
+                        .add("remaining_time", remainingTime))
                         .add("images", auction.getItem().getHouse().getImageList().toString())
-                        .add("remaining_time", remainingTime)).build();
+                        .add("itemStatus", auction.getItem().getIstatus())
+                        .add("location", auction.getItem().getHouse().getHlocation())
+                        .add("floor", auction.getItem().getHouse().getHfloor())
+                        .add("size", auction.getItem().getHouse().getHsize())
+                        .add("bedrooms", auction.getItem().getHouse().getHroom())
+                        .add("bathrooms", auction.getItem().getHouse().getHbathroom())
+                        .add("heating", auction.getItem().getHouse().getHheating())
+                        .add("furnished", auction.getItem().getHouse().getHfurnished())
+                        .add("userid", auction.getItem().getUser().getUserid())
+                        .add("username", auction.getItem().getUser().getUsername())
+                        .add("furnished", auction.getItem().getHouse().getHfurnished())
+                        .build();
                 jsonArray.add(eachdata);
             } else {
                 expiredAuctions.add(auction.getAuctionid());
