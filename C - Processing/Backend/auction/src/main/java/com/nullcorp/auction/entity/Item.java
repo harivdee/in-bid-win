@@ -40,7 +40,6 @@ public class Item implements Serializable {
     @Column(name = "ititle")
     private String ititle;
     @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 10)
     @Column(name = "istatus")
     private String istatus;
