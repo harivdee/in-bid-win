@@ -4,6 +4,7 @@ package com.nullcorp.auction.entity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,23 +34,25 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Item.deleteById", query = "DELETE FROM Item i WHERE i.itemid = :id")})
 public class Item implements Serializable {
 
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 100)
+    @Column(name = "ititle")
+    private String ititle;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "iprice")
+    private BigDecimal iprice;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 10)
+    @Column(name = "istatus")
+    private String istatus;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "itemid")
     private Integer itemid;
-    @NotEmpty
-    @Size(min = 1, max = 100)
-    @Column(name = "ititle")
-    private String ititle;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Min(value=1)
-    @NotNull
-    @Column(name = "iprice")
-    private Integer iprice;
-    @Size(min = 1, max = 10)
-    @Column(name = "istatus")
-    private String istatus;
     @JoinColumn(name = "house", referencedColumnName = "hid")
     @OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER)
     private House house;
@@ -80,29 +83,6 @@ public class Item implements Serializable {
         this.itemid = itemid;
     }
 
-    public String getItitle() {
-        return ititle;
-    }
-
-    public void setItitle(String ititle) {
-        this.ititle = ititle;
-    }
-
-    public Integer getIprice() {
-        return iprice;
-    }
-
-    public void setIprice(Integer iprice) {
-        this.iprice = iprice;
-    }
-
-    public String getIstatus() {
-        return istatus;
-    }
-
-    public void setIstatus(String istatus) {
-        this.istatus = istatus;
-    }
 
     public House getHouse() {
         return house;
@@ -152,6 +132,30 @@ public class Item implements Serializable {
     @Override
     public String toString() {
         return "com.nullcorp.auction.entity.Item[ itemid=" + itemid + " ]";
+    }
+
+    public String getItitle() {
+        return ititle;
+    }
+
+    public void setItitle(String ititle) {
+        this.ititle = ititle;
+    }
+
+    public BigDecimal getIprice() {
+        return iprice;
+    }
+
+    public void setIprice(BigDecimal iprice) {
+        this.iprice = iprice;
+    }
+
+    public String getIstatus() {
+        return istatus;
+    }
+
+    public void setIstatus(String istatus) {
+        this.istatus = istatus;
     }
     
 }
