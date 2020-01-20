@@ -25,7 +25,7 @@
         </c:url>
         <c:url var="bidLink" value="/bid/place">
             <c:param name="auctionId" value="${auction.auctionid}" />
-            <c:param name="userId" value="2" /> <!--  enter id from session here (current bidded is emergon-->
+            <c:param name="userId" value="4" /> <!--  enter id from session here (current bidded is emergon-->
         </c:url>
 
            

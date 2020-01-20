@@ -2,6 +2,8 @@ package com.nullcorp.auction.service;
 
 import com.nullcorp.auction.dao.AuctionDao;
 import com.nullcorp.auction.entity.Auction;
+import com.nullcorp.auction.entity.Bid;
+import com.nullcorp.auction.entity.Transaction;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,8 @@ public class AuctionServiceImpl implements AuctionService {
 
     @Autowired
     ItemService itService;
+    
+   
 
     @Override
     public void createOrUpdateAuction(Auction a) {
@@ -39,14 +43,20 @@ public class AuctionServiceImpl implements AuctionService {
     public void deleteAuction(Integer id) {
         adao.delete(id);
     }
-    
+
     @Override
     public void terminateExpiredAuctions(List<Integer> expiredAuctions) {
         for (Integer auctionId : expiredAuctions) {
+            Auction auction = getAuctionById(auctionId);
 //            Change item status to SOLD
-            itService.terminateStatus(getAuctionById(auctionId).getItem());
+            itService.terminateStatus(auction.getItem());
 //            Generate Transaction  TODO
-//            tService.generateTransaction();
+            Transaction transactionData = new Transaction();
+            transactionData.setItem(auction.getItem());
+            transactionData.setOwner(auction.getItem().getUser());
+            transactionData.setWinner(auction.getMaxBid().getUser());
+            transactionData.setTprice(auction.getMaxBid().getBprice());
+            tService.generateTransaction(transactionData);
 //            Delete Auction and it's bids 
             deleteAuction(auctionId);
 

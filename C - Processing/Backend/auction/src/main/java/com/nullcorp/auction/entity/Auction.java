@@ -6,6 +6,7 @@
 package com.nullcorp.auction.entity;
 
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -118,11 +119,17 @@ public class Auction implements Serializable {
     public List<Bid> getBidList() {
         return bidList;
     }
+    
+    public Bid getMaxBid(){
+        List<Bid> list = this.bidList;
+        list.sort(Comparator.comparing(Bid::getBprice).reversed());
+        return list.get(0);
+    }
 
     public void setBidList(List<Bid> bidList) {
         this.bidList = bidList;
     }
-
+    
 //    @XmlTransient
 //    public List<Transaction> getTransactionList() {
 //        return transactionList;

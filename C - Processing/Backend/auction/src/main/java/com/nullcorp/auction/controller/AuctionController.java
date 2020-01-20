@@ -5,6 +5,7 @@ import com.nullcorp.auction.entity.Item;
 import com.nullcorp.auction.service.AuctionService;
 import com.nullcorp.auction.service.ItemService;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -50,7 +51,7 @@ public class AuctionController {
             Model m) {
         Item i = iService.getItemById(id);
         String title = i.getItitle();
-        m.addAttribute("title",title);
+        m.addAttribute("title", title);
         if (i.getIstatus().equals("DISABLED")) {
             Timestamp timestamp = new Timestamp(new Date().getTime());
             Calendar cal = Calendar.getInstance();
@@ -64,7 +65,7 @@ public class AuctionController {
             return "redirect:/item/list?userId=" + i.getUser().getUserid();
 
         } else {
-            m.addAttribute("message", "Item is already"+i.getIstatus());
+            m.addAttribute("message", "Item is already" + i.getIstatus());
             return "error";
         }
 
@@ -76,12 +77,12 @@ public class AuctionController {
         a = aService.getAuctionById(id);
         m.addAttribute("auction", a);
         m.addAttribute("itemId", a.getItem().getItemid());
-
+        
         return "formAuction";
     }
 
     @GetMapping("/delete")
-    public String deleteAuction(@RequestParam("auctionId") Integer id){
+    public String deleteAuction(@RequestParam("auctionId") Integer id) {
         Auction a = aService.getAuctionById(id);
         iService.toggleStatus(a.getItem());
         aService.deleteAuction(id);
