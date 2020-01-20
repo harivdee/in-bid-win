@@ -41,6 +41,7 @@
                 <a href="${updateLink}" class="card-link">Update</a>
                 <a href="${deleteLink}" class="card-link"  onclick="if (!(confirm('Are you sure you want to delete auction for item ${a.item.ititle}?')))
                 return false" >Delete</a>
+                <a href="${itemLink}" class="card-link">Show Details</a>
             </div>
         </div>
     </c:forEach>
