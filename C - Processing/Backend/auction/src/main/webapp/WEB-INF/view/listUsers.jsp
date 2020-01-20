@@ -84,9 +84,11 @@
         </button>
         <div class="card deck d-flex flex-row flex-wrap">
             <c:forEach items="${listOfUsers}" var="u">
+                
                 <c:url value="/user/delete" var="deleteLink" >
                     <c:param name="userId" value="${u.userid}" />
                 </c:url>
+                
                 <c:url var="updateLink" value="/user/update">
                     <c:param name="userId" value="${u.userid}" />
                 </c:url>
@@ -106,9 +108,13 @@
                         </div>
                         <div class="card-footer bg-transparent border-info d-flex justify-content-around">
                             <button class="btn btn-success"><a class="text-white"href="${listItemsLink}">Items</a></button>
+                            <security:authorize access="hasRole('ADMIN')">
                             <button class="btn btn-warning"><a class="text-white"href="${updateLink}">Update</a></button>
+                            </security:authorize>
+                            <security:authorize access="hasRole('ADMIN')">
                             <button class="btn btn-danger text-white"><a class="text-white" href="${deleteLink}" onclick="if (!(confirm('Are you sure you want to delete user with username: ${u.username}?')))
                                         return false">Delete</a></button>
+                            </security:authorize>
                         </div>
                     </div>
                 </div>

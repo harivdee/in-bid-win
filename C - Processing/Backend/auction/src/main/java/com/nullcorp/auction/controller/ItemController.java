@@ -31,12 +31,16 @@ public class ItemController {
 
     @Autowired
     UserService uService;
+    
     @Autowired
     ItemService itService;
+    
     @Autowired
     HouseService hService;
+    
     @Autowired
     ImageService imService;
+    
     @Autowired 
     AuctionService aService;
 

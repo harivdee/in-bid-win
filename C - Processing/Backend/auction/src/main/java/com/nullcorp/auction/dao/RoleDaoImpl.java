@@ -9,10 +9,6 @@ import javax.persistence.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
-/**
- *
- * @author chris
- */
 @Repository
 public class RoleDaoImpl implements RoleDao{
        

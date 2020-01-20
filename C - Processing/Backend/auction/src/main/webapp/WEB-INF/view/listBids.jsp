@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html>
@@ -24,10 +25,15 @@
 
 
             </tr>
+            
             <c:forEach items="${bidList}" var="b">
-                <c:url var="deleteLink" value="/bid/delete">
+                <security:authorize access="hasRole('ADMIN')">
+                     <c:url var="deleteLink" value="/bid/delete">
+                    
                     <c:param name="bidId" value="${b.bidid}" />
                 </c:url>
+                </security:authorize>
+                               
             
             <tr>
                 <td>${b.bidid}</td>

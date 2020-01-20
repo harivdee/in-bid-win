@@ -9,10 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- *
- * @author chris
- */
+
 @Entity
 @Table(name = "role")
 public class Role implements Serializable {

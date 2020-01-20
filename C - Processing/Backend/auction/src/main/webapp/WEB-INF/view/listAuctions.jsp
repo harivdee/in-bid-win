@@ -39,8 +39,10 @@
                 <h6 class="card-subtitle mb-2 text-muted">Address</h6>
                 <p class="card-text">${a.item.house.hlocation}</p>
                 <a href="${updateLink}" class="card-link">Update</a>
+                <security:authorize access="hasRole('ADMIN')">
                 <a href="${deleteLink}" class="card-link"  onclick="if (!(confirm('Are you sure you want to delete auction for item ${a.item.ititle}?')))
                 return false" >Delete</a>
+                </security:authorize>
                 <a href="${itemLink}" class="card-link">Show Details</a>
             </div>
         </div>
