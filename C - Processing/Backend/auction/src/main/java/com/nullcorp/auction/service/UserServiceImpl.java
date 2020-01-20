@@ -83,4 +83,9 @@ public class UserServiceImpl implements UserService {
         return authorities;
     }
 
+    @Override
+    public User getUserByUsername(String uname) {
+        return udao.getByUsername(uname);
+    }
+
 }

@@ -78,4 +78,11 @@ public class UserDaoImpl implements UserDao {
         q.executeUpdate();
     }
 
+    @Override
+    public User getByUsername(String uname) {
+        Query q = getSession().createNamedQuery("User.findByUsername");
+        q.setParameter("username", uname);
+        return (User)q.getSingleResult();
+    }
+
 }

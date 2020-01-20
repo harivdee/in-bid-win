@@ -47,12 +47,12 @@ public class BidController {
     public String placeBidAtAuction(@Valid @ModelAttribute("bid") Bid b,
             BindingResult result,
             @RequestParam("auctionId") Integer aid,
-            @RequestParam("userId") Integer uid, //this is the bidder Id
+            @RequestParam("username") String uname, //this is the bidder Id
             Model m) {
         if (result.hasErrors()) {
             return "itemDetails"; // back to bid form
         }
-        User bidder = uService.getUserById(uid);
+        User bidder = uService.getUserByUsername(uname);
         Auction auction = aService.getAuctionById(aid);
 //        Check if owner is the bidder and return error
         if (auction.getItem().getUser().equals(bidder)) {

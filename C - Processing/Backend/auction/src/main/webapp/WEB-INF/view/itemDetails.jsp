@@ -25,7 +25,7 @@
         </c:url>
         <c:url var="bidLink" value="/bid/place">
             <c:param name="auctionId" value="${auction.auctionid}" />
-            <c:param name="userId" value="${loggedInUser.username}" /> 
+            <c:param name="username" value="${loggedInUser.username}" /> 
         </c:url>
     
         <h1>${loggedInUser.username}</h1>

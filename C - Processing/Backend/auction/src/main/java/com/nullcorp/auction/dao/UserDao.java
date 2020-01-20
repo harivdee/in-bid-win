@@ -21,5 +21,7 @@ public interface UserDao {
     public void save(User user);
 
     public void addRole(Integer userid, Integer rid);
+
+    public User getByUsername(String uname);
     
 }
