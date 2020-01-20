@@ -10,5 +10,6 @@ public interface ImageDao {
     public void saveOrUpdate(Image i);
 
     public List<Image> getAllImagesByHouse(Integer id);
+
     
 }

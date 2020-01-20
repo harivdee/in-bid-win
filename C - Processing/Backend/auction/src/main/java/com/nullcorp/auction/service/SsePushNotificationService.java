@@ -4,6 +4,7 @@ import javax.json.*;
 import com.nullcorp.auction.dao.AuctionDao;
 import com.nullcorp.auction.entity.Auction;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -73,6 +74,7 @@ public class SsePushNotificationService {
                 JsonObject eachdata = Json.createObjectBuilder().add("auction", Json.createObjectBuilder()
                         .add("id", auction.getAuctionid())
                         .add("title", auction.getItem().getItitle())
+                        .add("images", auction.getItem().getHouse().getImageList().toString())
                         .add("remaining_time", remainingTime)).build();
                 jsonArray.add(eachdata);
             } else {

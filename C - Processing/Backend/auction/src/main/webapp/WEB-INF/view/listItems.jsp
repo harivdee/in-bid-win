@@ -40,8 +40,10 @@
             <c:url var="createAuction" value="/auction/create">
                 <c:param name="itemId" value="${i.itemid}" />
             </c:url>
+           
+            
             <div class="card bg-light mb-3 ml-3" style="max-width: 36rem; font-size: 14px;">
-                <img src="${imgurl}"
+                <img src="${i.house.imageList[0].iphoto}"
                      class="card-img-top" width="36rem" height="auto" alt="image of an apartment">
                 <div class="card-body">
                     <h5 class="card-title">${i.ititle}</h5>
