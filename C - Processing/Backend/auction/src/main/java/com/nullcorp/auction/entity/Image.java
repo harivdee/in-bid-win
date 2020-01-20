@@ -88,7 +88,7 @@ public class Image implements Serializable {
 
     @Override
     public String toString() {
-        return "com.nullcorp.auction.entity.Image[ iid=" + iid + " ]";
+        return getIphoto();
     }
     
 }
