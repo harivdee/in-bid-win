@@ -19,5 +19,7 @@ public interface UserDao {
     public User findUserByUsername(String username);
 
     public void save(User user);
+
+    public void addRole(Integer userid, Integer rid);
     
 }

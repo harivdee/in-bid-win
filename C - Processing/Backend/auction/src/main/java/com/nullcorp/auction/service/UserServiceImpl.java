@@ -17,14 +17,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Transactional
-public class UserServiceImpl implements UserService{
-    
+public class UserServiceImpl implements UserService {
+
     @Autowired
     UserDao udao;
-    
+
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
-    
+
     @Override
     public List<User> getAllUsers() {
         return udao.findAll();
@@ -32,13 +32,15 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void createOrUpdateUser(User u) {
+        u.setPassword(passwordEncoder.encode(u.getPassword()));
         udao.createOrUpdate(u);
+        udao.addRole(u.getUserid(), 2);
     }
 
     @Override
     public User getUserById(Integer id) {
-       return udao.findById(id);
-         
+        return udao.findById(id);
+
     }
 
     @Override
@@ -56,34 +58,29 @@ public class UserServiceImpl implements UserService{
         return udao.findUserByUsername(username);
     }
 
-    @Override
-    public void save(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        udao.save(user);
-    }
+    
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = udao.findUserByUsername(username);
-        if(user == null){
+        if (user == null) {
             throw new UsernameNotFoundException("Invalid username");
         }
         UserDetails userDetails = new org.springframework.security.core.userdetails.User(
                 user.getUsername(),
                 user.getPassword(),
                 mapRolesToAuthorities(user.getRoles()));
-        
+
         return userDetails;
     }
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(List<Role> roles) {
         List<GrantedAuthority> authorities = new ArrayList();
-        for(Role r:roles){
+        for (Role r : roles) {
             SimpleGrantedAuthority authority = new SimpleGrantedAuthority(r.getRolename());
             authorities.add(authority);
         }
         return authorities;
     }
-    
-    
+
 }

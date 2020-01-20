@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserDaoImpl implements UserDao {
-  
+
     @Autowired
     private EntityManager entityManager;
 
@@ -34,7 +34,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User findById(Integer id) {
         return (User) getSession().get(User.class, id);
-        
+
     }
 
     @Override
@@ -47,7 +47,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public List<User> findByUsername(String searchName) {
         Query q = getSession().createNamedQuery("User.findByUsername");
-        q.setParameter("username", searchName+"%");
+        q.setParameter("username", searchName + "%");
         return q.getResultList();
     }
 
@@ -56,9 +56,9 @@ public class UserDaoImpl implements UserDao {
         Query q = getSession().createQuery("SELECT u FROM User u WHERE u.username=:name");
         q.setParameter("name", username);
         User user = null;
-        try{
-            user = (User)q.getSingleResult();
-        }catch(NoResultException e){
+        try {
+            user = (User) q.getSingleResult();
+        } catch (NoResultException e) {
             System.out.println("There is no result");
             user = null;
         }
@@ -68,6 +68,14 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void save(User user) {
         getSession().save(user);
+    }
+
+    @Override
+    public void addRole(Integer userid, Integer rid) {
+        Query q = getSession().createNativeQuery("INSERT INTO user_role VALUES (?,?)");
+        q.setParameter(1, userid);
+        q.setParameter(2, rid);
+        q.executeUpdate();
     }
 
 }

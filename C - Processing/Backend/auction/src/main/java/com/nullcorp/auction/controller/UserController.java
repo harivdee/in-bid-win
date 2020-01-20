@@ -1,6 +1,7 @@
 package com.nullcorp.auction.controller;
 
 import com.nullcorp.auction.entity.User;
+import com.nullcorp.auction.service.RoleService;
 import com.nullcorp.auction.service.UserService;
 import java.util.List;
 import javax.validation.Valid;
@@ -20,6 +21,9 @@ public class UserController {
     
     @Autowired
     UserService service;
+    @Autowired
+    RoleService rService;
+    
     @GetMapping("/dashboard")
     public String showUserDashboard(@ModelAttribute("user") User u,
             @RequestParam("username") String username){
@@ -41,12 +45,12 @@ public class UserController {
     
     @PostMapping("/create")
     public String createOrUpdateUser(@Valid  User u, BindingResult result, Model m){
-        System.out.println(u);
 //        if (result.hasErrors()){
 //            m.addAttribute("message");
 //            return "formUser";
 //        }
         service.createOrUpdateUser(u);
+        
         return "redirect:/user/list";
     }
     
