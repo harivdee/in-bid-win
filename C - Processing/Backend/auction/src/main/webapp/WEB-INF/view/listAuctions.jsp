@@ -1,7 +1,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 
 <!DOCTYPE html>
@@ -37,8 +37,10 @@
             <div class="card-body border border-dark ml-5 mb-3" style="max-width:28rem;">
                 <h5 class="card-title">${a.item.ititle}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Address</h6>
+                <security:authorize access="hasRole('ADMIN')">
                 <p class="card-text">${a.item.house.hlocation}</p>
                 <a href="${updateLink}" class="card-link">Update</a>
+                </security:authorize>
                 <security:authorize access="hasRole('ADMIN')">
                 <a href="${deleteLink}" class="card-link"  onclick="if (!(confirm('Are you sure you want to delete auction for item ${a.item.ititle}?')))
                 return false" >Delete</a>
