@@ -19,66 +19,7 @@
         <title>User List</title>
     </head>
     <body p-5>
-        <header>
-            <div class="jumbotron">
-                <form class="form-inline pull-xs-right my-0 ml-auto"action="${pageContext.request.contextPath}/user/search" method="GET" >
-
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search" name="searchName">
-                    <button class="btn btn-success my-0 " type="submit">Search</button>
-                </form>
-            </div>
-            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-                <a class="text-white navbar-brand" href="#"><i class="fa fa-building-o"></i>in bid win</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav mr-auto menu">
-                        <li class="navbar-item active">
-                            <a class="nav-link" href="/">Home</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#dropdown_target"
-                               href="#listings">Listings</a><span class="caret"></span>
-                            <div class="dropdown-menu" aria-labelledby="dropdown_target">
-                                <a class="dropdown-item" href="#">Add Listing</a>
-                                <a class="dropdown-item" href="${pageContext.request.contextPath}/auction/list">Search Listings</a>
-                            </div>
-                        </li>
-                        <li class="navbar-item">
-                            <a class="nav-link" href="#account">Account</a>
-                        </li>
-                        <li class="navbar-item">
-                            <a class="nav-link" href="#about">About</a>
-                        </li>
-                    </ul>
-                    <form class="form-inline mt-2 mt-md-0">
-                        <sec:authorize access="isAuthenticated()">
-                            <small class="text-muted"> Logged in as <sec:authentication property="principal.username" /> </small>
-                        </sec:authorize>
-                        <sec:authorize access="hasRole('ADMIN')">
-                            <a class="nav-link text-white" href="${pageContext.request.contextPath}/user/list">
-                                <i class="fa fa-user-secret"></i>Administrator
-                            </a>
-                        </sec:authorize>
-                        <sec:authorize access="hasRole('USER')">
-                            <a class="nav-link text-white" href="${pageContext.request.contextPath}/logout">
-                                <i class="fa fa-user-times"></i>Logout
-                            </a>
-                        </sec:authorize>
-                        <sec:authorize access="!isAuthenticated()">
-                            <a class="nav-link text-white" href="${pageContext.request.contextPath}/login">
-                                <i class="fa fa-user-plus"></i>Sign in
-                            </a>
-                        </sec:authorize>
-                        <a class="text-white nav-link" href="cart.html">
-                            <i class="text-warning fa fa-opencart"></i>Bids <i style="color:yellow;" id="cart_n"></i>
-                        </a>
-                    </form>
-                </div>
-            </nav>
-        </header>
+        <jsp:include page="header.jsp" />
 
         <button class="btn btn-info m-5"><a class="text-white" href="${pageContext.request.contextPath}/user/create">Create User</a>
         </button>
