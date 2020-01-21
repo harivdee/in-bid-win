@@ -41,6 +41,14 @@ public class BidController {
         m.addAttribute("auctionId", id);
         return "listBids";
     }
+    @GetMapping("/listByUser")
+    public String getAllBidsByUser(@RequestParam("username") String uname,
+            Model m) {
+        List<Bid> list = bService.getAllBidsByUser(uname);
+
+        m.addAttribute("bidList", list);
+        return "listBids";
+    }
 
     @PostMapping("/place")
     public String placeBidAtAuction(@Valid @ModelAttribute("bid") Bid b,

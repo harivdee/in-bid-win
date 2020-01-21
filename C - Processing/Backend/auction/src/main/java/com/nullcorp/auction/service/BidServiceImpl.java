@@ -47,4 +47,9 @@ public class BidServiceImpl implements BidService {
         return BigDecimal.ZERO;
     }
 
+    @Override
+    public List<Bid> getAllBidsByUser(String uname) {
+        return bdao.findAllByUser(uname);
+    }
+
 }

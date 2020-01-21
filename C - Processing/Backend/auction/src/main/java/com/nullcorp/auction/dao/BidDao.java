@@ -13,5 +13,7 @@ public interface BidDao {
     public void deleteById(Integer id);
 
     public Bid findById(Integer id);
+
+    public List<Bid> findAllByUser(String uname);
     
 }

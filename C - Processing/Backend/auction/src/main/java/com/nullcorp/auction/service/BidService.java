@@ -17,5 +17,7 @@ public interface BidService {
     public Bid getBidById(Integer id);
     
     public BigDecimal getMaxBid(Integer id);
+
+    public List<Bid> getAllBidsByUser(String uname);
     
 }

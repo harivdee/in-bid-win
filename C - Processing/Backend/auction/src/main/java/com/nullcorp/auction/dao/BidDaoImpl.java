@@ -40,5 +40,12 @@ public class BidDaoImpl implements BidDao{
     public Bid findById(Integer id) {
         return getSession().get(Bid.class, id);
     }
+
+    @Override
+    public List<Bid> findAllByUser(String uname) {
+          Query q = getSession().createQuery("SELECT b from Bid b WHERE b.user.username=: username");
+        q.setParameter("username", uname);
+        return q.getResultList();
+    }
     
 }
