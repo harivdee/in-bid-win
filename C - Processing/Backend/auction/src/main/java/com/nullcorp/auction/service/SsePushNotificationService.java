@@ -73,6 +73,7 @@ public class SsePushNotificationService {
             if (remainingTime > 0) {
                 JsonObject eachdata = Json.createObjectBuilder().add("auction", Json.createObjectBuilder()
                         .add("id", auction.getAuctionid())
+                        .add("itemid",auction.getItem().getItemid())
                         .add("title", auction.getItem().getItitle())
                         .add("reserve", auction.getAreserve())
                         .add("remaining_time", remainingTime))

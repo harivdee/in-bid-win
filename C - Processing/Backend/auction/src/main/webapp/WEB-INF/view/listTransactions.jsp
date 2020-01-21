@@ -27,14 +27,15 @@
             <sec:authentication var="user" property="principal" />
             <h1>${user.username} transactions</h1>
         </sec:authorize>
-        <h3>Won Auctions. Congratulations!</h3>
+        <h3>Congratulations! You've won the Auction!</h3>
         <table border="1">
             <tr>
                 <td><strong>Auction Title</strong></td>
                 <td><strong>Price</strong></td>
                 <td><strong>Auction Owner</strong></td>
 
-            </tr>  
+            </tr> 
+            <div class="card deck d-flex flex-row flex-wrap">
             <c:forEach items="${winnerTransactions}" var="wt">
                 <tr>
                     <td>${wt.item.ititle}</td>
@@ -42,6 +43,7 @@
                     <td>${wt.owner.username}</td>
                 </tr>
             </c:forEach>
+            </div>
         </table>
         <br/>
         <hr/>
