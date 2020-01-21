@@ -3,6 +3,7 @@ package com.nullcorp.auction.controller;
 import com.nullcorp.auction.entity.User;
 import com.nullcorp.auction.service.RoleService;
 import com.nullcorp.auction.service.UserService;
+import java.math.BigDecimal;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,7 @@ public class UserController {
            m.addAttribute("message");
            return "formUser";
        }
+       u.setCredit(BigDecimal.ZERO);
         service.createOrUpdateUser(u);
         return "redirect:/user/list";
     }
