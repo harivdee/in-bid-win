@@ -70,6 +70,7 @@ public class ItemDaoImpl implements ItemDao {
         Query q = getSession().createQuery("UPDATE Item i SET i.istatus = :status WHERE i.itemid= :itemId");
         q.setParameter("status", ItemStatusEnum.SOLD.toString());
         q.setParameter("itemId", i.getItemid());
+        q.executeUpdate();
 
     }
     
