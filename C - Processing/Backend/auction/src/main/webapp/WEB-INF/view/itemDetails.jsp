@@ -17,7 +17,7 @@
     </head>
     <body>
         <jsp:include page="header.jsp" />
-        <h1>This is item detailed view</h1>
+        
 
 
         <c:url var="listImagesLink" value="/image/list">
@@ -28,7 +28,7 @@
             <c:param name="username" value="${loggedInUser.username}" /> 
         </c:url>
     
-        <h1>${loggedInUser.username}</h1>
+        <h1><strong>${loggedInUser.username}</strong> item list</h1>
         <div class="card bg-light m-5" style="max-width: 36rem; font-size: 14px;">
              <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
