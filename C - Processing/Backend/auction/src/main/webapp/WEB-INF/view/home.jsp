@@ -59,7 +59,7 @@
                                 nulla adipisci quia, nobis fuga similique perspiciatis iste sunt placeat consequuntur
                                 quisquam incidunt nihil? Suscipit, eaque harum?
                             </p>
-                            <p><a role="button" class="btn btn-lg btn-info" href="#">Place a Bid</a></p>
+                            <p><a role="button" class="btn btn-lg btn-info" href="${pageContext.request.contextPath}/auction/list">Place a Bid</a></p>
                         </div>
                     </div>
                 </div>
