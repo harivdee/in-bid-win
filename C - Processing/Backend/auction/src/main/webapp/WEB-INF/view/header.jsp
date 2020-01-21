@@ -7,7 +7,6 @@
 <html>
 
     <header>
-        <a href="${pageContext.request.contextPath}/addCredits">Paypal</a>
         <div class="jumbotron">
             <c:url value="/auction/list" var="searchLink">
                 <c:param name="string" value='searchName' /> 
@@ -91,9 +90,9 @@
                             <i class="fa fa-user-plus"></i>Sign in
                         </a>
                     </sec:authorize>
-                    <!--                    <a class="text-white nav-link" href="{myBidsLink}">
-                                            <i class="text-warning fa fa-opencart"></i>My Bids <i style="color:yellow;" id="cart_n"></i>
-                                        </a>-->
+                    <a class="text-white nav-link" href="${pageContext.request.contextPath}/addCredits">
+                        <i id="cart_n" class="fa fa-cc-paypal" aria-hidden="true"></i>Paypal
+                    </a>
                 </form>
             </div>
         </nav>
