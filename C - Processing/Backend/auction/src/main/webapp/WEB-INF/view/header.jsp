@@ -26,11 +26,11 @@
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#dropdown_target"
                            href="#">Listings</a><span class="caret"></span>
                         <div class="dropdown-menu" aria-labelledby="dropdown_target">
+                            <sec:authentication var="user" property="principal" />
                             <c:url value="/item/listByUsername" var="createLink" >
-                                <c:param name="username" value="${user.username}"/>
+                                <c:param name="username" value='${user.username}' /> 
                             </c:url>
                             <a class="dropdown-item" href="${createLink}">My items</a>
-                            
                             <a class="dropdown-item" href="${pageContext.request.contextPath}/auction/list">Search Auction</a>
                         </div>
                     </li>
