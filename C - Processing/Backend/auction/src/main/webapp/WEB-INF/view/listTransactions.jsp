@@ -43,7 +43,9 @@
                 </tr>
             </c:forEach>
         </table>
-
+        <br/>
+        <hr/>
+        <br/>
         <h3>Your finished auctions</h3>
         <table border="1">
             <tr>
@@ -62,7 +64,7 @@
         </table>
 
 
-
+        <br/>
         <jsp:include page="footer.jsp" />
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
                 integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
