@@ -2,6 +2,7 @@
 package com.nullcorp.auction.dao;
 
 import com.nullcorp.auction.entity.User;
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -23,5 +24,7 @@ public interface UserDao {
     public void addRole(Integer userid, Integer rid);
 
     public User getByUsername(String uname);
+
+    public void addCredit(String name, BigDecimal credit);
     
 }

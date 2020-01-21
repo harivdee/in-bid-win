@@ -3,6 +3,7 @@ package com.nullcorp.auction.service;
 import com.nullcorp.auction.dao.UserDao;
 import com.nullcorp.auction.entity.Role;
 import com.nullcorp.auction.entity.User;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -86,6 +87,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByUsername(String uname) {
         return udao.getByUsername(uname);
+    }
+
+    @Override
+    public void addCreditToUser(String name, BigDecimal credit) {
+        udao.addCredit(name, credit);
     }
 
 }

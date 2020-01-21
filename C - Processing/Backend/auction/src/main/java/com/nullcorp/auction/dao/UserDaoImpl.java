@@ -1,6 +1,7 @@
 package com.nullcorp.auction.dao;
 
 import com.nullcorp.auction.entity.User;
+import java.math.BigDecimal;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -83,6 +84,13 @@ public class UserDaoImpl implements UserDao {
         Query q = getSession().createNamedQuery("User.findByUsername");
         q.setParameter("username", uname);
         return (User)q.getSingleResult();
+    }
+
+    @Override
+    public void addCredit(String name, BigDecimal credit) {
+        Query q = getSession().createQuery("UPDATE User u SET u.credit= u.credit + : credit");
+        q.setParameter("credit", credit);
+        q.executeUpdate();
     }
 
 }
