@@ -33,7 +33,7 @@
                     <li class="navbar-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#accountdrop_t" href="#">Account</a><span class="caret"></span>
                         <div class="dropdown-menu" aria-labelledby="accountdrop_t">
-                            <sec:authorize access="hasRole('ROLE_USER') and isAuthenticated()">
+                            <sec:authorize access="hasAnyRole('USER', 'ADMIN') and isAuthenticated()">
                                 <sec:authentication var="user" property="principal" />
                                 <c:url value="/item/listByUsername" var="myItemsLink" >
                                     <c:param name="username" value='${user.username}' /> 
