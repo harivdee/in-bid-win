@@ -23,5 +23,7 @@ public interface UserService extends UserDetailsService{
 
     public void addCreditToUser(String name, BigDecimal bigDecimal);
 
+    public void deductCredit(Integer userid, BigDecimal bprice);
+
     
 }

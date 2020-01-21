@@ -26,5 +26,7 @@ public interface UserDao {
     public User getByUsername(String uname);
 
     public void addCredit(String name, BigDecimal credit);
+
+    public void deductCredit(Integer id, BigDecimal price);
     
 }

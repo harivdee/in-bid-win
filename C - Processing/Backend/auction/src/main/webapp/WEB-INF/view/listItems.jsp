@@ -78,12 +78,15 @@
                     </ul>
                 </div>
                 <div class="card-footer bg-transparent border-info d-flex justify-content-around">
+                    <sec:authorize var="role" access="hasRole('ADMIN')">
+                        <button class="btn btn-warning"><a class="text-white" href="${updateLink}">Update</a></button>
+                        <button class="btn btn-danger"><a class="text-white" href="${deleteLink}" onclick="if (!(confirm('Are you sure you want to delete item with title ${i.ititle}?')))
+                                    return false">Delete</a>
+                        </button>
+                    </sec:authorize>
                     <c:if test="${i.istatus == 'DISABLED'}">
-                    <button class="btn btn-warning"><a class="text-white" href="${updateLink}">Update</a></button>
-                    <button class="btn btn-danger"><a class="text-white" href="${deleteLink}" onclick="if (!(confirm('Are you sure you want to delete item with title ${i.ititle}?')))
-                                return false">Delete</a>
-                    </button>
-                    
+
+
                         <button class="btn btn-success"><a class="text-white" href="${createAuction}">Auctionize</a></button>
                     </c:if>
                 </div>

@@ -41,6 +41,7 @@ public class BidController {
         m.addAttribute("auctionId", id);
         return "listBids";
     }
+
     @GetMapping("/listByUser")
     public String getAllBidsByUser(@RequestParam("username") String uname,
             Model m) {
@@ -66,15 +67,15 @@ public class BidController {
             m.addAttribute("message", "You can't bid on your own auction");
             return "error";
         }
-
+//        Check against max bid
         BigDecimal maxBid = bService.getMaxBid(aid);
-        if (maxBid.compareTo(b.getBprice()) >= 0 || BigDecimal.valueOf(auction.getAreserve()).compareTo(b.getBprice()) >= 0 ) {
-             m.addAttribute("message", "Bid not accepted. You need to bid higher");
+        if (maxBid.compareTo(b.getBprice()) >= 0 || BigDecimal.valueOf(auction.getAreserve()).compareTo(b.getBprice()) >= 0) {
+            m.addAttribute("message", "Bid not accepted. You need to bid higher");
             return "error";
         }
 //        Check if bidder has enough credit
-        if ( b.getBprice().compareTo(bidder.getCredit()) >= 0 ) {
-             m.addAttribute("message", "Bid not accepted. You do not have sufficient credit");
+        if (b.getBprice().compareTo(bidder.getCredit()) >= 0) {
+            m.addAttribute("message", "Bid not accepted. You do not have sufficient credit");
             return "error";
         }
         Timestamp timestamp = new Timestamp(new Date().getTime());
@@ -85,12 +86,12 @@ public class BidController {
         m.addAttribute("item", b.getAuction().getItem());
         return "redirect:/auction/list"; // on success redirect to auction list page
     }
-    
+
     @GetMapping("/delete")
-    public String deleteBid(@RequestParam("bidId") Integer id){
+    public String deleteBid(@RequestParam("bidId") Integer id) {
         Bid b = bService.getBidById(id);
         bService.deleteBidById(id);
-        return "redirect:/bid/list?auctionId="+b.getAuction().getAuctionid();
+        return "redirect:/bid/list?auctionId=" + b.getAuction().getAuctionid();
     }
 
 }

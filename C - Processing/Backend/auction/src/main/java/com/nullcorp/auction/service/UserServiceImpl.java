@@ -19,48 +19,46 @@ import org.springframework.stereotype.Service;
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
-
+    
     @Autowired
     UserDao udao;
-
+    
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
-
+    
     @Override
     public List<User> getAllUsers() {
         return udao.findAll();
     }
-
+    
     @Override
     public void createOrUpdateUser(User u) {
         u.setPassword(passwordEncoder.encode(u.getPassword()));
         udao.createOrUpdate(u);
         udao.addRole(u.getUserid(), 2);
     }
-
+    
     @Override
     public User getUserById(Integer id) {
         return udao.findById(id);
-
+        
     }
-
+    
     @Override
     public void deleteUser(Integer id) {
         udao.delete(id);
     }
-
+    
     @Override
     public List<User> findUsersByUsername(String searchName) {
         return udao.findByUsername(searchName);
     }
-
+    
     @Override
     public User findByUsername(String username) {
         return udao.findUserByUsername(username);
     }
-
     
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = udao.findUserByUsername(username);
@@ -71,10 +69,10 @@ public class UserServiceImpl implements UserService {
                 user.getUsername(),
                 user.getPassword(),
                 mapRolesToAuthorities(user.getRoles()));
-
+        
         return userDetails;
     }
-
+    
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(List<Role> roles) {
         List<GrantedAuthority> authorities = new ArrayList();
         for (Role r : roles) {
@@ -83,15 +81,20 @@ public class UserServiceImpl implements UserService {
         }
         return authorities;
     }
-
+    
     @Override
     public User getUserByUsername(String uname) {
         return udao.getByUsername(uname);
     }
-
+    
     @Override
     public void addCreditToUser(String name, BigDecimal credit) {
         udao.addCredit(name, credit);
     }
-
+    
+    @Override
+    public void deductCredit(Integer id, BigDecimal price) {
+        udao.deductCredit(id, price);
+    }
+    
 }

@@ -83,7 +83,7 @@ public class UserDaoImpl implements UserDao {
     public User getByUsername(String uname) {
         Query q = getSession().createNamedQuery("User.findByUsername");
         q.setParameter("username", uname);
-        return (User)q.getSingleResult();
+        return (User) q.getSingleResult();
     }
 
     @Override
@@ -92,6 +92,15 @@ public class UserDaoImpl implements UserDao {
         q.setParameter("credit", credit);
         q.setParameter("username", name);
         q.executeUpdate();
+    }
+
+    @Override
+    public void deductCredit(Integer id, BigDecimal price) {
+        Query q = getSession().createQuery("UPDATE User u SET u.credit= u.credit - : price WHERE u.userid = : id");
+        q.setParameter("price", price);
+        q.setParameter("id", id);
+        q.executeUpdate();
+
     }
 
 }

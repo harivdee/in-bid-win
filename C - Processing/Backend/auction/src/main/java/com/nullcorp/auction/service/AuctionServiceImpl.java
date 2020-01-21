@@ -4,6 +4,7 @@ import com.nullcorp.auction.dao.AuctionDao;
 import com.nullcorp.auction.entity.Auction;
 import com.nullcorp.auction.entity.Bid;
 import com.nullcorp.auction.entity.Transaction;
+import java.math.BigDecimal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,9 @@ public class AuctionServiceImpl implements AuctionService {
 
     @Autowired
     ItemService itService;
+    
+    @Autowired
+    UserService uService;
     
    
 
@@ -57,6 +61,10 @@ public class AuctionServiceImpl implements AuctionService {
             transactionData.setWinner(auction.getMaxBid().getUser());
             transactionData.setTprice(auction.getMaxBid().getBprice());
             tService.generateTransaction(transactionData);
+//            Remove credit from winner
+            uService.deductCredit(auction.getMaxBid().getUser().getUserid(), auction.getMaxBid().getBprice());
+//              Add credit to owner
+            uService.addCreditToUser(auction.getItem().getUser().getUsername(), auction.getMaxBid().getBprice());
 //            Delete Auction and it's bids 
             deleteAuction(auctionId);
 
