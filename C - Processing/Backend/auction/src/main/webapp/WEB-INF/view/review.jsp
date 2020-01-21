@@ -18,7 +18,7 @@
 <body>
 <div align="center">
     <h1>Please Review Before Paying</h1>
-    <form action="${pageContext.request.contextPath}/execute_payment" method="post">
+    <form action="execute_payment" method="post">
     <table>
         <tr>
             <td colspan="2"><b>Transaction Details:</b></td>

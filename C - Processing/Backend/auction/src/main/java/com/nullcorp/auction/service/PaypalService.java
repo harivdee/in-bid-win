@@ -1,7 +1,6 @@
 
 package com.nullcorp.auction.service;
 
-import com.nullcorp.auction.entity.OrderDetail;
 import com.paypal.api.payments.Amount;
 import com.paypal.api.payments.Details;
 import com.paypal.api.payments.Item;
@@ -46,11 +45,11 @@ public class PaypalService {
         Payer payer = new Payer();
         payer.setPaymentMethod("paypal");
         PayerInfo payerInfo = new PayerInfo();
-//        payerInfo.setFirstName("Tas")
-//                .setLastName("Lel")
-//                .setEmail("sb-g37zv883630@personal.example.com");
+
         /*
-        password for paypal account= n+G;deE4
+        accound: sb-enshz752880@business.example.com
+        
+        password for paypal account= 9J=E^sc'
          */
 
         payer.setPayerInfo(payerInfo);
@@ -66,28 +65,21 @@ public class PaypalService {
 
     private List<Transaction> getTransactionInformation(Double credit) {
         Details details = new Details();
-//        details.setShipping(orderDetail.getStringShipping());
-//        details.setSubtotal(orderDetail.getStringSubtotal());
-//        details.setTax(orderDetail.getStringTax());
-
         Amount amount = new Amount("USD", credit.toString());
         amount.setDetails(details);
 
         Transaction transaction = new Transaction();
         transaction.setAmount(amount);
-//        transaction.setDescription(orderDetail.getProductName());
 
         ItemList itemList = new ItemList();
         List<Item> items = new ArrayList();
 
         Item item = new Item();
         item.setCurrency("USD");
-//        item.setName(orderDetail.getProductName());
         item.setPrice(credit.toString());
-//        item.setTax(orderDetail.getStringTax());
         item.setQuantity("1");
-
         items.add(item);
+        
         itemList.setItems(items);
         transaction.setItemList(itemList);
 
@@ -118,9 +110,7 @@ public class PaypalService {
         PaymentExecution paymentExecution = new PaymentExecution();
         paymentExecution.setPayerId(payerId);
         Payment payment = new Payment().setId(paymentId);
-        //return payment.execute(apiContext, paymentExecution);
         Payment result = payment.execute(apiContext, paymentExecution);
-        //apiContext.setRequestId(null);
         return result;
     }
 }
