@@ -27,7 +27,7 @@
         <jsp:include page="header.jsp" />
         <div class="d-flex flex-column justify-content-center m-3">
             <h1 class="text-center">Image Upload for house ${house.hlocation}</h1>
-            <p class="text-center">Please upload the image in a hosting service ( like <a href="https://postimages.org/">https://postimages.org/</a> ) and paste provided the direct link</p>
+            <p class="text-center">Please upload the image in a hosting service ( like <a href="https://postimages.org/" target="_blank">https://postimages.org/</a> ) and paste provided the direct link</p>
             <c:url value="/image/upload" var="uploadLink" >
                 <c:param name="houseId" value="${house.hid}"/>
             </c:url>
