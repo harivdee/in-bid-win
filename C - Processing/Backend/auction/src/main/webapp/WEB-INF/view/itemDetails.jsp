@@ -28,6 +28,9 @@
             <c:param name="auctionId" value="${auction.auctionid}" />
             <c:param name="username" value="${loggedInUser.username}" /> 
         </c:url>
+        <c:url var="listImages" value="/image/list">
+            <c:param name="houseId" value="${item.house.hid}" />
+        </c:url>
 
         <div class="card bg-light m-5" style="max-width: 36rem; font-size: 14px;">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -80,6 +83,7 @@
                 </ul>
             </div>
             <div class="card-footer bg-transparent border-info d-flex justify-content-around">
+                <button class="btn btn-success"><a class="text-white" href="${listImages}">Images</a></button>
                 <f:form id="bidForm"
                         action="${bidLink}"
                         method="POST"

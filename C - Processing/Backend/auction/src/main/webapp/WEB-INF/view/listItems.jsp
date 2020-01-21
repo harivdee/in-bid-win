@@ -40,6 +40,9 @@
             <c:url var="createAuction" value="/auction/create">
                 <c:param name="itemId" value="${i.itemid}" />
             </c:url>
+            <c:url var="listImages" value="/image/list">
+                <c:param name="houseId" value="${i.house.hid}" />
+            </c:url>
 
 
             <div class="card bg-light mb-3 ml-3" style="max-width: 36rem; font-size: 14px;">
@@ -84,9 +87,8 @@
                                     return false">Delete</a>
                         </button>
                     </sec:authorize>
+                    <button class="btn btn-success"><a class="text-white" href="${listImages}">Images</a></button>
                     <c:if test="${i.istatus == 'DISABLED'}">
-
-
                         <button class="btn btn-success"><a class="text-white" href="${createAuction}">Auctionize</a></button>
                     </c:if>
                 </div>
