@@ -83,7 +83,7 @@
                 </ul>
             </div>
             <div class="card-footer bg-transparent border-info d-flex justify-content-around">
-                <button class="btn btn-success"><a class="text-white" href="${listImages}">Images</a></button>
+                <button class="btn btn-secondary"><a class="text-white" href="${listImages}">Images</a></button>
                 <f:form id="bidForm"
                         action="${bidLink}"
                         method="POST"

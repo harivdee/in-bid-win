@@ -87,9 +87,9 @@
                                     return false">Delete</a>
                         </button>
                     </sec:authorize>
-                    <button class="btn btn-success"><a class="text-white" href="${listImages}">Images</a></button>
+                    <button class="btn btn-secondary"><a class="text-white" href="${listImages}">Images</a></button>
                     <c:if test="${i.istatus == 'DISABLED'}">
-                        <button class="btn btn-success"><a class="text-white" href="${createAuction}">Auctionize</a></button>
+                        <button class="btn btn-danger"><a class="text-white" href="${createAuction}">Auctionize</a></button>
                     </c:if>
                 </div>
             </div>
