@@ -41,13 +41,13 @@
                                     modelAttribute="image">
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="inputGroupFile02">
-                                            <label class="custom-file-label" for="inputGroupFile02" aria-describeby="inputGroupFileAddon02">Choose file</label>
+                                        <div>
+                                            <f:input type="text" cssClass="" path="iphoto"/>
+                                            <!--<input type="text" class="custom-file-input" id="inputGroupFile02">-->
                                         </div>
                                     </div>
                                 </div>
-                                <input type="submit" value="Upload" class="btn btn-info btn-block">  
+                                <input type="submit" value="Submit" class="btn btn-info btn-block">  
                             </f:form>
                         </div>
                     </div>

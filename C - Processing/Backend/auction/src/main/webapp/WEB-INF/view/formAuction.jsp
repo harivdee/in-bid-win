@@ -29,13 +29,13 @@
                 method="POST"
                 modelAttribute="auction">
             <f:hidden path="auctionid"/>
-            <div class="form-group col-md-4 mb-3">
+<!--            <div class="form-group col-md-4 mb-3">
                 <label for="validationServer01">Increment:</label>
                 <f:input type="number" path="aincrement"/>
                 <f:errors path="aincrement"/><br/>
-            </div>
+            </div>-->
             <div class="form-group col-md-4 mb-3">
-                <label for="validationServer01">Reserve:</label>
+                <label for="validationServer01">Reserve Price:</label>
                 <f:input type="number" path="areserve"/>
                 <f:errors path="areserve"/><br/>
             </div>
