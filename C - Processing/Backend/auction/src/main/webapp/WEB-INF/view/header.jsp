@@ -26,19 +26,28 @@
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#dropdown_target"
                            href="#">Listings</a><span class="caret"></span>
                         <div class="dropdown-menu" aria-labelledby="dropdown_target">
-                            <sec:authentication var="user" property="principal" />
-                            <c:url value="/item/listByUsername" var="createLink" >
-                                <c:param name="username" value='${user.username}' /> 
-                            </c:url>
-                            <a class="dropdown-item" href="${createLink}">My items</a>
+                            
                             <a class="dropdown-item" href="${pageContext.request.contextPath}/auction/list">Search Auction</a>
                         </div>
                     </li>
                     <li class="navbar-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#accountdrop_t" href="#">Account</a><span class="caret"></span>
                         <div class="dropdown-menu" aria-labelledby="accountdrop_t">
-                            <a class="dropdown-item" href="${pageContext.request.contextPath}/user/userDashboard">View Account</a>
-                            <a class="dropdown-item" href="${pageContext.request.contextPath}/item/list">View Items</a>
+                            <sec:authorize access="hasRole('ROLE_USER') and isAuthenticated()">
+                                <sec:authentication var="user" property="principal" />
+                                <c:url value="/item/listByUsername" var="myItemsLink" >
+                                    <c:param name="username" value='${user.username}' /> 
+                                </c:url>
+                                <c:url value="/item/profile" var="profileLink" >
+                                    <c:param name="username" value='${user.username}' /> 
+                                </c:url>
+                                <c:url value="/bid/listByUser" var="myBidsLink" >
+                                    <c:param name="username" value='${user.username}' /> 
+                                </c:url>
+                            </sec:authorize>
+                            <a class="dropdown-item" href="${profileLink}">My Account</a>
+                            <a class="dropdown-item" href="${myItemsLink}">My items</a>
+                            <a class="dropdown-item" href="${myBidsLink}">My Bids</a>
                         </div>
                     </li>
                     <li class="navbar-item">
