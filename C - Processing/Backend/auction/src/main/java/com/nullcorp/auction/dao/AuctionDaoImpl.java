@@ -44,5 +44,12 @@ public class AuctionDaoImpl implements AuctionDao {
         
     }
 
+    @Override
+    public List<Auction> getAllByName(String s) {
+        Query q = getSession().createQuery("SELECT a FROM Auction a WHERE a.item.ititle LIKE: searchTerm");
+        q.setParameter("searchTerm", "%" + s + "%");
+        return q.getResultList();
+    }
+
     
 }

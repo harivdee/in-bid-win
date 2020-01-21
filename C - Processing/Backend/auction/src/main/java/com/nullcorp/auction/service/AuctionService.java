@@ -15,5 +15,7 @@ public interface AuctionService {
     public void deleteAuction(Integer id);
 
     public void terminateExpiredAuctions(List<Integer> expiredAuctions);
+
+    public List<Auction> getAuctionsByName(String s);
     
 }

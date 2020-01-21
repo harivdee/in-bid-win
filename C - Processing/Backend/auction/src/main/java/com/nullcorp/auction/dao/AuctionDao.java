@@ -13,6 +13,8 @@ public interface AuctionDao {
     public Auction findById(Integer id);
 
     public void delete(Integer id);
+
+    public List<Auction> getAllByName(String s);
     
     
 }

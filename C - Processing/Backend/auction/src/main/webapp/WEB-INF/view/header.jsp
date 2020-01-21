@@ -1,15 +1,29 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib prefix="f" uri="http://www.springframework.org/tags/form"  %>
+
 <!DOCTYPE html>
 <html>
 
     <header>
         <div class="jumbotron">
-            <form class="form-inline pull-xs-right my-0 ml-auto"action="${pageContext.request.contextPath}/user/search" method="GET" >
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" name="searchName">
+            <c:url value="/auction/list" var="searchLink">
+                <c:param name="string" value='searchName' /> 
+            </c:url>
+            <f:form cssClass="form-inline pull-xs-right my-0 ml-auto" 
+                    action="${searchLink}" 
+                    method="POST" 
+                    methodParam="searchName">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search auctions..." name="searchName">
                 <button class="btn btn-success my-0 " type="submit">Search</button>
-            </form>
+            </f:form> 
+
+            <!--            <form class="form-inline pull-xs-right my-0 ml-auto"action="{pageContext.request.contextPath}/user/search" method="GET" >
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search" name="searchName">
+                            <button class="btn btn-success my-0 " type="submit">Search</button>
+                        </form>-->
+
         </div>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
             <a class="text-white navbar-brand" href="/"><i class="fa fa-building-o"></i>in bid win</a>

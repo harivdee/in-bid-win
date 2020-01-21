@@ -28,6 +28,14 @@ public class AuctionController {
     AuctionService aService;
     @Autowired
     ItemService iService;
+//    /////////////////
+
+    @PostMapping("/list")
+    public String test(@RequestParam("searchName") String s, Model m) {
+        List<Auction> list = aService.getAuctionsByName(s);
+        m.addAttribute("listOfAuctions", list);
+        return "listAuctions";
+    }
 
     @GetMapping("/list")
     public String getAllAuctions(Model m) {
@@ -77,7 +85,7 @@ public class AuctionController {
         a = aService.getAuctionById(id);
         m.addAttribute("auction", a);
         m.addAttribute("itemId", a.getItem().getItemid());
-        
+
         return "formAuction";
     }
 
@@ -88,9 +96,9 @@ public class AuctionController {
         aService.deleteAuction(id);
         return "redirect:/auction/list";
     }
-    
+
     @GetMapping("/terminate")
-    public String terminateAuction(@RequestParam("auctionId") Integer id){
+    public String terminateAuction(@RequestParam("auctionId") Integer id) {
         List<Integer> list = new ArrayList();
         list.add(id);
         aService.terminateExpiredAuctions(list);

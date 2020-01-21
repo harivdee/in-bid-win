@@ -63,4 +63,9 @@ public class AuctionServiceImpl implements AuctionService {
         }
     }
 
+    @Override
+    public List<Auction> getAuctionsByName(String s) {
+        return adao.getAllByName(s);
+    }
+
 }
