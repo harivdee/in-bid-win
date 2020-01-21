@@ -1,13 +1,17 @@
 package com.nullcorp.auction.controller;
 
 import com.nullcorp.auction.service.PaypalService;
+import com.nullcorp.auction.service.UserService;
 import com.paypal.api.payments.PayerInfo;
 import com.paypal.api.payments.Payment;
 import com.paypal.api.payments.Transaction;
 import com.paypal.base.rest.PayPalRESTException;
+import java.math.BigDecimal;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +23,9 @@ public class PaypalController {
 
     @Autowired
     PaypalService service;
+    
+    @Autowired
+    UserService uService;
 
     @GetMapping("/cancel")
     public String cancelPay() {
@@ -78,6 +85,10 @@ public class PaypalController {
             Payment payment = service.executePayment(paymentId, payerId);
             PayerInfo payerInfo = payment.getPayer().getPayerInfo();
             Transaction transaction = payment.getTransactions().get(0);
+            //After confirmation find user and 
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            //Add the credit to the user // We get the total amount as string and convert it to BigDecimal
+            uService.addCreditToUser(auth.getName(), new BigDecimal(transaction.getAmount().getTotal()));
             model.addAttribute("payer", payerInfo);
             model.addAttribute("transaction", transaction);
             return "receipt";
