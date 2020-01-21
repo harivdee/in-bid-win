@@ -28,54 +28,50 @@
             <h1>${user.username} transactions</h1>
         </sec:authorize>
         <h3>Congratulations! You've won the Auction!</h3>
-        <table border="1">
-            <tr>
-                <td><strong>Auction Title</strong></td>
-                <td><strong>Price</strong></td>
-                <td><strong>Auction Owner</strong></td>
-
-            </tr> 
+        
             <div class="card deck d-flex flex-row flex-wrap">
-            <c:forEach items="${winnerTransactions}" var="wt">
-                <tr>
-                    <td>${wt.item.ititle}</td>
-                    <td>${wt.tprice}</td>
-                    <td>${wt.owner.username}</td>
-                </tr>
-            </c:forEach>
+                <c:forEach items="${winnerTransactions}" var="wt">
+                    <div class="col-sm-4 m-2">
+                        <div class="card border-info mb-3" style="max-width: 18rem;">
+                            <div class="card-header bg-transparent border-info">info</div>
+                            <div class="card-body text-dark">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Title: ${wt.item.ititle}</li>
+                                    <li class="list-group-item">Winning Price: $${wt.tprice}</li>
+                                    <li class="list-group-item">Sold by: ${wt.owner.username}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
             </div>
-        </table>
-        <br/>
-        <hr/>
-        <br/>
-        <h3>Your finished auctions</h3>
-        <table border="1">
-            <tr>
-                <td><strong>Auction Title</strong></td>
-                <td><strong>Price</strong></td>
-                <td><strong>Auction Winner</strong></td>
+            <h3 class='mb-1'>Your sold items</h3>
+             <div class="card deck d-flex flex-row flex-wrap">
+                <c:forEach items="${ownerTransactions}" var="ot">
+                    <div class="col-sm-4 m-2">
+                        <div class="card border-info mb-3" style="max-width: 18rem;">
+                            <div class="card-header bg-transparent border-info">info</div>
+                            <div class="card-body text-dark">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Title: ${ot.item.ititle}</li>
+                                    <li class="list-group-item">Price Sold: $${ot.tprice}</li>
+                                    <li class="list-group-item">Sold by: ${ot.winner.username}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
+            </div>
 
-            </tr>  
-            <c:forEach items="${ownerTransactions}" var="ot">
-                <tr>
-                    <td>${ot.item.ititle}</td>
-                    <td>${ot.tprice}</td>
-                    <td>${ot.winner.username}</td>
-                </tr>
-            </c:forEach>
-        </table>
-
-
-        <br/>
-        <jsp:include page="footer.jsp" />
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-                integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-                integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-                integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
+            <jsp:include page="footer.jsp" />
+            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+                    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+                    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+                    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
     </body>
 </html>
