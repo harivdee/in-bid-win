@@ -5,6 +5,7 @@
 <html>
 
     <header>
+        <a href="${pageContext.request.contextPath}/addCredits">Paypal</a>
         <div class="jumbotron">
             <form class="form-inline pull-xs-right my-0 ml-auto">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search">
