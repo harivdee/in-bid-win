@@ -1,14 +1,12 @@
 <%-- 
-    Document   : userDashboard
-    Created on : 17-Jan-2020, 15:30:58
-    Author     : georg
+    Document   : listTransactions
+    Created on : Jan 21, 2020, 1:28:52 PM
+    Author     : datura
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,36 +19,50 @@
               integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="/css/index.css">
         <link rel="icon" type="image/png" sizes="16x16" href="https://i.ibb.co/kXB6NYF/favicon.png">
-        <title>Profile Page</title>
+        <title>List Transaction</title>
     </head>
     <body>
         <jsp:include page="header.jsp" />
+        <sec:authorize access="hasRole('USER') and isAuthenticated()">
+            <sec:authentication var="user" property="principal" />
+            <h1>${user.username} transactions</h1>
+        </sec:authorize>
+        <h3>Won Auctions. Congratulations!</h3>
+        <table border="1">
+            <tr>
+                <td><strong>Auction Title</strong></td>
+                <td><strong>Price</strong></td>
+                <td><strong>Auction Owner</strong></td>
+
+            </tr>  
+            <c:forEach items="${winnerTransactions}" var="wt">
+                <tr>
+                    <td>${wt.item.ititle}</td>
+                    <td>${wt.tprice}</td>
+                    <td>${wt.owner.username}</td>
+                </tr>
+            </c:forEach>
+        </table>
+
+        <h3>Your finished auctions</h3>
+        <table border="1">
+            <tr>
+                <td><strong>Auction Title</strong></td>
+                <td><strong>Price</strong></td>
+                <td><strong>Auction Winner</strong></td>
+
+            </tr>  
+            <c:forEach items="${ownerTransactions}" var="ot">
+                <tr>
+                    <td>${ot.item.ititle}</td>
+                    <td>${ot.tprice}</td>
+                    <td>${ot.winner.username}</td>
+                </tr>
+            </c:forEach>
+        </table>
 
 
-        <div class="col-sm-4 m-2">
-            <div class="card border-info mb-3" style="max-width: 18rem;">
-                <div class="card-header bg-transparent border-info"><strong>${user.username}</strong> profile</div>
-                <div class="card-body text-dark">
-                    <h5 class="card-title">${user.fname} ${user.lname}</h5>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Username: ${user.username}</li>
-                        <li class="list-group-item">email: ${user.email}</li>
-                        <li class="list-group-item">Credit: $${user.credit}</li>
-                    </ul>
-                </div>
-                <div class="card-footer bg-transparent border-info d-flex justify-content-around">
-                    <c:url var="listItemsLink" value="/item/list">
-                        <c:param name="userId" value="${user.userid}" />
-                    </c:url>
-                    <c:url var="listTransactions" value="/transaction/list">
-                        <c:param name="userId" value="${user.userid}" />
-                    </c:url>
-                    <button class="btn btn-success"><a class="text-white"href="${listItemsLink}">Items</a></button>
-                    <button class="btn btn-success"><a class="text-white"href="${listTransactions}">Transactions</a></button>
 
-                </div>
-            </div>
-        </div>
         <jsp:include page="footer.jsp" />
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
                 integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

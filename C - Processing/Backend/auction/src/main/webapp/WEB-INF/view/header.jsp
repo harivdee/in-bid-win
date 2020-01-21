@@ -6,8 +6,8 @@
 
     <header>
         <div class="jumbotron">
-            <form class="form-inline pull-xs-right my-0 ml-auto">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <form class="form-inline pull-xs-right my-0 ml-auto"action="${pageContext.request.contextPath}/user/search" method="GET" >
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" name="searchName">
                 <button class="btn btn-success my-0 " type="submit">Search</button>
             </form>
         </div>
@@ -26,7 +26,7 @@
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#dropdown_target"
                            href="#">Listings</a><span class="caret"></span>
                         <div class="dropdown-menu" aria-labelledby="dropdown_target">
-                            
+
                             <a class="dropdown-item" href="${pageContext.request.contextPath}/auction/list">Search Auction</a>
                         </div>
                     </li>
@@ -76,9 +76,9 @@
                             <i class="fa fa-user-plus"></i>Sign in
                         </a>
                     </sec:authorize>
-<!--                    <a class="text-white nav-link" href="{myBidsLink}">
-                        <i class="text-warning fa fa-opencart"></i>My Bids <i style="color:yellow;" id="cart_n"></i>
-                    </a>-->
+                    <!--                    <a class="text-white nav-link" href="{myBidsLink}">
+                                            <i class="text-warning fa fa-opencart"></i>My Bids <i style="color:yellow;" id="cart_n"></i>
+                                        </a>-->
                 </form>
             </div>
         </nav>

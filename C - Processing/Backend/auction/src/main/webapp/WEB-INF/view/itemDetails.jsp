@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html>
@@ -17,7 +18,7 @@
     </head>
     <body>
         <jsp:include page="header.jsp" />
-        
+
 
 
         <c:url var="listImagesLink" value="/image/list">
@@ -27,26 +28,26 @@
             <c:param name="auctionId" value="${auction.auctionid}" />
             <c:param name="username" value="${loggedInUser.username}" /> 
         </c:url>
-    
-        <h1><strong>${loggedInUser.username}</strong> item list</h1>
+
+        <h1>Auction by user: <strong>${loggedInUser.username}</strong></h1>
         <div class="card bg-light m-5" style="max-width: 36rem; font-size: 14px;">
-             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <c:forEach items="${imageList}" var="img">
-                    <div class="carousel-item d-block w-100">
-                        <img src="${img.iphoto}"  width="36rem" height="auto" class="card-img-top img-fluid" alt="apartment img">
-                    </div>
-                </c:forEach>
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <c:forEach items="${imageList}" var="img">
+                        <div class="carousel-item d-block w-100">
+                            <img src="${img.iphoto}"  width="36rem" height="auto" class="card-img-top img-fluid" alt="apartment img">
+                        </div>
+                    </c:forEach>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
             <div class="card-body">
                 <h5 class="card-title">${item.ititle}</h5>
                 <ul class="list-group list-group-flush d-flex flex-row flex-wrap justify-content-around">
@@ -88,6 +89,12 @@
                     <f:errors path="bprice"/>
                     <button class="btn btn-success" type="submit" value="Place Bid">Place Bid</button>
                 </f:form>
+                <sec:authorize access="hasRole('ADMIN')">
+                    <c:url var="terminateLink" value="/auction/terminate">
+                        <c:param name="auctionId" value="${auction.auctionid}" />
+                    </c:url>
+                    <a class="btn btn-danger" href="${terminateLink}" >Terminate</a>
+                </sec:authorize>
             </div>
         </div>
         <jsp:include page="footer.jsp" />

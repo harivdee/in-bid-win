@@ -40,8 +40,8 @@
             <c:url var="createAuction" value="/auction/create">
                 <c:param name="itemId" value="${i.itemid}" />
             </c:url>
-           
-            
+
+
             <div class="card bg-light mb-3 ml-3" style="max-width: 36rem; font-size: 14px;">
                 <img src="${i.house.imageList[0].iphoto}"
                      class="card-img-top img-fluid"  alt="image of an apartment">
@@ -78,11 +78,14 @@
                     </ul>
                 </div>
                 <div class="card-footer bg-transparent border-info d-flex justify-content-around">
+                    <c:if test="${i.istatus == 'DISABLED'}">
                     <button class="btn btn-warning"><a class="text-white" href="${updateLink}">Update</a></button>
                     <button class="btn btn-danger"><a class="text-white" href="${deleteLink}" onclick="if (!(confirm('Are you sure you want to delete item with title ${i.ititle}?')))
-                        return false">Delete</a>
+                                return false">Delete</a>
                     </button>
-                    <button class="btn btn-success"><a class="text-white" href="${createAuction}">Auctionize</a></button>
+                    
+                        <button class="btn btn-success"><a class="text-white" href="${createAuction}">Auctionize</a></button>
+                    </c:if>
                 </div>
             </div>
         </c:forEach>

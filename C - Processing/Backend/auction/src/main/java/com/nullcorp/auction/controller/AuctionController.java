@@ -5,6 +5,7 @@ import com.nullcorp.auction.entity.Item;
 import com.nullcorp.auction.service.AuctionService;
 import com.nullcorp.auction.service.ItemService;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -86,5 +87,13 @@ public class AuctionController {
         iService.toggleStatus(a.getItem());
         aService.deleteAuction(id);
         return "redirect:/auction/list";
+    }
+    
+    @GetMapping("/terminate")
+    public String terminateAuction(@RequestParam("auctionId") Integer id){
+        List<Integer> list = new ArrayList();
+        list.add(id);
+        aService.terminateExpiredAuctions(list);
+        return "redirect: /home";
     }
 }
