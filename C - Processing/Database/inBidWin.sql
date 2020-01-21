@@ -137,16 +137,4 @@ INSERT INTO image (iphoto, house)
 VALUES ('https://i.postimg.cc/RV82vCKw/cgji0ufwnk941.jpg', 1),
 ('https://i.postimg.cc/RV82vCKw/cgji0ufwnk941.jpg',2);
 
-/*
-INSERT INTO auction (aincrement, areserve, stime, etime, item)
-VALUES (10, 120, '2019-12-14 12:30:15','2020-01-14 12:30:15', 1),
-(10, 90, '2019-11-30 13:15:20', '2020-01-30 13:15:20', 2);
 
-INSERT INTO bid (bprice, btime, auction, user)
-VALUES (140, '2019-12-14 14:30:15', 1, 2),
-(120, '2019-12-14 14:30:15', 2, 1);
-
-INSERT INTO transaction(tprice, auction)
-VALUES (600, 1),
-(400, 2);
-*/
