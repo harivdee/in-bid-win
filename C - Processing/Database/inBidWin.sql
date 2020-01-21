@@ -135,6 +135,9 @@ VALUES ('Renovated home', 500, 'DISABLED', 1, 2),
 
 INSERT INTO image (iphoto, house)
 VALUES ('https://i.postimg.cc/RV82vCKw/cgji0ufwnk941.jpg', 1),
-('https://i.postimg.cc/RV82vCKw/cgji0ufwnk941.jpg',2);
+('https://i.postimg.cc/2SYRKY4x/m8iaqfwpxqa41.jpg',1),
+('https://i.postimg.cc/TwgJSzjr/image.jpg',1),
+('https://i.postimg.cc/t4nZ2hN6/aa8137bb-1797-43bd-909f-c14c440c1af0-l.jpg',2),
+('https://i.postimg.cc/vTDHDsPn/attractive-internal-house-designs-spectacular-interior-in-kerala.jpg',2);
 
 
