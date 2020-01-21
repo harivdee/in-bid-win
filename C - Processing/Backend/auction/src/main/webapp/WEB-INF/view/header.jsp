@@ -12,7 +12,7 @@
             </form>
         </div>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-            <a class="text-white navbar-brand" href="#"><i class="fa fa-building-o"></i>in bid win</a>
+            <a class="text-white navbar-brand" href="/"><i class="fa fa-building-o"></i>in bid win</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
