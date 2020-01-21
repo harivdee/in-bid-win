@@ -28,7 +28,7 @@ function init($) {
                     </ul>
                     <div class="card-footer">
                         <button class="btn btn-primary w-100"><a class="text-white" 
-href="/item/showDetails?auctionId=${value.auction.id}&itemId=${value.itemid}">View more details</a></button>
+href="/item/showDetails?auctionId=${value.auction.id}&itemId=${value.auction.itemid}">View more details</a></button>
                     </div>
                 </div>
                 </div>`;
