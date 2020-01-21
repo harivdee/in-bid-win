@@ -38,7 +38,7 @@
                                 <c:url value="/item/listByUsername" var="myItemsLink" >
                                     <c:param name="username" value='${user.username}' /> 
                                 </c:url>
-                                <c:url value="/item/profile" var="profileLink" >
+                                <c:url value="/user/profile" var="profileLink" >
                                     <c:param name="username" value='${user.username}' /> 
                                 </c:url>
                                 <c:url value="/bid/listByUser" var="myBidsLink" >
@@ -76,9 +76,9 @@
                             <i class="fa fa-user-plus"></i>Sign in
                         </a>
                     </sec:authorize>
-                    <a class="text-white nav-link" href="cart.html">
-                        <i class="text-warning fa fa-opencart"></i>Bids <i style="color:yellow;" id="cart_n"></i>
-                    </a>
+<!--                    <a class="text-white nav-link" href="{myBidsLink}">
+                        <i class="text-warning fa fa-opencart"></i>My Bids <i style="color:yellow;" id="cart_n"></i>
+                    </a>-->
                 </form>
             </div>
         </nav>

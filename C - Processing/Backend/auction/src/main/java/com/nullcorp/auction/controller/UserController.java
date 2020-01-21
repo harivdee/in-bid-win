@@ -24,11 +24,12 @@ public class UserController {
     @Autowired
     RoleService rService;
     
-    @GetMapping("/dashboard")
+    @GetMapping("/profile")
     public String showUserDashboard(@ModelAttribute("user") User u,
-            @RequestParam("username") String username){
+            @RequestParam("username") String username, Model m){
         User user = service.findByUsername(username);
-        return null;
+        m.addAttribute("user", user);
+        return "profile";
     }
     
     @GetMapping("/list")
