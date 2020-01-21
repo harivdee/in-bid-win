@@ -14,11 +14,7 @@ public class HomeController {
         return "home";
     }
         
-    @GetMapping("/spiti")
-    public String spiti(){
-
-        return "activeAuctions";
-    }
+    
     
    
 }

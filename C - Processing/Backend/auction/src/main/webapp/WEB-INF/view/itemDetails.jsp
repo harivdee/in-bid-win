@@ -29,7 +29,6 @@
             <c:param name="username" value="${loggedInUser.username}" /> 
         </c:url>
 
-        <h1>Auction by user: <strong>${loggedInUser.username}</strong></h1>
         <div class="card bg-light m-5" style="max-width: 36rem; font-size: 14px;">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
@@ -87,7 +86,7 @@
                         modelAttribute="bid" >
                     <f:input type="number" path="bprice"/> 
                     <f:errors path="bprice"/>
-                    <button class="btn btn-success" type="submit" value="Place Bid">Place Bid</button>
+                    <button class="btn btn-success" type="submit" value="Place Bid" required>Place Bid</button>
                 </f:form>
                 <sec:authorize access="hasRole('ADMIN')">
                     <c:url var="terminateLink" value="/auction/terminate">

@@ -8,21 +8,19 @@
 
     <header>
         <div class="jumbotron">
-            <c:url value="/auction/list" var="searchLink">
-                <c:param name="string" value='searchName' /> 
-            </c:url>
-            <f:form cssClass="form-inline pull-xs-right my-0 ml-auto" 
-                    action="${searchLink}" 
-                    method="POST" 
-                    methodParam="searchName">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search auctions..." name="searchName">
-                <button class="btn btn-success my-0 " type="submit">Search</button>
-            </f:form> 
+            <sec:authorize var="role" access="hasRole('ADMIN')">
+                <c:url value="/auction/listForAdmin" var="searchLink">
+                    <c:param name="string" value='searchName' /> 
+                </c:url>
+                <f:form cssClass="form-inline pull-xs-right my-0 ml-auto" 
+                        action="${searchLink}" 
+                        method="POST" 
+                        methodParam="searchName">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search auctions..." name="searchName">
+                    <button class="btn btn-success my-0 " type="submit">Search</button>
+                </f:form> 
+            </sec:authorize>
 
-            <!--            <form class="form-inline pull-xs-right my-0 ml-auto"action="{pageContext.request.contextPath}/user/search" method="GET" >
-                            <input class="form-control mr-sm-2" type="text" placeholder="Search" name="searchName">
-                            <button class="btn btn-success my-0 " type="submit">Search</button>
-                        </form>-->
 
         </div>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -45,9 +43,10 @@
                         </div>
                     </li>
                     <li class="navbar-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#accountdrop_t" href="#">Account</a><span class="caret"></span>
-                        <div class="dropdown-menu" aria-labelledby="accountdrop_t">
-                            <sec:authorize access="hasAnyRole('USER', 'ADMIN') and isAuthenticated()">
+                        <sec:authorize access="hasAnyRole('USER', 'ADMIN') and isAuthenticated()">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#accountdrop_t" href="#">Account</a><span class="caret"></span>
+
+                            <div class="dropdown-menu" aria-labelledby="accountdrop_t">
                                 <sec:authentication var="user" property="principal" />
                                 <c:url value="/item/listByUsername" var="myItemsLink" >
                                     <c:param name="username" value='${user.username}' /> 
@@ -58,11 +57,12 @@
                                 <c:url value="/bid/listByUser" var="myBidsLink" >
                                     <c:param name="username" value='${user.username}' /> 
                                 </c:url>
-                            </sec:authorize>
-                            <a class="dropdown-item" href="${profileLink}">My Account</a>
-                            <a class="dropdown-item" href="${myItemsLink}">My items</a>
-                            <a class="dropdown-item" href="${myBidsLink}">My Bids</a>
-                        </div>
+
+                                <a class="dropdown-item" href="${profileLink}">My Account</a>
+                                <a class="dropdown-item" href="${myItemsLink}">My items</a>
+                                <a class="dropdown-item" href="${myBidsLink}">My Bids</a>
+                            </div>
+                        </sec:authorize>
                     </li>
                     <li class="navbar-item">
                         <a class="nav-link" href="#about">About</a>
@@ -90,9 +90,9 @@
                             <i class="fa fa-user-plus"></i>Sign in
                         </a>
                     </sec:authorize>
-<!--                    <a class="text-white nav-link" href="{pageContext.request.contextPath}/addCredits">
-                        <i id="cart_n" class="fa fa-cc-paypal" aria-hidden="true"></i>Paypal
-                    </a>-->
+                    <!--                    <a class="text-white nav-link" href="{pageContext.request.contextPath}/addCredits">
+                                            <i id="cart_n" class="fa fa-cc-paypal" aria-hidden="true"></i>Paypal
+                                        </a>-->
                 </form>
             </div>
         </nav>

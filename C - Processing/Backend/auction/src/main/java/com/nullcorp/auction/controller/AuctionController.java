@@ -28,16 +28,21 @@ public class AuctionController {
     AuctionService aService;
     @Autowired
     ItemService iService;
-//    /////////////////
+    
+    @GetMapping("/list")
+    public String spiti(){
 
-    @PostMapping("/list")
+        return "activeAuctions";
+    }
+
+    @PostMapping("/listForAdmin")
     public String test(@RequestParam("searchName") String s, Model m) {
         List<Auction> list = aService.getAuctionsByName(s);
         m.addAttribute("listOfAuctions", list);
         return "listAuctions";
     }
 
-    @GetMapping("/list")
+    @GetMapping("/listForAdmin")
     public String getAllAuctions(Model m) {
         List<Auction> list = aService.getAllAuctions();
         m.addAttribute("listOfAuctions", list);
