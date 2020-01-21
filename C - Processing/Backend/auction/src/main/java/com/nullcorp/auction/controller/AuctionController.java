@@ -102,6 +102,6 @@ public class AuctionController {
         List<Integer> list = new ArrayList();
         list.add(id);
         aService.terminateExpiredAuctions(list);
-        return "redirect: /home";
+        return "home";
     }
 }
