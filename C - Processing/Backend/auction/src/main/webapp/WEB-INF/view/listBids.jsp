@@ -28,44 +28,38 @@
         <sec:authorize access="hasRole('USER') and isAuthenticated()">
             <sec:authentication var="user" property="principal" />
 
-            <h1>${user.username} bids</h1>
+            <h1 class="ml-1">${user.username} bids</h1>
         </sec:authorize>
-        <table border="1">
-            <tr>
-                <td><strong>Auction Title</strong></td>
-                <td><strong>Bid price</strong></td>
-                <td><strong>Bid Time</strong></td>
-                <td><strong>Auction end Time</strong></td>
 
-
-
-            </tr>
-
-            <c:forEach items="${bidList}" var="b">
+            <div class="card deck d-flex flex-row flex-wrap">
+             <c:forEach items="${bidList}" var="b">
                 <security:authorize access="hasRole('ADMIN')">
                     <c:url var="deleteLink" value="/bid/delete">
-
                         <c:param name="bidId" value="${b.bidid}" />
                     </c:url>
                 </security:authorize>
-
-
-                <tr>
-                    <td>${b.auction.item.ititle}</td>
-                    <td>${b.bprice}</td>
-                    <td>${b.btime}</td>
-                    <td>${b.auction.etime}</td>
-                    <sec:authorize access="hasRole('ADMIN') and isAuthenticated()">
-                        <td>  
-                            <a href="${deleteLink}"
+                <div class="col-sm-4 m-2">
+                    <div class="card border-info mb-3" style="max-width: 18rem;">
+                        <div class="card-header bg-transparent border-info">${b.auction.item.ititle} info</div>
+                        <div class="card-body text-dark">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Bid Price: $${b.bprice}</li>
+                                <li class="list-group-item">Bid Time: ${b.btime}</li>
+                                <li class="list-group-item">Auction End Time: ${b.auction.etime}</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer bg-transparent border-info d-flex justify-content-center">
+                            <sec:authorize access="hasRole('ADMIN') and isAuthenticated()">
+                            <button class="btn btn-danger text-white"><a href="${deleteLink}"
                                onclick="if (!(confirm('Are you sure you want to delete bid for auction ${auctionId}?')))
                                            return false"
-                               >Delete</a>  
-                        </td>
+                                                   >Delete</a></button>  
                     </sec:authorize>
-                </tr>
+                        </div>
+                    </div>
+                </div>
             </c:forEach>
-        </table>
+        </div>
 
         <jsp:include page="footer.jsp" />
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
