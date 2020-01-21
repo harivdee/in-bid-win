@@ -35,7 +35,8 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Username: ${user.username}</li>
                         <li class="list-group-item">email: ${user.email}</li>
-                        <li class="list-group-item">Credit: $${user.credit}</li>
+                        <li class="list-group-item">Credit: $${user.credit}
+                        </li>
                     </ul>
                 </div>
                 <div class="card-footer bg-transparent border-info d-flex justify-content-around">
@@ -45,9 +46,15 @@
                     <c:url var="listTransactions" value="/transaction/list">
                         <c:param name="userId" value="${user.userid}" />
                     </c:url>
-                    <button class="btn btn-success"><a class="text-white"href="${listItemsLink}">Items</a></button>
-                    <button class="btn btn-success"><a class="text-white"href="${listTransactions}">Transactions</a></button>
-
+                    <div class="d-flex flex-wrap justify-content-around align-items-center ">
+                    <button class="btn btn-info mr-1 mb-1"><a class="text-white"href="${listItemsLink}">Items</a></button>
+                    <button class="btn btn-warning mr-1 mb-1"><a class="text-white"href="${listTransactions}">Transactions</a></button>
+                    <button class="btn btn-dark">
+                        <a class="text-white nav-link" href="${pageContext.request.contextPath}/addCredits">
+                            <i id="cart_n" class="fa fa-cc-paypal" aria-hidden="true"></i>Paypal
+                        </a>
+                    </button>
+                            </div>
                 </div>
             </div>
         </div>

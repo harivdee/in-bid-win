@@ -23,7 +23,7 @@
     </head>
     <body>
         <jsp:include page="header.jsp" />
-        <h1 class ="mt-2 ml-1">Choose your Products</h1>
+        <h1 class ="mt-2 ml-1">Add the amount you want to deposit</h1>
         <f:form cssClass="form-group ml-5 mt-5" id="formCredits" 
                 action="${pageContext.request.contextPath}/authorize_payment"
                 method="POST">
