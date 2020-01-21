@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -74,7 +75,11 @@
                                 nulla adipisci quia, nobis fuga similique perspiciatis iste sunt placeat consequuntur
                                 quisquam incidunt nihil? Suscipit, eaque harum?
                             </p>
-                            <p><a role="button" class="btn btn-lg btn-info" href="#">Create an Auction</a></p>
+                            <p><sec:authentication var="user" property="principal" />
+                            <c:url value="/item/listByUsername" var="createLink" >
+                                <c:param name="username" value='${user.username}' /> 
+                            </c:url><a role="button" class="btn btn-lg btn-info" href="${createLink}">Create an Auction</a>
+                            </p>
                         </div>
                     </div>
                 </div>
