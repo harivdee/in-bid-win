@@ -27,7 +27,7 @@ public class AuctionSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()//Restrict access based on HttServletRequest
-                .antMatchers("/user/delete").hasRole("ADMIN")
+                .antMatchers("/user/delete", "/user/list").hasRole("ADMIN")
                 .antMatchers("/", "/css/**", "/js/**", "/images/**", "/user/create").permitAll()
                 .anyRequest().authenticated()//Any request to the app must be authenticated(logged in)
                 .and()

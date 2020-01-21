@@ -75,10 +75,13 @@
                                 nulla adipisci quia, nobis fuga similique perspiciatis iste sunt placeat consequuntur
                                 quisquam incidunt nihil? Suscipit, eaque harum?
                             </p>
-                            <p><sec:authentication var="user" property="principal" />
-                            <c:url value="/item/listByUsername" var="createLink" >
-                                <c:param name="username" value='${user.username}' /> 
-                            </c:url><a role="button" class="btn btn-lg btn-info" href="${createLink}">Create an Auction</a>
+                            <p>
+                                <sec:authorize access="isAuthenticated()">
+                                <sec:authentication  var="user" property="principal" />
+                                    <c:url value="/item/listByUsername" var="createLink" >
+                                    <c:param name="username" value='${user.username}' /> 
+                                    </c:url><a role="button" class="btn btn-lg btn-info" href="${createLink}">Create an Auction</a>
+                                </sec:authorize>
                             </p>
                         </div>
                     </div>
