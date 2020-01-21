@@ -7,6 +7,7 @@
 <html>
 
     <header>
+        <a href="${pageContext.request.contextPath}/addCredits">Paypal</a>
         <div class="jumbotron">
             <c:url value="/auction/list" var="searchLink">
                 <c:param name="string" value='searchName' /> 

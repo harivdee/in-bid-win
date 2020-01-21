@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -26,7 +27,8 @@ public class AuctionSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()//Restrict access based on HttServletRequest
+        http.csrf().disable()
+                .authorizeRequests()//Restrict access based on HttServletRequest
                 .antMatchers("/user/delete", "/user/list").hasRole("ADMIN")
                 .antMatchers("/", "/css/**", "/js/**", "/images/**", "/user/create").permitAll()
                 .anyRequest().authenticated()//Any request to the app must be authenticated(logged in)
