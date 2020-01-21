@@ -88,8 +88,9 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void addCredit(String name, BigDecimal credit) {
-        Query q = getSession().createQuery("UPDATE User u SET u.credit= u.credit + : credit");
+        Query q = getSession().createQuery("UPDATE User u SET u.credit= u.credit + : credit WHERE u.username = : username");
         q.setParameter("credit", credit);
+        q.setParameter("username", name);
         q.executeUpdate();
     }
 
