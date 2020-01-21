@@ -19,7 +19,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="https://i.ibb.co/kXB6NYF/favicon.png">
         <title>User List</title>
     </head>
-    <body p-5>
+    <body>
         <jsp:include page="header.jsp" />
 
         <button class="btn btn-info m-5"><a class="text-white" href="${pageContext.request.contextPath}/user/create">Create User</a>
