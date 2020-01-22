@@ -20,7 +20,8 @@
         <jsp:include page="header.jsp" />
         <h1>This is your items image list</h1>
 
-
+        <button class="btn btn-info m-2"><a class="text-white" href="${pageContext.request.contextPath}/image/upload?hid=${hid}">Add more images</a></button>
+        
         <c:forEach items="${listOfImages}" var="i">
             <div class="card mb-1 ml-1" style="width: 28rem;">
                 <img class="card-img-top" src="${i.iphoto}" alt="Card image cap">

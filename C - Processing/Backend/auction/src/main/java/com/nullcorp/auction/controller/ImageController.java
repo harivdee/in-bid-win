@@ -32,6 +32,7 @@ public class ImageController {
         House h = hService.getHouseById(id);
         m.addAttribute("listOfImages", list);
         m.addAttribute("house", h);
+        m.addAttribute("hid",h.getHid());
         return "listImages";
     }
 
